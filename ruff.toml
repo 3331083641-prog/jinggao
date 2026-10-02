@@ -1,0 +1,2 @@
+[lint.per-file-ignores]
+"benchmark/evaluate.py" = ["E402"]

@@ -1,0 +1,397 @@
+{
+  "dataset": "36 条原创合成句，包含别名、英文、无标签姓名与引用机构难例；指标针对风险候选召回（FAIL+REVIEW 命中），不是违规判定精度，也不代表真实学术材料效果",
+  "tp": 20,
+  "fp": 2,
+  "fn": 6,
+  "tn": 8,
+  "precision": 0.9090909090909091,
+  "recall": 0.7692307692307693,
+  "f1": 0.8333333333333333,
+  "false_pass": 0,
+  "false_pass_rate": 0.0,
+  "seconds": 1.0459550999803469,
+  "cases": [
+    {
+      "target": "organization",
+      "text": "作者单位：青岚大学。",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "作者就读于石溪学院。",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "学校：海桥研究院。",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "隶属星河实验室。",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "本校为枫叶大学。",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "通讯单位：晴川研究所。",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "本研究在青岚大学开展。",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "匿名研究团队。",
+      "expected_risk": false,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "本文讨论通用文档算法。",
+      "expected_risk": false,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "这是一份无单位信息的材料。",
+      "expected_risk": false,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "contact",
+      "text": "邮箱：bench@example.net",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "contact",
+      "text": "联系方式：test+lab@example.com",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "contact",
+      "text": "电话：13900000000",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "contact",
+      "text": "联系手机号 15800000000",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "contact",
+      "text": "身份证明：110101199001011234",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "contact",
+      "text": "支持多个通信协议。",
+      "expected_risk": false,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "contact",
+      "text": "公式系数为 1234567890。",
+      "expected_risk": false,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "contact",
+      "text": "该研究使用公开数据。",
+      "expected_risk": false,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "person",
+      "text": "作者：王测试",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "person",
+      "text": "指导教师：李样本",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "person",
+      "text": "通讯作者：陈验证",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "person",
+      "text": "导师：赵验证",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "person",
+      "text": "感谢孙样本老师",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "person",
+      "text": "该段未包含姓名。",
+      "expected_risk": false,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "funding",
+      "text": "项目编号：DEMO202612",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "funding",
+      "text": "基金（SYNTH202601）",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "funding",
+      "text": "致谢",
+      "expected_risk": true,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "funding",
+      "text": "实验比较两种方法。",
+      "expected_risk": false,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "本研究由北大团队完成。",
+      "expected_risk": true,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "Author affiliation: Example University.",
+      "expected_risk": true,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "作者单位：中科院某研究中心。",
+      "expected_risk": true,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "person",
+      "text": "王实验负责本文撰写。",
+      "expected_risk": true,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "contact",
+      "text": "联系号码：010-87654321",
+      "expected_risk": true,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "funding",
+      "text": "受 NSFC 12345678 支持。",
+      "expected_risk": true,
+      "detected": false,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "参考文献引用了青岚大学的公开成果。",
+      "expected_risk": false,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW",
+        "REVIEW"
+      ]
+    },
+    {
+      "target": "organization",
+      "text": "引用资料来自星河实验室。",
+      "expected_risk": false,
+      "detected": true,
+      "false_pass": false,
+      "statuses": [
+        "REVIEW",
+        "REVIEW"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+:root {
+  --canvas: #f7f5f0;
+  --white: #fff;
+  --ink: #1d2939;
+  --muted: #9699a0;
+  --gold: #a4845c;
+  --border: #ebe8e2;
+  --red: #f45a5d;
+  --red-bg: #fff0f0;
+  --orange: #ec991f;
+  --orange-bg: #fff7e9;
+  --green: #279c75;
+  --green-bg: #edf8f1;
+  --sidebar: clamp(180px, 13.3vw, 256px);
+  --radius: 8px;
+  --space: 8px;
+  --shadow: 0 5px 25px #4e403008;
+}

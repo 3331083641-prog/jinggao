@@ -1,0 +1,8 @@
+* text=auto eol=lf
+scripts/*.ps1 text eol=crlf
+# Preserve the original upstream notices, including their whitespace and line endings.
+docs/third_party_notices/** -text
+*.png binary
+*.pdf binary
+*.docx binary
+*.pptx binary

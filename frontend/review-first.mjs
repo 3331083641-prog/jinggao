@@ -1,0 +1,11 @@
+import {chromium} from '@playwright/test';
+const browser=await chromium.launch({headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
+await page.goto('http://127.0.0.1:5173/');
+await page.getByRole('link',{name:'开始检测'}).waitFor();
+await page.screenshot({path:'D:/jinggao/review_screenshots/01-home-first.png'});
+await page.getByRole('link',{name:'新建检测',exact:true}).click();
+await page.getByRole('button',{name:'选择文件',exact:true}).waitFor();
+await page.screenshot({path:'D:/jinggao/review_screenshots/02-new-first.png'});
+console.log({title:await page.title(),uploadVisible:await page.getByRole('button',{name:'选择文件',exact:true}).isVisible()});
+await browser.close();

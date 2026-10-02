@@ -1,0 +1,29 @@
+{
+  "health": "ok",
+  "runs": [
+    {
+      "id": "26b59796f9a044a6a287b171118ed3ca",
+      "task_id": "959ad0224d7144d2bcbdf263e6189aea",
+      "version": 1,
+      "status": "FAIL",
+      "counts": {
+        "FAIL": 4,
+        "REVIEW": 10,
+        "PASS": 2
+      }
+    },
+    {
+      "id": "5a3d2c668c1a448aac36f6f55518fe30",
+      "task_id": "959ad0224d7144d2bcbdf263e6189aea",
+      "version": 2,
+      "status": "REVIEW",
+      "counts": {
+        "FAIL": 0,
+        "REVIEW": 7,
+        "PASS": 2
+      }
+    }
+  ],
+  "report": "D:\\jinggao\\review_screenshots\\final-smoke-report.pdf",
+  "checked_at": "2026-10-02 17:43:51"
+}

@@ -1,0 +1,105 @@
+export type Status = "PASS" | "REVIEW" | "FAIL" | "UNKNOWN";
+export type Surface = {
+  id: string;
+  source_type: string;
+  page: number | null;
+  location: string;
+  text: string;
+  bbox: number[] | null;
+  metadata: Record<string, any>;
+  hidden: boolean;
+  confidence: number;
+};
+export type Rule = {
+  id: string;
+  category: string;
+  target: string;
+  severity: string;
+  scope: string[];
+  description: string;
+  detection_method: string;
+  evidence_requirement: string;
+  remediation: string;
+  source_clause: string;
+  parameters: Record<string, any>;
+};
+export type RuleSet = {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  rules: Rule[];
+  version: string;
+  source: string;
+  updated_at: string;
+};
+export type Finding = {
+  id: string;
+  rule_id: string;
+  status: Status;
+  category: string;
+  severity: string;
+  page: number | null;
+  bbox: number[] | null;
+  source_type: string;
+  surface_id: string | null;
+  location: string;
+  detector: string;
+  evidence: string;
+  confidence: number;
+  reason: string;
+  suggestion: string;
+  title: string;
+  resolution?: { decision: string; note: string; time: string };
+  ai_review?: { label: string; score: number; model: string; note: string };
+};
+export type Document = {
+  id: string;
+  name: string;
+  format: string;
+  size: number;
+  sha256: string;
+  page_count?: number;
+  parsed?: {
+    surfaces: Surface[];
+    warnings: string[];
+    pages: number | null;
+    format: string;
+  };
+};
+export type Run = {
+  id: string;
+  task_id: string;
+  document_id: string;
+  ruleset_id: string;
+  ruleset_snapshot: RuleSet;
+  scopes: string[];
+  version: number;
+  created_at: string;
+  completed_at?: string;
+  state: string;
+  status: Status;
+  progress: number;
+  counts: Record<"FAIL" | "REVIEW" | "PASS", number>;
+  stages: {
+    id: string;
+    name: string;
+    state: string;
+    detail?: string;
+    time?: string;
+  }[];
+  findings: Finding[];
+  error?: string;
+  document?: Document;
+  document_name?: string;
+};
+export type Task = {
+  id: string;
+  name: string;
+  created_at: string;
+  updated_at: string;
+  latest_run_id: string;
+  run_ids: string[];
+  latest_run: Run;
+  runs?: Run[];
+};
