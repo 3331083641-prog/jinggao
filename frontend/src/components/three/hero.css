@@ -1,0 +1,151 @@
+.three-hero {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 61%;
+  isolation: isolate;
+  overflow: hidden;
+}
+/* Only the home Hero adapts to the supplied 3D composition; the app shell stays unchanged. */
+@media (min-width: 1701px) {
+  .home-hero {
+    height: 496px;
+  }
+  .home-hero .hero-copy {
+    padding-top: 80px;
+  }
+}
+@media (min-width: 1451px) and (max-width: 1700px) {
+  .home-hero {
+    height: 440px;
+  }
+  .home-hero .hero-copy {
+    padding-top: 72px;
+  }
+}
+@media (min-width: 1381px) and (max-width: 1450px) {
+  .home-hero {
+    height: 396px;
+  }
+  .home-hero .hero-copy {
+    padding-top: 64px;
+  }
+}
+@media (min-width: 761px) and (max-width: 1380px) {
+  .home-hero {
+    height: 360px;
+  }
+  .home-hero .hero-copy {
+    padding-top: 56px;
+  }
+}
+.three-haze {
+  position: absolute;
+  width: 58%;
+  height: 13%;
+  left: 32%;
+  bottom: 6%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(184, 154, 110, 0.15),
+    transparent 72%
+  );
+  pointer-events: none;
+}
+.three-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  white-space: nowrap;
+  padding: 12px 22px;
+  border: 1px solid rgba(194, 139, 69, 0.45);
+  border-radius: 12px;
+  background: rgba(255, 250, 240, 0.92);
+  box-shadow:
+    inset 0 0 0 2px rgba(240, 211, 160, 0.16),
+    0 2px 5px rgba(131, 94, 44, 0.04);
+  color: #a96e29;
+  font: 18px/1.4 var(--font-display);
+  opacity: 0.86;
+  transform: rotate(4deg);
+  transition:
+    opacity 200ms var(--ease),
+    background 200ms var(--ease);
+  pointer-events: none;
+}
+.three-label-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 350ms var(--ease);
+}
+.three-hero[data-orbit-only="true"] .three-label-layer {
+  display: none;
+}
+.three-hero[data-state="ready"] .three-label-layer {
+  opacity: 1;
+}
+.three-label.is-active {
+  opacity: 1;
+  background: rgba(255, 252, 246, 0.92);
+}
+.three-tooltip {
+  position: absolute;
+  left: 37%;
+  bottom: 12%;
+  padding: 6px 12px;
+  color: var(--bg-surface);
+  background: var(--brand-ink);
+  border-radius: 6px;
+  font-size: 12px;
+  pointer-events: none;
+}
+.three-fallback * {
+  animation: none !important;
+}
+.three-canvas,
+.three-fallback {
+  position: absolute;
+  inset: 0;
+  transition: opacity 400ms var(--ease);
+}
+.three-canvas {
+  opacity: 0;
+}
+.three-fallback {
+  pointer-events: none;
+}
+.three-hero[data-state="ready"] .three-canvas {
+  opacity: 1;
+}
+.three-hero[data-state="ready"] .three-fallback {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 400ms var(--ease),
+    visibility 0s 400ms;
+}
+.home-hero .three-fallback .hero-scene {
+  width: 114%;
+  right: -6%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .three-canvas,
+  .three-fallback,
+  .three-label-layer,
+  .three-label {
+    transition: none;
+  }
+}
+@media (max-width: 760px) {
+  .three-hero {
+    width: 100%;
+    opacity: 0.25;
+    pointer-events: none;
+  }
+  .three-haze {
+    display: none;
+  }
+}

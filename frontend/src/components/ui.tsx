@@ -1,18 +1,11 @@
 import type { ReactNode } from "react";
-import {
-  Check,
-  X,
-  AlertCircle,
-  FileText,
-  ArrowUpRight,
-  ShieldCheck,
-} from "lucide-react";
+import { Check, X, AlertCircle, FileText, ShieldCheck } from "lucide-react";
 import type { Status, Run } from "../types";
 import { HeroDocumentScene } from "./HeroDocumentScene";
 export function StatusBadge({ status }: { status: Status }) {
   const I = status === "PASS" ? Check : status === "FAIL" ? X : AlertCircle;
   return (
-    <span className={"status " + status.toLowerCase()}>
+    <span className={"status " + status.toLowerCase()} title={status}>
       <I size={14} />
       {status === "PASS"
         ? "合规"
@@ -46,28 +39,39 @@ export function PageHero({
   subtitle,
   children,
   home = false,
+  className = "",
+  visual,
 }: {
   title: string;
   subtitle: string;
   children?: ReactNode;
   home?: boolean;
+  className?: string;
+  visual?: ReactNode;
 }) {
   return (
-    <section className={"page-hero " + (home ? "home-hero" : "")}>
-      <HeroDocumentScene />
+    <section className={"page-hero " + (home ? "home-hero " : "") + className}>
+      {visual ?? <HeroDocumentScene compact={!home} />}
       <div className="hero-copy">
         <h1>{title}</h1>
         <p className="hero-subtitle">{subtitle}</p>
         {children}
       </div>
-      <div className="hero-motto">
-        专注
-        <br />
-        严谨
-        <br />
-        让科研成果看见
-      </div>
     </section>
+  );
+}
+export function WorkHeading({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle?: string;
+}) {
+  return (
+    <header className="work-heading">
+      <h1>{title}</h1>
+      {subtitle && <p>{subtitle}</p>}
+    </header>
   );
 }
 export function Empty({
@@ -115,34 +119,36 @@ export function RiskSummary({
 }) {
   return (
     <div className={"risk-summary " + (wide ? "wide" : "")}>
-      {(["FAIL", "REVIEW", "PASS"] as const).map((status) => (
-        <button
-          key={status}
-          className={"risk-box " + status.toLowerCase()}
-          onClick={() => onSelect?.(status)}
-        >
-          <StatusIcon status={status} />
-          <div>
+      {(["FAIL", "REVIEW", "PASS"] as const).map((status) => {
+        const content = (
+          <>
+            <StatusIcon status={status} />
+            <strong>{run.counts[status]}</strong>
             <span>
               {status === "FAIL"
                 ? "不合规"
                 : status === "REVIEW"
                   ? "需确认"
-                  : "合规"}{" "}
-              <small>({status})</small>
+                  : "合规"}
+              <small>{status}</small>
             </span>
-            <strong>{run.counts[status]}</strong>
-            <small>
-              {status === "FAIL"
-                ? "需要整改"
-                : status === "REVIEW"
-                  ? "建议人工确认"
-                  : "已验证检查项"}
-            </small>
+          </>
+        );
+        return onSelect ? (
+          <button
+            key={status}
+            type="button"
+            className={"risk-item " + status.toLowerCase()}
+            onClick={() => onSelect(status)}
+          >
+            {content}
+          </button>
+        ) : (
+          <div key={status} className={"risk-item " + status.toLowerCase()}>
+            {content}
           </div>
-          {wide && <ArrowUpRight size={16} />}
-        </button>
-      ))}
+        );
+      })}
     </div>
   );
 }

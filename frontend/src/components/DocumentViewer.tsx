@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -11,6 +11,74 @@ import workerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 import { renderAsync } from "docx-preview";
 import type { Document, Finding } from "../types";
 import { FileIcon, Notice } from "./ui";
+import { ContinuousPDF } from "./ContinuousPDF";
+function PDFThumbnail({
+  pdf,
+  pageNumber,
+}: {
+  pdf: pdfjs.PDFDocumentProxy;
+  pageNumber: number;
+}) {
+  const canvas = useRef<HTMLCanvasElement>(null);
+  const [visible, setVisible] = useState(false);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    if (!canvas.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
+      },
+      { root: canvas.current.closest(".pdf-thumbnails"), rootMargin: "250px" },
+    );
+    observer.observe(canvas.current);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!canvas.current) return;
+    if (!visible) {
+      canvas.current.width = 1;
+      canvas.current.height = 1;
+      return;
+    }
+    let alive = true;
+    let render: pdfjs.RenderTask | undefined;
+    void pdf
+      .getPage(pageNumber)
+      .then((page) => {
+        if (!alive || !canvas.current) return;
+        const viewport = page.getViewport({
+          scale:
+            (72 / page.getViewport({ scale: 1 }).width) *
+            (window.devicePixelRatio || 1),
+        });
+        canvas.current.width = viewport.width;
+        canvas.current.height = viewport.height;
+        render = page.render({
+          canvasContext: canvas.current.getContext("2d")!,
+          viewport,
+        });
+        return render.promise;
+      })
+      .catch((error) => {
+        if (alive && error?.name !== "RenderingCancelledException")
+          setFailed(true);
+      });
+    return () => {
+      alive = false;
+      render?.cancel();
+    };
+  }, [pdf, pageNumber, visible]);
+  return (
+    <>
+      <canvas ref={canvas} aria-label={`第 ${pageNumber} 页缩略图`} />
+      {failed && <small>预览失败</small>}
+    </>
+  );
+}
 pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
 const hiddenSources = [
   "METADATA",
@@ -50,12 +118,14 @@ export function DocumentViewer({
   findings = [],
   scanning = false,
   locateVersion = 0,
+  compact = false,
 }: {
   document?: Document;
   finding?: Finding;
   findings?: Finding[];
   scanning?: boolean;
   locateVersion?: number;
+  compact?: boolean;
 }) {
   const [page, setPage] = useState(1);
   const [pdf, setPdf] = useState<pdfjs.PDFDocumentProxy | null>(null);
@@ -63,21 +133,36 @@ export function DocumentViewer({
   const [ready, setReady] = useState(false);
   const [width, setWidth] = useState(430);
   const [zoom, setZoom] = useState(1);
-  const [dimensions, setDimensions] = useState({ width: 595, height: 842 });
-  const canvas = useRef<HTMLCanvasElement>(null);
+  const [jump, setJump] = useState({ page: 1, version: 0 });
+  const [scrollRoot, setScrollRoot] = useState<HTMLDivElement | null>(null);
+  const thumbnails = useRef<HTMLElement>(null);
+  function goTo(number: number) {
+    setJump((current) => ({ page: number, version: current.version + 1 }));
+  }
   const docx = useRef<HTMLDivElement>(null);
   const scroll = useRef<HTMLDivElement>(null);
+  const attachScroll = useCallback((node: HTMLDivElement | null) => {
+    scroll.current = node;
+    setScrollRoot(node);
+  }, []);
   const host = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!host.current) return;
     const observer = new ResizeObserver(([entry]) =>
-      setWidth(Math.max(220, entry.contentRect.width - 38)),
+      setWidth(
+        Math.max(
+          160,
+          entry.contentRect.width -
+            (doc?.format === "pdf" && !compact ? 112 : 38),
+        ),
+      ),
     );
     observer.observe(host.current);
     return () => observer.disconnect();
-  }, []);
+  }, [doc?.format, compact]);
   useEffect(() => {
     setPage(1);
+    setJump({ page: 1, version: 0 });
     setError("");
     setReady(false);
     setPdf(null);
@@ -138,44 +223,9 @@ export function DocumentViewer({
     };
   }, [doc?.id]);
   useEffect(() => {
-    if (!pdf || !canvas.current) return;
-    delete canvas.current.dataset.rendered;
-    let cancelled = false;
-    let rendering: pdfjs.RenderTask | undefined;
-    pdf
-      .getPage(page)
-      .then((p) => {
-        if (cancelled || !canvas.current) return;
-        const base = p.getViewport({ scale: 1 });
-        setDimensions({ width: base.width, height: base.height });
-        const scale = (width / base.width) * zoom;
-        const ratio = window.devicePixelRatio || 1;
-        const viewport = p.getViewport({ scale: scale * ratio });
-        canvas.current.width = viewport.width;
-        canvas.current.height = viewport.height;
-        canvas.current.style.width = base.width * scale + "px";
-        canvas.current.style.height = base.height * scale + "px";
-        rendering = p.render({
-          canvasContext: canvas.current.getContext("2d")!,
-          viewport,
-        });
-        return rendering.promise.then(() => {
-          if (!cancelled && canvas.current)
-            canvas.current.dataset.rendered = String(page);
-        });
-      })
-      .catch((e) => {
-        if (!cancelled && e?.name !== "RenderingCancelledException")
-          setError("PDF 页面渲染失败。");
-      });
-    return () => {
-      cancelled = true;
-      rendering?.cancel();
-    };
-  }, [pdf, page, width, zoom]);
-  useEffect(() => {
-    if (finding?.page) setPage(finding.page);
-  }, [finding?.id, locateVersion]);
+    const current = thumbnails.current?.querySelector(`[aria-current="page"]`);
+    if (current) scrollWithin(thumbnails.current, current);
+  }, [page]);
   useEffect(() => {
     if (!finding || !ready || !doc) return;
     const highlighted = docx.current?.querySelector("mark");
@@ -207,7 +257,7 @@ export function DocumentViewer({
         }
       }
     }
-    if (finding.bbox && scroll.current) {
+    if (doc.format !== "pdf" && finding.bbox && scroll.current) {
       const el = scroll.current.querySelector('[data-selected="true"]');
       if (el) scrollWithin(scroll.current, el);
     }
@@ -225,15 +275,15 @@ export function DocumentViewer({
     (s) => s.id === finding?.surface_id,
   );
   const visual = doc.format === "pdf";
-  const pageFindings = findings.filter(
-    (f) => f.page === page && f.bbox && f.surface_id && f.status !== "PASS",
-  );
-  const overlays = [
-    ...pageFindings.filter((f) => f.id !== finding?.id).slice(0, 25),
-    ...(finding?.bbox && finding.page === page ? [finding] : []),
-  ];
   return (
-    <section ref={host} className="viewer panel">
+    <section
+      ref={host}
+      className={
+        "viewer panel" +
+        (compact ? " compact-viewer" : "") +
+        (scanning ? " scanning-viewer" : "")
+      }
+    >
       <div className="viewer-toolbar">
         <FileIcon format={doc.format} />
         <b title={doc.name}>{doc.name}</b>
@@ -243,7 +293,7 @@ export function DocumentViewer({
               className="icon-button"
               aria-label="上一页"
               disabled={page <= 1}
-              onClick={() => setPage((p) => p - 1)}
+              onClick={() => goTo(page - 1)}
             >
               <ChevronLeft size={16} />
             </button>
@@ -254,7 +304,7 @@ export function DocumentViewer({
               className="icon-button"
               aria-label="下一页"
               disabled={!pdf || page >= pdf.numPages}
-              onClick={() => setPage((p) => p + 1)}
+              onClick={() => goTo(page + 1)}
             >
               <ChevronRight size={16} />
             </button>
@@ -276,68 +326,81 @@ export function DocumentViewer({
           <Maximize2 size={15} />
         </button>
       </div>
-      <div className="viewer-scroll" ref={scroll}>
-        {error && <Notice error>{error}</Notice>}
-        {visual ? (
-          <div
-            className="pdf-paper"
-            style={{
-              width: width * zoom,
-              minHeight: (width * zoom * dimensions.height) / dimensions.width,
-            }}
+      <div className="viewer-body">
+        {visual && pdf && !compact && (
+          <nav
+            ref={thumbnails}
+            className="pdf-thumbnails"
+            aria-label="文档页面"
           >
-            <canvas ref={canvas} aria-label={`PDF 第 ${page} 页`} />
-            {overlays.map((f) => {
-              const b = f.bbox!;
-              return (
-                <div
-                  key={`${f.id}-${f.id === finding?.id ? locateVersion : 0}`}
-                  data-selected={f.id === finding?.id}
-                  className={`evidence-highlight ${f.status.toLowerCase()} ${f.id === finding?.id ? "locate-pulse selected" : ""}`}
-                  title={f.evidence}
-                  style={{
-                    left: (b[0] / dimensions.width) * 100 + "%",
-                    top: (b[1] / dimensions.height) * 100 + "%",
-                    width: ((b[2] - b[0]) / dimensions.width) * 100 + "%",
-                    height: ((b[3] - b[1]) / dimensions.height) * 100 + "%",
-                  }}
-                />
-              );
-            })}
-            {scanning && <div className="scan-line" />}
-            {!ready && !error && (
-              <div className="viewer-loading">正在读取真实 PDF…</div>
-            )}
-          </div>
-        ) : doc.format === "docx" ? (
-          <div ref={docx} className="docx-container" />
-        ) : (
-          <div className="text-document">
-            {doc.format === "pptx" && (
-              <Notice>PPTX 当前提供真实文本表层预览，页码对应幻灯片。</Notice>
-            )}
-            {doc.parsed?.surfaces
-              .filter(
-                (s) =>
-                  !hiddenSources.includes(s.source_type) &&
-                  s.source_type !== "LOGO",
-              )
-              .map((s) => (
-                <p
-                  id={"surface-" + s.id}
-                  key={s.id}
+            {Array.from({ length: pdf.numPages }, (_, i) => i + 1).map(
+              (number) => (
+                <button
+                  type="button"
                   className={
-                    s.id === finding?.surface_id
-                      ? "text-highlight locate-pulse"
-                      : ""
+                    "pdf-thumbnail " + (page === number ? "selected" : "")
                   }
+                  key={number}
+                  aria-label={`跳到第 ${number} 页`}
+                  aria-current={page === number ? "page" : undefined}
+                  onClick={() => goTo(number)}
                 >
-                  <small>{s.location}</small>
-                  {s.text}
-                </p>
-              ))}
-          </div>
+                  <PDFThumbnail pdf={pdf} pageNumber={number} />
+                  <span>{number}</span>
+                </button>
+              ),
+            )}
+          </nav>
         )}
+        <div className="viewer-scroll" ref={attachScroll}>
+          {error && <Notice error>{error}</Notice>}
+          {visual ? (
+            pdf && scrollRoot ? (
+              <ContinuousPDF
+                pdf={pdf}
+                root={scrollRoot}
+                width={width * zoom}
+                finding={finding}
+                findings={findings}
+                locateVersion={locateVersion}
+                jump={jump}
+                onPage={setPage}
+              />
+            ) : (
+              <div className="viewer-loading">
+                {!error && "正在读取真实 PDF…"}
+              </div>
+            )
+          ) : doc.format === "docx" ? (
+            <div ref={docx} className="docx-container" />
+          ) : (
+            <div className="text-document">
+              {doc.format === "pptx" && (
+                <Notice>PPTX 当前提供真实文本表层预览，页码对应幻灯片。</Notice>
+              )}
+              {doc.parsed?.surfaces
+                .filter(
+                  (s) =>
+                    !hiddenSources.includes(s.source_type) &&
+                    s.source_type !== "LOGO",
+                )
+                .map((s) => (
+                  <p
+                    id={"surface-" + s.id}
+                    key={s.id}
+                    className={
+                      s.id === finding?.surface_id
+                        ? "text-highlight locate-pulse"
+                        : ""
+                    }
+                  >
+                    <small>{s.location}</small>
+                    {s.text}
+                  </p>
+                ))}
+            </div>
+          )}
+        </div>
       </div>
       {activeSurface &&
         (hiddenSources.includes(activeSurface.source_type) ||

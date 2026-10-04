@@ -1,11 +1,21 @@
 # 净稿架构
 
-全新工程，未读取或复制旧项目源码。React + TypeScript + Vite → FastAPI → SQLite，本机运行。
+React + TypeScript + Vite → FastAPI → SQLite WAL，本机运行。
 
-规则 → 材料 → Surface 抽取 → Detector Pipeline → Finding → 证据定位 → 人工判断 → 整改上传 → 独立 Run 复检 → PDF 报告。
+规则文件完整解析 → 待确认 Rule Schema → 用户保存 → 严格选择规则快照 → 材料解析 Surface → 本地 OCR → 所选 Detector → 合规 Finding / 独立 System Diagnostic → 证据定位 → 人工记录 → 独立 Run 复检 → 报告。
 
-所有检测器读取统一 Surface；PDF 使用实际坐标，OOXML 使用部件路径和段落位置，不虚构页码。规则集在 Run 创建时快照保存。每次复检保留文件、规则、范围及结果。SQLite WAL，后台线程执行，客户端轮询持久化进度。
+## 规则边界
 
-PASS 仅表示该检测项在已声明范围内通过。语义无法确认、未启用范围、解析缺失、OCR 故障均 REVIEW。任务完成与检查通过是两个独立状态。
+Run 的 `execution_mode` 为 `STRICT_CUSTOM` 或 `SELECTED_BUILTIN`。引擎只遍历创建时快照中的 rules；没有默认合并或从 Registry 遍历全部规则的路径。Rule ID 必须唯一，每项执行恰好一次；记录真正执行的规则 ID 与检测器。多选只合并用户明确选择的成员，命名空间隔离 ID，原文与来源保持。
 
-不向外部发送原文件。OCR 为本地 ONNX 推理。规则语义分类为自建小型中文语料训练的本地 TF-IDF + LogisticRegression 辅助，规则导入须用户确认。没有云模型或隐式远程调用。
+导入文档保留完整抽取文本、章节/表格表层与来源 SHA。原文明确约束转换为检查，说明性内容不成为规则；条件/例外未能自动验证时保留人工核对。未实现的检测器和空解析不会产生 PASS。
+
+## OCR 与结果
+
+OCR 使用本地 ONNX。置信度不单独产生用户问题。TextQualityAnalyzer 检查损坏字符证据，AIMarkerDetector 只有规则启用时执行；图形 Logo 能力不足时给出与当前规则相关的单项说明，不为每张图伪造命中。解析覆盖和 OCR 服务故障写入 diagnostics，不混入合规统计。
+
+## 阅读与证据
+
+PDF 使用真实页码和坐标；OOXML 使用部件/段落定位，不推测页码。连续页面占位 + IntersectionObserver 按视口前后两倍高度懒渲染 Canvas，DPR 上限 1.5，远处卸载。页码按视口占有面积同步；缩略图、正文和 Findings 独立滚动，overscroll-behavior 阻止滚轮串栏。定位只触发一次内部滚动与高亮，不锁定阅读。
+
+每次复检保存独立 Run 和原证据。删除报告保留 Run，可重新导出；任务删除与生成共享锁。运行时 SQLite 自动初始化，不依赖发布数据库。所有原材料与报告均不属于源码发布内容。

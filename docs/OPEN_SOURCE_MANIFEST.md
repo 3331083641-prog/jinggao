@@ -8,7 +8,7 @@
 | MarkItDown | https://github.com/microsoft/markitdown | MIT；结构标准化参考，未安装、未复制 | Surface 与多层解析自研 |
 | PaddleOCR | https://github.com/PaddlePaddle/PaddleOCR | Apache-2.0；OCR 技术来源研究 | MVP 使用 RapidOCR，不直接运行 Paddle |
 | RapidOCR | https://github.com/RapidAI/RapidOCR | 本地 ONNX OCR，固定版本 1.4.4；代码 Apache-2.0，权重来源另列审计 | Provider 与 OCR 证据映射自研，库未修改 |
-| Qwen3-VL | https://github.com/QwenLM/Qwen3-VL | 仅研究可选视觉语义路径，未集成、未下载模型 | 未识别 Logo 明确 REVIEW |
+| Qwen3-VL | https://github.com/QwenLM/Qwen3-VL | 仅研究可选视觉语义路径，未集成、未下载模型 | 只在当前规则要求时检查 Logo；图形语义缺口明确披露 |
 | Mr. Rao | https://github.com/AntonioRao/mr-rao | AGPL-3.0；仅研究产品 README 思路；未复制、未依赖 | 全部产品实现独立 |
 
 自主实现：产品 UI、Rule Schema、Document Surface、OOXML inspection、中文 Recognizer、覆盖缺口策略、证据定位、规则确认、复检差异、报告、测试基准。UI 依据用户提供的参考图重新编写 HTML/CSS/SVG，未将截图用作网页背景。
@@ -26,6 +26,10 @@
 | TypeScript https://github.com/microsoft/TypeScript | 5.8.3 | Apache-2.0 | 类型编译，领域模型自研 |
 | Lucide https://github.com/lucide-icons/lucide | 0.511.0 | ISC | 图标，自研布局与 SVG Hero |
 | Framer Motion https://github.com/motiondivision/motion | 13.5.0 | MIT | 过渡，自研定位与动效配置 |
+| Three.js https://github.com/mrdoob/three.js | 0.186.1 | MIT | 首页 WebGL 渲染基础；调用上游 RoomEnvironment、PMREMGenerator、mergeVertices，未修改上游；四层文档、凸面盾牌、闭环轨迹、节点、交互和降级自研 |
+| React Three Fiber https://github.com/pmndrs/react-three-fiber | 9.8.1 | MIT | React 场景与资源生命周期；相机、动画、暂停策略自研，未修改上游 |
+| Drei https://github.com/pmndrs/drei | 10.7.9 | MIT | 已安装，Html 原型验证后改用自研投影 DOM；当前运行时未导入，未修改上游 |
+| @types/three https://github.com/DefinitelyTyped/DefinitelyTyped | 0.186.0 | MIT | 开发期 Three.js 类型，未修改上游 |
 | PDF.js https://github.com/mozilla/pdf.js | 5.3.31 | Apache-2.0 | 页面渲染，证据叠加与定位自研 |
 | DOCX Preview https://github.com/VolodymyrBaydalka/docxjs | 0.3.6 | Apache-2.0 | 版式渲染，表层证据自研 |
 | FastAPI https://github.com/fastapi/fastapi | 0.115.12 | MIT | HTTP 框架，业务服务自研 |
@@ -46,3 +50,7 @@
 | Ruff https://github.com/astral-sh/ruff | 0.11.13 | MIT | Python 静态检查与格式化 |
 
 参考图：用户提供，仅本地视觉验收；不假定具有公开再分发授权。SVG Hero 为本轮自行编写代码，未描摹或嵌入参考图像文件。系统字体只读取，不打包。AI 辅助开发参与记录见 AI_TOOL_USE.md。
+
+2026-10-03 首页 Three.js 增量：精确到 60 个新增安装包的版本、发行源、许可、notice 和修改标记见 `three-dependency-license-audit.json`。安装依赖不等同于全部参与运行时打包；例如 Drei 及其模型/解码/物理辅助功能未参与本 Hero。没有复制外部三维模型，全部模型自主程序生成。
+
+2026-10-04 联合规则导入增量：没有安装新依赖。旧 DOC 规则转换可选调用用户本机已安装的 Microsoft Word（本次验证版本 16.0.20430.20092，来源为本机 Office16/WINWORD.EXE）。Word 是用户既有的专有软件，不随净稿分发；其安装和使用许可由用户本机提供。净稿自主实现 COM 调用、只读打开、禁用宏与自动更新链接、转换临时副本及清理。未复制 Word 代码、字体或安装文件。没有 Word 时明确提示另存为 DOCX，不假装已经解析成功。

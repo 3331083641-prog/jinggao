@@ -1,0 +1,77 @@
+:root {
+  --bg-page: #f8f6f2;
+  --bg-surface: #fffefd;
+  --bg-soft: #f5f1ea;
+  --bg-selected: #f5eee3;
+  --text-primary: #14263a;
+  --text-secondary: #687586;
+  --text-muted: #828b98;
+  --brand-ink: #1d2d3f;
+  --brand-gold: #af8757;
+  --brand-gold-soft: #dec7a7;
+  --border-soft: rgba(20, 38, 58, 0.065);
+  --border-default: rgba(20, 38, 58, 0.1);
+  --fail: #ef535d;
+  --fail-bg: #fff1f2;
+  --review: #ef940d;
+  --review-bg: #fff7e9;
+  --pass: #22a77c;
+  --pass-bg: #eef9f4;
+  --canvas: var(--bg-page);
+  --white: var(--bg-surface);
+  --ink: var(--text-primary);
+  --muted: var(--text-secondary);
+  --gold: var(--brand-gold);
+  --border: var(--border-soft);
+  --red: var(--fail);
+  --red-bg: var(--fail-bg);
+  --orange: var(--review);
+  --orange-bg: var(--review-bg);
+  --green: var(--pass);
+  --green-bg: var(--pass-bg);
+  --sidebar: 264px;
+  --topbar-height: 80px;
+  --main-gutter: 24px;
+  --drawer-width: 380px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius: var(--radius-md);
+  --radius-button: var(--radius-sm);
+  --radius-card: var(--radius-md);
+  --radius-panel: var(--radius-lg);
+  --shadow: 0 8px 30px rgba(30, 30, 20, 0.06);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --font-body: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-display: "Songti SC", "STSong", "SimSun", "Noto Serif SC", serif;
+}
+@media (max-width: 1700px) {
+  :root {
+    --sidebar: 228px;
+    --topbar-height: 68px;
+    --main-gutter: 20px;
+    --drawer-width: 340px;
+  }
+}
+@media (max-width: 1450px) {
+  :root {
+    --sidebar: 198px;
+    --topbar-height: 60px;
+  }
+}
+@media (max-width: 1380px) {
+  :root {
+    --sidebar: 184px;
+    --topbar-height: 56px;
+    --main-gutter: 16px;
+    --drawer-width: 320px;
+  }
+}

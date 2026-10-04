@@ -8,10 +8,17 @@ from pydantic import BaseModel, Field
 from app.core import storage as db
 from app.schemas.domain import RuleSetInput
 from app.rules.builtin import builtins
-from app.tasks.runner import create_run
-from app.parsers.document import parse_document
-from app.services.rule_parser import draft
-from app.reports.pdf import generate
+from app.tasks.runner import create_run, record_system_diagnostic
+from starlette.concurrency import run_in_threadpool
+from app.services.rule_import import parse_rule_file, combine_drafts
+from app.services.task_deletion import delete_tasks, TASK_MUTATION_LOCK
+from app.services.rule_deletion import delete_ruleset
+from app.services.rule_selection import selected_rules
+from app.services.report_deletion import (
+    delete_report,
+    deleted_report_ids,
+    export_report,
+)
 
 
 @asynccontextmanager
@@ -25,7 +32,7 @@ async def lifespan(app):
             run.update(
                 state="ERROR", status="REVIEW", error="上次运行被中断，请发起复检。"
             )
-            run["counts"]["REVIEW"] = max(1, run["counts"]["REVIEW"])
+            record_system_diagnostic(run, run["error"])
             db.save("runs", run)
     yield
 
@@ -55,7 +62,12 @@ def health():
 
 @app.get("/api/rulesets")
 def rulesets():
-    return db.all_items("rulesets")
+    return [r for r in db.all_items("rulesets") if not r.get("deleted_at")]
+
+
+@app.delete("/api/rulesets/{id}")
+def remove_ruleset(id: str):
+    return delete_ruleset(id)
 
 
 @app.post("/api/rulesets")
@@ -65,13 +77,22 @@ def add_ruleset(payload: RuleSetInput):
         "version": "1.0.0",
         "updated_at": db.now(),
     }
+    r["type"] = "custom"
+    r["execution_mode"] = "STRICT_CUSTOM"
+    for rule in r["rules"]:
+        rule["source_rule_set_id"] = r["id"]
     return db.save("rulesets", r)
 
 
-async def upload_document(file):
+async def upload_document(file, rule_import=False):
     name = Path((file.filename or "document").replace("\\", "/")).name
     suffix = Path(name).suffix.lower()
-    if suffix not in (".pdf", ".docx", ".pptx", ".txt", ".md"):
+    allowed = (
+        (".pdf", ".docx", ".txt", ".md", ".doc")
+        if rule_import
+        else (".pdf", ".docx", ".pptx", ".txt", ".md")
+    )
+    if suffix not in allowed:
         raise HTTPException(415, "支持 PDF / DOCX / PPTX / TXT / MD")
     id = uuid4().hex
     path = db.DATA / "uploads" / (id + suffix)
@@ -104,26 +125,34 @@ async def upload_document(file):
 
 @app.post("/api/rulesets/parse")
 async def parse_rules(file: UploadFile = File(...)):
-    doc = await upload_document(file)
+    doc = await upload_document(file, rule_import=True)
     try:
-        parsed = parse_document(doc["path"])
-        result = draft(
-            "\n".join(
-                s.text
-                for s in parsed.surfaces
-                if s.source_type in ("BODY_TEXT", "HEADER", "FOOTER")
-            )
-        )
-        result.update(
-            name=Path(doc["name"]).stem,
-            source="用户导入 · " + doc["name"],
-            warnings=parsed.warnings,
-        )
-        return result
+        return await run_in_threadpool(parse_rule_file, doc)
     except Exception as exc:
-        raise HTTPException(422, "规则解析失败：" + type(exc).__name__)
+        message = str(exc) if isinstance(exc, ValueError) else type(exc).__name__
+        raise HTTPException(422, "规则解析失败：" + message) from exc
     finally:
         Path(doc["path"]).unlink(missing_ok=True)
+
+
+@app.post("/api/rulesets/parse-batch")
+async def parse_rules_batch(files: list[UploadFile] = File(...)):
+    if not 1 <= len(files) <= 10:
+        raise HTTPException(422, "每次选择 1–10 份规则文件")
+    documents = []
+    try:
+        for file in files:
+            documents.append(await upload_document(file, rule_import=True))
+        results = [await run_in_threadpool(parse_rule_file, doc) for doc in documents]
+        return combine_drafts(results)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        message = str(exc) if isinstance(exc, ValueError) else type(exc).__name__
+        raise HTTPException(422, "联合规则解析失败：" + message) from exc
+    finally:
+        for doc in documents:
+            Path(doc["path"]).unlink(missing_ok=True)
 
 
 @app.post("/generate")
@@ -133,8 +162,8 @@ async def detect(
     ruleset_id: str = Form("anonymous"),
     scopes: str = Form("body,metadata,hidden,images"),
     task_id: str | None = Form(None),
+    ruleset_ids: list[str] | None = Form(None),
 ):
-    rules = require("rulesets", ruleset_id)
     selected = [
         x for x in scopes.split(",") if x in ("body", "metadata", "hidden", "images")
     ]
@@ -145,14 +174,30 @@ async def detect(
         if task_id
         else {"id": uuid4().hex, "created_at": db.now(), "run_ids": []}
     )
+    ids = ruleset_ids if ruleset_ids is not None else [ruleset_id]
+    rules = selected_rules(ids, task if task_id else None)
     if task.get("latest_run_id") and require("runs", task["latest_run_id"])[
         "state"
     ] in ("QUEUED", "RUNNING"):
         raise HTTPException(409, "当前任务仍在检测，请完成或取消后复检。")
     doc = await upload_document(file)
-    db.save("documents", doc)
-    task.update(name=doc["name"], ruleset_id=ruleset_id, updated_at=db.now())
-    return create_run(task, doc, rules, selected)
+    try:
+        with TASK_MUTATION_LOCK:
+            # Recheck after upload: deletion/reinspection may have occurred while
+            # the request streamed its file. Never resurrect a deleted task.
+            if task_id:
+                task = require("tasks", task_id)
+                if task.get("latest_run_id") and require("runs", task["latest_run_id"])[
+                    "state"
+                ] in ("QUEUED", "RUNNING"):
+                    raise HTTPException(409, "当前任务仍在检测，请完成后复检。")
+            rules = selected_rules(ids, task if task_id else None)
+            db.save("documents", doc)
+            task.update(name=doc["name"], ruleset_id=rules["id"], updated_at=db.now())
+            return create_run(task, doc, rules, selected)
+    except HTTPException:
+        Path(doc["path"]).unlink(missing_ok=True)
+        raise
 
 
 @app.get("/api/tasks")
@@ -161,6 +206,18 @@ def tasks():
         t | {"latest_run": db.get("runs", t.get("latest_run_id"))}
         for t in db.all_items("tasks")
     ]
+
+
+class DeleteTasks(BaseModel):
+    ids: list[str] = Field(min_length=1, max_length=100)
+
+
+@app.post("/api/tasks/delete-batch")
+def remove_tasks(payload: DeleteTasks):
+    try:
+        return delete_tasks(payload.ids)
+    except ValueError as exc:
+        raise HTTPException(409, str(exc)) from exc
 
 
 @app.get("/api/tasks/{id}")
@@ -182,12 +239,12 @@ def cancel(id: str):
     if r["state"] not in ("QUEUED", "RUNNING"):
         raise HTTPException(409, "检测已结束")
     r.update(state="CANCELLED", status="REVIEW")
-    r["counts"]["REVIEW"] = max(1, r["counts"]["REVIEW"])
+    record_system_diagnostic(r, "用户取消检测；尚未完成的范围不作为通过项。")
     return db.save("runs", r)
 
 
 class Decision(BaseModel):
-    decision: str = Field(pattern="^(confirmed|dismissed|fixed)$")
+    decision: str = Field(pattern="^(confirmed|dismissed|fixed|pending)$")
     note: str = Field(default="", max_length=1000)
 
 
@@ -212,20 +269,22 @@ def file(id: str):
 
 @app.get("/api/reports")
 def reports():
+    deleted = deleted_report_ids()
     return [
         r | {"document_name": require("documents", r["document_id"])["name"]}
         for r in db.all_items("runs")
-        if r["state"] in ("COMPLETED", "ERROR")
+        if r["state"] in ("COMPLETED", "ERROR") and r["id"] not in deleted
     ]
+
+
+@app.delete("/api/reports/{id}")
+def remove_report(id: str):
+    return delete_report(id)
 
 
 @app.get("/api/runs/{id}/report.pdf")
 def report(id: str):
-    r = require("runs", id)
-    if r["state"] not in ("COMPLETED", "ERROR"):
-        raise HTTPException(409, "报告需等检测结束后导出")
-    doc = require("documents", r["document_id"])
-    path = generate(r, doc)
+    path = export_report(id)
     return FileResponse(
         path, media_type="application/pdf", filename="jinggao-report-" + id[:8] + ".pdf"
     )

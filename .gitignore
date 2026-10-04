@@ -19,3 +19,45 @@ frontend/public/pdf-fonts/
 references/
 review_screenshots/
 docs/competition/
+build/
+.vite/
+.mypy_cache/
+.ruff_cache/
+coverage/
+htmlcov/
+*.pyc
+*.tsbuildinfo
+*.db
+*.sqlite
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+uploads/
+runtime/
+temp/
+tmp/
+cache/
+reports/generated/
+*.tmp
+*.bak
+*.old
+.DS_Store
+Thumbs.db
+# Local browser probes and user-material audit helpers are not product source.
+docs/*-results.json
+docs/golden-*.json
+docs/native-*.json
+docs/subtraction-*.json
+docs/file-picker-*.json
+docs/*-native-window.json
+docs/three-*-check.json
+docs/three-live-browser-check.json
+docs/impeccable-update-record.json
+scripts/huawei_cup_*.py
+# Generated local probes are not publication documents.
+docs/*.json
+!docs/license_inventory.json
+!docs/three-dependency-license-audit.json
+# Local release receipt is written after push so it can contain the exact SHA.
+FINAL_REFACTOR_REPORT.md
+frontend/vite.live-review.config.ts

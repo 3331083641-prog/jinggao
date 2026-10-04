@@ -3,6 +3,17 @@ from uuid import uuid4
 from app.schemas.domain import Finding
 
 PATTERNS = {
+    "organization_name": [r"[\u4e00-\u9fff]{2,18}(?:大学|学院|研究院|研究所|实验室)"],
+    "author_name": [r"(?:作者|姓名|队员姓名|通讯作者)\s*[：:]\s*[\u4e00-\u9fff]{2,4}"],
+    "advisor_name": [r"(?:导师|指导教师|指导老师)\s*[：:]\s*[\u4e00-\u9fff]{2,4}"],
+    "email": [r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"],
+    "telephone": [r"(?<!\d)1[3-9]\d{9}(?!\d)"],
+    "identity_number": [r"(?<!\d)\d{17}[0-9Xx](?!\d)"],
+    "school_name": [
+        r"[\u4e00-\u9fff]{2,18}(?:大学|学院)",
+        r"(?i)\b(?:university|college)\s+of\s+[A-Za-z ]+",
+    ],
+    "project_number": [r"(?:项目|基金|课题)(?:编号|号)\s*[（(：:]?\s*[A-Za-z0-9-]{4,}"],
     "organization": [
         r"[\u4e00-\u9fff]{2,18}(?:大学|学院|研究院|研究所|实验室)",
         r"(?i)(?:[a-z0-9-]+\.)+edu(?:\.cn)?",
@@ -58,6 +69,29 @@ def make(rule, status, evidence, reason, s=None, detector=None):
 
 
 def inspect_rule(rule, parsed, scopes):
+    from app.detectors.submission import inspect_submission
+
+    if rule.condition and rule.detection_method in (
+        "recognizer",
+        "literal",
+        "presence",
+        "visual",
+        "text_quality",
+        "ai_marker",
+    ):
+        return [
+            make(
+                rule,
+                "REVIEW",
+                rule.original_text or rule.source_clause,
+                "此规则含条件或例外，自动执行尚不能可靠确定适用性；请按原文确认。",
+                detector="ConditionalRuleReview",
+            )
+        ]
+
+    specialized = inspect_submission(rule, parsed, scopes, make)
+    if specialized is not None and rule.detection_method == "format":
+        return specialized
     findings = []
     if not parsed.surfaces:
         return [
@@ -96,8 +130,11 @@ def inspect_rule(rule, parsed, scopes):
                 )
             ]
         for s in selected:
+            search_text = re.sub(
+                r"(?<=[\u4e00-\u9fff])\s+(?=[\u4e00-\u9fff])", "", s.text
+            )
             for pattern in patterns:
-                for match in re.finditer(pattern, s.text):
+                for match in re.finditer(pattern, search_text):
                     evidence = match.group()
                     status = (
                         "REVIEW"
@@ -109,7 +146,7 @@ def inspect_rule(rule, parsed, scopes):
                     if (
                         rule.target == "organization"
                         and any(
-                            k in s.text
+                            k in search_text
                             for k in (
                                 "作者",
                                 "单位",
@@ -124,28 +161,39 @@ def inspect_rule(rule, parsed, scopes):
                         and s.confidence >= 0.9
                     ):
                         status = "FAIL"
+                    registration_exception = (
+                        rule.parameters.get("registration_cover_review") and s.page == 1
+                    )
+                    if registration_exception:
+                        status = "REVIEW"
                     findings.append(
                         make(
                             rule,
                             status,
                             evidence,
-                            "身份线索须结合作者归属确认；引用机构不自动判违规。"
+                            "模板含实名登记页；此封面的身份字段是否属于匿名条款范围需核对官方提交要求。"
+                            if registration_exception
+                            else "身份线索须结合作者归属确认；引用机构不自动判违规。"
                             if status == "REVIEW"
                             else "在此规则范围内发现明确身份信息。",
                             s,
                             "ChineseRecognizer/" + rule.target,
                         )
                     )
-        # Entity recognizers are heuristics; absence of matches does not prove absence of all identity.
-        findings.append(
-            make(
-                rule,
-                "REVIEW",
-                "词法匹配无法穷尽实体别名与无上下文姓名。",
-                "需人工确认身份语义；零命中不能证明完全匿名。",
-                detector="SemanticCoverageGuard",
+        # Legacy builtin recognizers retain their explicit uncertainty boundary.
+        # Narrow custom rules report only matched evidence; no invented identity rule.
+        if not rule.source_rule_set_id:
+            findings.append(
+                make(
+                    rule,
+                    "REVIEW",
+                    "词法匹配无法穷尽实体别名与无上下文姓名。",
+                    "需人工确认身份语义；零命中不能证明完全匿名。",
+                    detector="SemanticCoverageGuard",
+                )
             )
-        )
+        elif not findings:
+            return []  # No matched risk; heuristic absence is not a certified PASS.
     elif rule.detection_method == "literal":
         term = str(rule.parameters.get("text", "")).strip()
         if not term:
@@ -206,24 +254,59 @@ def inspect_rule(rule, parsed, scopes):
                     "OOXML/PropertyDetector",
                 )
             )
-    elif rule.detection_method == "visual":
+    elif rule.detection_method in ("text_quality", "ai_marker"):
+        from app.services.text_quality import analyze_text, AI_MARKERS
+
         for s in selected:
+            quality = analyze_text(s.text, s.confidence)
+            marker = AI_MARKERS.search(s.text)
+            if rule.detection_method == "text_quality" and quality["signals"]:
+                findings.append(
+                    make(
+                        rule,
+                        "REVIEW",
+                        s.text,
+                        "、".join(quality["signals"]),
+                        s,
+                        "TextQualityAnalyzer",
+                    )
+                )
+            elif rule.detection_method == "ai_marker" and marker:
+                findings.append(
+                    make(
+                        rule,
+                        "REVIEW",
+                        marker.group(),
+                        "发现当前规则要求检查的显式生成标识；核对引用语境。",
+                        s,
+                        "AIMarkerDetector",
+                    )
+                )
+    elif rule.detection_method == "visual":
+        candidates = [
+            s
+            for s in parsed.surfaces
+            if s.source_type == "IMAGE_OCR"
+            and "images" in scopes
+            and re.search(r"大学|学院|university|college", s.text, re.I)
+        ]
+        for s in candidates:
             findings.append(
                 make(
                     rule,
                     "REVIEW",
                     s.text,
-                    "OCR 可以读取文字，尚未验证 Logo 图形语义。",
+                    "图片有学校名称文字；尚不能确定其是否为规则禁止的 Logo，请核对该证据。",
                     s,
                     "VisualCoverageGuard",
                 )
             )
-        if parsed.image_jobs and not selected:
+        if parsed.image_jobs and not candidates:
             findings.append(
                 make(
                     rule,
                     "REVIEW",
-                    "图片语义未完成检查",
+                    "尚未具备可靠的图形 Logo 识别能力；不是发现每张图片均有 Logo。",
                     "图片或 OCR 未覆盖，不能判定无 Logo。",
                     detector="VisualCoverageGuard",
                 )
@@ -276,6 +359,27 @@ def inspect_rule(rule, parsed, scopes):
                 )
             )
     else:
+        if rule.parameters.get("registration_template"):
+            registration = [
+                s
+                for s in selected
+                if s.page == 1
+                and re.search(
+                    r"学校|参赛队号|队员姓名|\d[.．]\s*[\u4e00-\u9fff]{2,4}",
+                    re.sub(r"\s+", "", s.text),
+                )
+            ]
+            if registration:
+                return findings + [
+                    make(
+                        rule,
+                        "REVIEW",
+                        "；".join(s.text for s in registration),
+                        "检测到实名登记封面。模板要求登记字段，但匿名规范同时存在；需确认该封面的提交与匿名范围，不能直接判违规。",
+                        registration[0],
+                        "RegistrationTemplateReview",
+                    )
+                ]
         findings.append(
             make(
                 rule,
@@ -325,9 +429,12 @@ def coverage_findings(parsed):
         detection_method="manual",
         remediation="按覆盖说明人工检查，必要时重新导出为可读材料后复检。",
     )
-    return [
+    findings = [
         make(
             r, "REVIEW", w, "系统无法验证的部分不作为通过项。", detector="CoverageGuard"
         )
         for w in parsed.warnings
     ]
+    for finding in findings:
+        finding["kind"] = "SYSTEM_DIAGNOSTIC"
+    return findings

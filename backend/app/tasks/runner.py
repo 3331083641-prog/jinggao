@@ -1,5 +1,6 @@
 from concurrent.futures import ThreadPoolExecutor
 from uuid import uuid4
+from copy import deepcopy
 from app.core import storage as db
 from app.parsers.document import parse_document
 from app.services.ocr import provider
@@ -17,12 +18,36 @@ STAGES = [
 ]
 
 
+def record_system_diagnostic(run, message):
+    """An incomplete operation is not an extra compliance rule or finding."""
+    run.setdefault("diagnostics", []).extend(
+        coverage_findings(ParsedDocument(format="unknown", warnings=[message]))
+    )
+    run["counts"] = {
+        status: sum(f["status"] == status for f in run.get("findings", []))
+        for status in ("FAIL", "REVIEW", "PASS")
+    }
+
+
 def create_run(task, document, ruleset, scopes):
+    ruleset = deepcopy(ruleset)
+    custom = ruleset["id"] not in ("anonymous", "competition", "academic")
+    for rule in ruleset["rules"]:
+        if custom:
+            rule.setdefault("source_rule_set_id", ruleset["id"])
+            if not rule["source_rule_set_id"]:
+                rule["source_rule_set_id"] = ruleset["id"]
     run = {
         "id": uuid4().hex,
         "task_id": task["id"],
         "document_id": document["id"],
         "ruleset_id": ruleset["id"],
+        "rule_set_id": ruleset["id"],
+        "execution_mode": "STRICT_CUSTOM" if custom else "SELECTED_BUILTIN",
+        "rule_ids_executed": [],
+        "detectors_executed": [],
+        "diagnostics": [],
+        "unverified_rule_ids": [],
         "ruleset_snapshot": ruleset,
         "scopes": scopes,
         "created_at": db.now(),
@@ -75,17 +100,12 @@ def execute(id):
         db.save("documents", document)
         update("parse", "Done", f"已抽取 {len(parsed.surfaces)} 个表层")
         rules = [Rule(**r) for r in run["ruleset_snapshot"]["rules"]]
-        assigned = set()
         for stage, categories in [
             ("identity", {"身份泄露"}),
             ("metadata", {"元数据"}),
             ("hidden", {"隐藏信息"}),
         ]:
             update(stage, "Running")
-            for r in rules:
-                if r.category in categories:
-                    run["findings"].extend(inspect_rule(r, parsed, run["scopes"]))
-                    assigned.add(r.id)
             update(
                 stage, "Done", "该阶段已完成表层检查；最终规则结果在规则匹配阶段汇总。"
             )
@@ -115,20 +135,37 @@ def execute(id):
         db.save("documents", document)
         update("match", "Running")
         for r in rules:
-            if (
-                r.detection_method == "recognizer"
-                and parsed.image_jobs
-                and "images" in run["scopes"]
-            ):
-                run["findings"] = [f for f in run["findings"] if f["rule_id"] != r.id]
-                assigned.discard(r.id)
-            if r.id not in assigned:
-                run["findings"].extend(inspect_rule(r, parsed, run["scopes"]))
-                update("match", "Running", f"已匹配规则：{r.description}")
-        run["findings"].extend(coverage_findings(parsed))
+            result = inspect_rule(r, parsed, run["scopes"])
+            if not result:
+                run["unverified_rule_ids"].append(r.id)
+            if any(f["rule_id"] != r.id for f in result):
+                raise ValueError("检测器返回了未启用规则")
+            run["findings"].extend(result)
+            run["rule_ids_executed"].append(r.id)
+            run["detectors_executed"] = sorted(
+                set(
+                    run["detectors_executed"]
+                    + [r.detection_method]
+                    + [f["detector"] for f in result]
+                )
+            )
+            update("match", "Running", f"已匹配规则：{r.description}")
+        run["diagnostics"] = coverage_findings(parsed)
+        if run["unverified_rule_ids"]:
+            run["diagnostics"].extend(
+                coverage_findings(
+                    ParsedDocument(
+                        format=parsed.format,
+                        warnings=[
+                            "部分实体规则未命中明确证据，但启发式识别不构成完整语义验证："
+                            + "、".join(run["unverified_rule_ids"])
+                        ],
+                    )
+                )
+            )
         if not parsed.surfaces:
             parsed.warnings.append("材料未抽取到任何可验证内容。")
-            run["findings"].extend(
+            run["diagnostics"].extend(
                 coverage_findings(
                     ParsedDocument(format=parsed.format, warnings=[parsed.warnings[-1]])
                 )
@@ -139,7 +176,7 @@ def execute(id):
             "FAIL"
             if run["counts"]["FAIL"]
             else "REVIEW"
-            if run["counts"]["REVIEW"]
+            if run["counts"]["REVIEW"] or run["diagnostics"]
             else "PASS"
         )
         db.save("runs", run)
@@ -155,5 +192,5 @@ def execute(id):
         for stage in run["stages"]:
             if stage["state"] == "Running":
                 stage["state"] = "Failed"
-        run["counts"]["REVIEW"] = max(1, run["counts"]["REVIEW"])
+        record_system_diagnostic(run, run["error"])
         db.save("runs", run)

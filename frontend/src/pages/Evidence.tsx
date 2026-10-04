@@ -58,7 +58,10 @@ export function Evidence() {
   return (
     <>
       <section className="evidence-hero">
-        <Link to={"/workspace/" + run.id} className="back-link">
+        <Link
+          to={"/workbench/" + run.task_id + "?run=" + run.id}
+          className="back-link"
+        >
           <ArrowLeft size={15} />
           返回工作台
         </Link>
@@ -198,19 +201,22 @@ export function Evidence() {
                             在原文中定位
                           </button>
                         </dd>
-                        <dt>检测方法</dt>
-                        <dd>
-                          {f.detector}
-                          <small className="confidence">
-                            抽取置信度 {(f.confidence * 100).toFixed(0)}%
-                          </small>
-                        </dd>
                         <dt>风险判断</dt>
                         <dd>{f.reason}</dd>
+                        <dt>整改建议</dt>
+                        <dd className="suggestion-box">{f.suggestion}</dd>
+                      </dl>
+                      <details className="disclosure evidence-technical">
+                        <summary>检测详情</summary>
+
+                        {f.detector}
+                        <small className="confidence">
+                          抽取置信度 {(f.confidence * 100).toFixed(0)}%
+                        </small>
                         {f.ai_review && (
                           <>
-                            <dt>AI 辅助</dt>
-                            <dd>
+                            <h3>AI 辅助</h3>
+                            <p>
                               {f.ai_review.label}
                               <small className="confidence">
                                 模型得分 {(f.ai_review.score * 100).toFixed(0)}%
@@ -219,12 +225,10 @@ export function Evidence() {
                               <small className="confidence">
                                 {f.ai_review.note}
                               </small>
-                            </dd>
+                            </p>
                           </>
                         )}
-                        <dt>整改建议</dt>
-                        <dd className="suggestion-box">{f.suggestion}</dd>
-                      </dl>
+                      </details>
                       <div className="decision-box">
                         <label>
                           人工判断记录
@@ -236,6 +240,12 @@ export function Evidence() {
                           />
                         </label>
                         <div className="decision-actions">
+                          <button
+                            disabled={decision.isPending || !note.trim()}
+                            onClick={() => decision.mutate({ f, d: "pending" })}
+                          >
+                            保存待确认
+                          </button>
                           <button
                             disabled={decision.isPending}
                             onClick={() =>
@@ -265,11 +275,13 @@ export function Evidence() {
                         {f.resolution && (
                           <p>
                             已保存：
-                            {f.resolution.decision === "fixed"
-                              ? "已整改（需复检验证）"
-                              : f.resolution.decision === "dismissed"
-                                ? "非问题"
-                                : "确认问题"}{" "}
+                            {f.resolution.decision === "pending"
+                              ? "待确认"
+                              : f.resolution.decision === "fixed"
+                                ? "已整改（需复检验证）"
+                                : f.resolution.decision === "dismissed"
+                                  ? "非问题"
+                                  : "确认问题"}{" "}
                             · {f.resolution.note}
                           </p>
                         )}

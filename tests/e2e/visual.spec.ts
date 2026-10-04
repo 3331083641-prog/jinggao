@@ -7,6 +7,15 @@ test("固定视觉基线：Hero、上传区、规则详情", async ({ page }) =>
   await expect(
     page.getByRole("link", { name: "开始检测", exact: true }),
   ).toBeVisible();
+  await expect(page.locator(".three-hero")).toHaveAttribute(
+    "data-state",
+    "ready",
+  );
+  await page.waitForFunction(
+    () =>
+      getComputedStyle(document.querySelector(".three-canvas")!).opacity ===
+      "1",
+  );
   await expect(page.locator(".home-hero")).toHaveScreenshot("home-hero.png", {
     animations: "disabled",
     maxDiffPixelRatio: 0.005,

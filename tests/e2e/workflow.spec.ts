@@ -89,6 +89,7 @@ test("真实 PDF 上传 → 坐标定位 → 判断 → 整改复检 → PDF 报
     timeout: 60000,
   });
   await page.getByRole("link", { name: "查看工作台" }).click();
+  await page.locator(".run-comparison summary").click();
   await expect(page.locator(".comparison")).toContainText("FAIL");
   const first = await (await request.get("/api/runs/" + runId)).json(),
     second = await (await request.get("/api/runs/" + secondId)).json();
@@ -104,7 +105,7 @@ test("真实 PDF 上传 → 坐标定位 → 判断 → 整改复检 → PDF 报
   await page.locator("tbody tr").first().click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await expect(
-    page.getByRole("dialog").locator("canvas[data-rendered]"),
+    page.getByRole("dialog").locator("canvas[data-rendered]").first(),
   ).toBeVisible();
   await screenshot(page, info, "07-history-drawer");
   await page.getByRole("button", { name: "关闭", exact: true }).click();
@@ -115,8 +116,10 @@ test("真实 PDF 上传 → 坐标定位 → 判断 → 整改复检 → PDF 报
     await page.getByRole("button", { name: "关闭", exact: true }).click();
   }
   await page.getByRole("link", { name: "报告中心", exact: true }).click();
+  await expect(page.locator(".report-detail")).toHaveCount(0);
+  await page.getByRole("button", { name: "查看", exact: true }).first().click();
   await expect(page.locator(".report-detail")).toBeVisible();
-  await expect(page.locator("canvas[data-rendered]")).toBeVisible();
+  await expect(page.locator("canvas[data-rendered]").first()).toBeVisible();
   await screenshot(page, info, "08-reports");
   expect(errors).toEqual([]);
 });
@@ -145,7 +148,7 @@ test("规则自定义与语义导入必须确认才生效", async ({ page }, inf
   await expect(page.getByRole("dialog")).not.toBeVisible();
   await expect(page.locator(".rule-detail")).toContainText("synthetic-rules");
   await page.getByRole("link", { name: "使用该规则" }).click();
-  await expect(page.locator("select")).toHaveValue(/.+/);
+  await expect(page.locator(".custom-rule-list input:checked")).toHaveCount(1);
 });
 test("真实扫描 OCR 与 DOCX 隐藏内容证据", async ({ page, request }, info) => {
   await page.goto("/new");
@@ -155,7 +158,7 @@ test("真实扫描 OCR 与 DOCX 隐藏内容证据", async ({ page, request }, i
   await page.getByRole("button", { name: "开始检测", exact: true }).click();
   await page.waitForURL("**/scan/*");
   const id = page.url().split("/").at(-1)!;
-  await expect(page.locator("canvas[data-rendered]")).toBeVisible();
+  await expect(page.locator("canvas[data-rendered]").first()).toBeVisible();
   await screenshot(page, info, "03-scan");
   await expect(page.getByRole("link", { name: "查看工作台" })).toBeVisible({
     timeout: 60000,

@@ -42,6 +42,10 @@ def generate(run, document):
         ),
         p(f"任务 {run['task_id']} / Run {run['version']} / {run['id']}"),
         p("检测结论：" + run["status"]),
+        p("执行模式：" + run.get("execution_mode", "历史规则快照")),
+        p(
+            f"本次执行 {len(run.get('rule_ids_executed', run['ruleset_snapshot']['rules']))} 项规则；仅按当前规则集检查。"
+        ),
         Spacer(1, 15),
     ]
     table = Table(
@@ -73,10 +77,18 @@ def generate(run, document):
                 "本报告仅针对所选规则与已检查表层。PASS 不等于材料绝对无风险；REVIEW 需要人工判断。原文件仅在本机解析，OCR 使用本地模型。"
             ),
             p("检查范围：" + ", ".join(run["scopes"])),
+            p(
+                "统计按检测发现计数，并非独立违规条款数；同一条款可能包含多个位置与覆盖提醒。"
+            ),
+            p("规则来源：" + run["ruleset_snapshot"].get("source", "用户确认规则")),
         ]
     )
     if run.get("error"):
         story.append(p(run["error"]))
+    if run.get("diagnostics"):
+        story.append(p("系统诊断（不计为违规）", heading))
+        for diagnostic in run["diagnostics"]:
+            story.append(p(diagnostic["evidence"]))
     for f in run["findings"]:
         rule = next(
             (r for r in run["ruleset_snapshot"]["rules"] if r["id"] == f["rule_id"]), {}
@@ -85,6 +97,12 @@ def generate(run, document):
             [
                 p(f"[{f['status']}] {f['title']}", heading),
                 p("规则依据：" + (rule.get("source_clause") or "检测覆盖边界")),
+                p(
+                    "来源文件："
+                    + rule.get("parameters", {}).get(
+                        "source_file", "基础规则 / 检测覆盖说明"
+                    )
+                ),
                 p("证据：" + f["evidence"]),
                 p("位置：" + f["location"]),
                 p("检测器：" + f["detector"] + f" / 置信度 {f['confidence']:.2f}"),
@@ -96,7 +114,12 @@ def generate(run, document):
             story.append(
                 p(
                     "人工记录："
-                    + f["resolution"]["decision"]
+                    + {
+                        "pending": "待确认",
+                        "confirmed": "确认问题",
+                        "dismissed": "非问题",
+                        "fixed": "已记录整改，待复检",
+                    }.get(f["resolution"]["decision"], f["resolution"]["decision"])
                     + "；"
                     + f["resolution"].get("note", "")
                 )

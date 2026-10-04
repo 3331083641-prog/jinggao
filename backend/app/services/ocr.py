@@ -4,6 +4,7 @@ import numpy as np
 from PIL import Image
 import io
 from app.parsers.document import surface
+from app.services.text_quality import analyze_text
 
 
 class OCRProvider:
@@ -19,7 +20,9 @@ class OCRProvider:
                 type(self)._engine = RapidOCR(
                     intra_op_num_threads=2, inter_op_num_threads=1
                 )
-            result, _ = self._engine(np.array(image.convert("RGB")))
+            # Preserve detector evidence even below the library's default .5
+            # recognition cutoff. Quality and rule matches decide user findings.
+            result, _ = self._engine(np.array(image.convert("RGB")), text_score=0.0)
         return result or []
 
     def inspect(self, path, parsed, progress):
@@ -45,6 +48,7 @@ class OCRProvider:
                     scale_x = scale_y = 1
                 results = self.recognize(image)
                 for box, text, score in results:
+                    quality = analyze_text(text, score)
                     xs, ys = [p[0] for p in box], [p[1] for p in box]
                     bbox = (
                         [
@@ -66,27 +70,42 @@ class OCRProvider:
                             bbox=bbox,
                             confidence=float(score),
                             metadata=job["metadata"]
-                            | {"image_box": box, "provider": self.name},
+                            | {
+                                "image_box": box,
+                                "provider": self.name,
+                                "text_quality": quality,
+                            },
                         )
                     )
-                if not results:
+                parsed.ocr_metrics.append(
+                    {
+                        "location": job["location"],
+                        "page": job.get("page"),
+                        "text_regions": len(results),
+                        "low_confidence_regions": sum(
+                            float(r[2]) < 0.45 for r in results
+                        ),
+                        "quality_anomalies": sum(
+                            analyze_text(r[1], r[2])["state"] == "REVIEW"
+                            for r in results
+                        ),
+                    }
+                )
+                anomalies = [
+                    r[1] for r in results if analyze_text(r[1], r[2])["signals"]
+                ]
+                empty_regions = sum(not r[1].strip() for r in results)
+                if empty_regions >= 3:
                     parsed.warnings.append(
                         job["location"]
-                        + "：OCR 无文字结果，不能据此证明图片无身份信息。"
+                        + "：检测到多个文字框但无法识别内容；请核对原图可读性。"
                     )
-                if any(float(r[2]) < 0.85 for r in results):
+                if anomalies:
                     parsed.warnings.append(
-                        job["location"] + "：OCR 存在低置信度文字，需复核。"
+                        job["location"]
+                        + "：识别文本含损坏字符，人工核对原图；"
+                        + "；".join(anomalies[:3])
                     )
-                parsed.surfaces.append(
-                    surface(
-                        "LOGO",
-                        job["location"],
-                        "图片中的 Logo / 单位图形语义尚未验证。",
-                        page=job.get("page"),
-                        metadata=job["metadata"],
-                    )
-                )
             except Exception as exc:
                 parsed.warnings.append(
                     job["location"]

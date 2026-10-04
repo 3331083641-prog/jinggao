@@ -48,6 +48,14 @@
 
 实际使用上游 `rapidocr-onnxruntime 1.4.4` 包内的 `ch_PP-OCRv4_det_infer.onnx`、`ch_PP-OCRv4_rec_infer.onnx`、`ch_ppocr_mobile_v2.0_cls_infer.onnx`，大小与 SHA-256 已盘点。上游 [RapidOCR LICENSE](https://github.com/RapidAI/RapidOCR/blob/main/LICENSE) 和 [PaddleOCR LICENSE](https://github.com/PaddlePaddle/PaddleOCR/blob/main/LICENSE) 均为 Apache-2.0；这不代替精确到每个历史权重发行版本的来源链确认。本轮不单独再分发权重；未来含模型的离线安装包仍需补齐权重来源及许可声明。
 
-## 判断与发布状态
+## 2026-10-03 Three.js 首页增量审计
+
+Three.js 0.186.1、React Three Fiber 9.8.1、Drei 10.7.9、@types/three 0.186.0 均为 MIT。发行包内许可证已保存，未修改依赖源码。新增安装包逐项清单见 `three-dependency-license-audit.json`；安装环境重新盘点为 222 个 npm 包，运行时只按实际 import 打包。
+
+60 个新增包中，元数据为 50 MIT、5 Apache-2.0、1 BSD-3-Clause、3 ISC、1 缺失；缺失项 `webgl-constants 1.1.1` 的发行包 LICENSE 明确为 MIT，版权 Tim van Scherpenzeel 2019，证据保存在 `third_party_notices/webgl-constants-LICENSE`。清单保留缺失的原始 metadata，另记 verified_license，不伪造上游声明。新增依赖未发现 AGPL/GPL/LGPL 项；原有二进制依赖与 OCR 权重审计边界仍按本文件说明处理，不因此新增根 LICENSE。
+
+参考文档：[R3F 安装与 React 版本对应](https://r3f.docs.pmnd.rs/getting-started/installation)、[R3F 性能与按需渲染](https://r3f.docs.pmnd.rs/advanced/scaling-performance)。直接许可来源：[Three.js](https://github.com/mrdoob/three.js/blob/master/LICENSE)、[R3F](https://github.com/pmndrs/react-three-fiber/blob/master/LICENSE)、[Drei](https://github.com/pmndrs/drei/blob/master/LICENSE)。本地保留的精确发行包许可优先于上游可变分支。
+
+## 原有发布判断
 
 当前源码与依赖分离的结构未发现强制自主源码采用 AGPL/GPL 的直接源码继承。依据已保存的库许可及动态依赖边界，MIT 可作为自主源码的候选许可。由于历史 OCR 权重与完整二进制安装包的再分发审计尚未闭合，**本轮暂不写根目录 LICENSE，不宣称整个作品已完成开源发布授权**。这遵循用户“确认所有第三方依赖许可兼容之后再选择”的要求，不影响本地运行。下一步应完成具体模型版本来源链、团队共同权利确认后，给自主代码添加 MIT LICENSE。

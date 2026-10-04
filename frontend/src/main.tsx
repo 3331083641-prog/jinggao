@@ -25,9 +25,7 @@ const History = React.lazy(() =>
 const Reports = React.lazy(() =>
   import("./pages/Reports").then((m) => ({ default: m.Reports })),
 );
-import "./styles.css";
-import "./workspace.css";
-import "./refinements.css";
+import "./styles/app.css";
 const qc = new QueryClient({
   defaultOptions: { queries: { retry: 1, staleTime: 1000 } },
 });
@@ -42,6 +40,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Route path="new" element={<NewDetection />} />
               <Route path="workspace" element={<Workspace />} />
               <Route path="workspace/:runId" element={<Workspace />} />
+              <Route path="workbench" element={<Workspace />} />
+              <Route path="workbench/:taskId" element={<Workspace />} />
               <Route path="scan/:runId" element={<Workspace scanning />} />
               <Route path="evidence/:runId" element={<Evidence />} />
               <Route path="rules" element={<Rules />} />

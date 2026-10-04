@@ -65,6 +65,18 @@ def pdf_parse(path):
                 )
             lines = page.extract_text_lines(layout=False, strip=True)
             for line in lines:
+                typography = {}
+                for char in line.get("chars", []):
+                    if re.search(r"[\u4e00-\u9fff]", char.get("text", "")):
+                        font = str(char.get("fontname", "")).split("+")[-1]
+                        key = (font, round(float(char.get("size", 0)), 2))
+                        typography[key] = typography.get(key, 0) + 1
+                line_meta = meta | {
+                    "chinese_typography": [
+                        {"font": font, "size": size, "chars": count}
+                        for (font, size), count in typography.items()
+                    ]
+                }
                 source = (
                     "HEADER"
                     if line["bottom"] < page.height * 0.065
@@ -84,7 +96,7 @@ def pdf_parse(path):
                         line["text"],
                         page=number,
                         bbox=[line["x0"], line["top"], line["x1"], line["bottom"]],
-                        metadata=meta,
+                        metadata=line_meta,
                     )
                 )
             for link in page.hyperlinks:

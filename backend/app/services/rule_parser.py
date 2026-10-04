@@ -1,158 +1,149 @@
 import re
 from uuid import uuid4
-from functools import lru_cache
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import make_pipeline
-from app.rules.builtin import ANON, rule
-
-# Original small Chinese clause corpus. This assists drafting, never authorizes a rule.
-CORPUS = {
-    "organization": [
-        "匿名稿不得出现学校名称",
-        "应删除作者单位及院系",
-        "论文不能暴露所属高校",
-        "正文不允许标明研究机构",
-        "评审材料应隐去学校和单位",
-        "禁止出现实验室单位名称",
-        "匿名审查不得含机构名称",
-        "院校信息必须移除",
-    ],
-    "person": [
-        "不得出现作者姓名",
-        "删除指导教师信息",
-        "匿名论文不含导师名字",
-        "请隐去通讯作者姓名",
-        "作者身份不得公开",
-        "文稿不得标注学生姓名",
-        "导师姓名应删除",
-        "论文署名需要匿名化",
-    ],
-    "contact": [
-        "匿名稿应删除电子邮箱",
-        "不得留下电话号码",
-        "不能显示身份证号码",
-        "联系方式必须清除",
-        "邮件地址不得出现在正文",
-        "去除作者手机号",
-        "禁止标明个人联络信息",
-        "删除联系电话和邮箱",
-    ],
-    "funding": [
-        "删除致谢中的身份信息",
-        "不得出现项目编号",
-        "匿名稿应隐去基金项目",
-        "资助编号需要删除",
-        "致谢不允许暴露个人",
-        "基金号码不得出现",
-        "感谢导师部分请匿名处理",
-        "去除科研课题编号",
-    ],
-    "hidden": [
-        "请删除所有批注",
-        "提交前接受修订记录",
-        "禁止保留隐藏文字",
-        "需要清理文档隐藏内容",
-        "材料不得带审阅批注",
-        "不允许有未接受修订",
-        "隐藏对象应清除",
-        "去除修改痕迹",
-    ],
-    "metadata": [
-        "文档作者属性应清除",
-        "不得保留文档元数据中的个人信息",
-        "Word最后修改人必须删除",
-        "PDF作者元信息请清理",
-        "文档属性不要显示单位",
-        "移除文件公司属性",
-        "匿名材料需要清除作者属性",
-        "属性中不能出现创建人",
-    ],
-    "logo": [
-        "不得出现学校校徽",
-        "匿名稿应删除单位Logo",
-        "图片不能暴露机构标识",
-        "学校标志必须移除",
-        "不允许出现院校图标",
-        "图中徽章需要人工复核",
-        "禁止包含校名图案",
-        "封面不应有单位标识",
-    ],
-}
+from app.rules.builtin import rule
 
 
-@lru_cache
-def model():
-    x, y = [], []
-    for label, clauses in CORPUS.items():
-        x.extend(clauses)
-        y.extend([label] * len(clauses))
-    clf = make_pipeline(
-        TfidfVectorizer(analyzer="char", ngram_range=(1, 3)),
-        LogisticRegression(C=12, random_state=42, max_iter=400),
+# Explicit targets are narrower than the anonymous-policy recognizers. No builtin
+# template is copied into an imported rule.
+def explicit_candidates(clause):
+    from app.rules.builtin import rule
+
+    prohibited = bool(
+        re.search(r"不得|禁止|不允许|不能|不应|不要|删除|隐去|清除|移除|去除", clause)
     )
-    clf.fit(x, y)
-    return clf
+    scope = ["BODY_TEXT"] if "正文" in clause else ["BODY_TEXT", "HEADER", "FOOTER"]
+    if re.search(r"图片|图中|图像", clause):
+        scope = (
+            ["IMAGE_OCR"]
+            if not re.search(r"正文|全文|材料", clause)
+            else scope + ["IMAGE_OCR"]
+        )
+    if not prohibited:
+        return []
+    targets = [
+        (r"学校名称|校名|所属高校|院校名称", "school_name", "recognizer"),
+        (r"单位名称|机构名称|实验室名称|院系名称", "organization_name", "recognizer"),
+        (r"项目编号|基金编号|课题编号|项目号", "project_number", "recognizer"),
+        (
+            r"作者姓名|队员姓名|通讯作者姓名",
+            "author_name",
+            "recognizer",
+        ),
+        (r"导师|指导教师|指导老师", "advisor_name", "recognizer"),
+        (r"邮箱", "email", "recognizer"),
+        (r"电话|手机号", "telephone", "recognizer"),
+        (r"身份证", "identity_number", "recognizer"),
+        (r"联系方式", "contact", "recognizer"),
+        (r"校徽|logo|标志图案|学校标志", "logo", "visual"),
+        (r"乱码|缺字框|文字渲染损坏", "text_quality", "text_quality"),
+        (
+            r"AI.{0,8}标识|AI.{0,8}水印|生成.{0,8}水印|ChatGPT|Midjourney|Stable Diffusion",
+            "ai_marker",
+            "ai_marker",
+        ),
+    ]
+    found = []
+    for pattern, target, method in targets:
+        if not re.search(pattern, clause, re.I):
+            continue
+        actual_scope = ["IMAGE_OCR", "LOGO"] if target == "logo" else scope
+        if target in ("text_quality", "ai_marker") and "IMAGE_OCR" not in actual_scope:
+            actual_scope = actual_scope + ["IMAGE_OCR"]
+        found.append(
+            rule(uuid4().hex, "自定义检查", target, clause, method, actual_scope)
+        )
+    if re.search(r"如果|除非|除外|例外|仅当|(?:^|，)若", clause):
+        return [rule(uuid4().hex, "条件要求", "manual", clause, "manual", scope)]
+    if re.search(r"文档属性|元数据|创建人|最后修改人", clause):
+        found.append(
+            rule(uuid4().hex, "元数据", "metadata", clause, "presence", ["METADATA"])
+        )
+    hidden = [
+        t
+        for pattern, t in [
+            (r"批注", "COMMENT"),
+            (r"修订", "REVISION"),
+            (r"隐藏文字", "HIDDEN_TEXT"),
+        ]
+        if re.search(pattern, clause)
+    ]
+    if hidden:
+        found.append(
+            rule(uuid4().hex, "隐藏信息", "hidden", clause, "presence", hidden)
+        )
+    return found
 
 
 def draft(text):
-    rules, explanation = [], []
-    clauses = [c.strip() for c in re.split(r"[\n。；;]", text) if c.strip()]
-    classifier = model()
-    for clause in clauses[:100]:
-        if len(clause) < 4:
-            continue
-        probabilities = classifier.predict_proba([clause])[0]
-        idx = probabilities.argmax()
-        target, confidence = str(classifier.classes_[idx]), float(probabilities[idx])
-        max_pages = re.search(r"(?:不超过|最多|上限|不得超过)\s*(\d+)\s*页", clause)
-        prohibited = any(
-            w in clause
-            for w in (
-                "不得",
-                "禁止",
-                "删除",
-                "隐去",
-                "移除",
-                "清除",
-                "去除",
-                "不允许",
-                "不能",
-                "接受修订",
-                "不应",
-                "需要清理",
-            )
-        )
-        if max_pages:
-            candidate = rule(
-                uuid4().hex,
-                "格式规范",
-                "max_pages",
+    from app.services.submission_rules import structured_draft
+
+    # Consume the complete structured extraction. Unsupported obligations stay
+    # manual; titles, introductions, dates and explanatory prose are not rules.
+    structured = structured_draft(text)
+    if structured:
+        rules = structured
+    else:
+        rules = []
+        for clause in [c.strip() for c in re.split(r"[\n。；;]", text) if c.strip()]:
+            if len(clause) < 4:
+                continue
+            candidates = explicit_candidates(clause)
+            maximum = re.search(r"(?:不超过|最多|上限|不得超过)\s*(\d+)\s*页", clause)
+            if maximum and "摘要" not in clause:
+                candidates = [
+                    rule(
+                        uuid4().hex,
+                        "格式规范",
+                        "max_pages",
+                        clause,
+                        "format",
+                        ["BODY_TEXT"],
+                        max_pages=int(maximum[1]),
+                    )
+                ]
+            if not candidates and re.search(
+                r"必须|不得|应当|禁止|不能|需要|须|应(?:包含|提交|提供|使用|注明)|要求",
                 clause,
-                "format",
-                max_pages=int(max_pages[1]),
-            )
-        elif confidence >= 0.48 and prohibited:
-            template = next((r for r in ANON if r["target"] == target), None)
-            candidate = dict(template or ANON[0])
-            candidate.update(id=uuid4().hex, description=clause)
-        else:
-            candidate = rule(uuid4().hex, "规则待确认", "manual", clause, "manual")
-        candidate["source_clause"] = clause
-        rules.append(candidate)
-        explanation.append(
-            {
-                "rule_id": candidate["id"],
-                "predicted_target": target,
-                "confidence": round(confidence, 3),
-                "method": "本地中文 TF-IDF + LogisticRegression",
-                "needs_confirmation": True,
-            }
-        )
+            ):
+                candidates = [
+                    rule(
+                        uuid4().hex,
+                        "规则待确认",
+                        "manual",
+                        clause,
+                        "manual",
+                        ["BODY_TEXT"],
+                    )
+                ]
+            for candidate in candidates:
+                candidate["source_clause"] = clause
+            rules.extend(candidates)
     if not rules:
-        raise ValueError("规则文件未抽取到可用条款。")
+        raise ValueError(
+            "未识别到明确要求。请在自定义规则编辑器中按原文添加条款；不会将标题或说明转成规则。"
+        )
+    if len(rules) > 100:
+        raise ValueError("明确检查项超过 100 条，请分批导入；未截断或丢弃原文。")
+    for candidate in rules:
+        candidate.update(
+            original_text=candidate["source_clause"],
+            requirement_type="prohibition"
+            if re.search(r"不得|禁止|不能|删除", candidate["source_clause"])
+            else "requirement",
+            condition=candidate["source_clause"]
+            if re.search(r"如果|若|当|除非|除外", candidate["source_clause"])
+            else "",
+        )
     return {
         "rules": rules,
-        "explanations": explanation,
-        "notice": "这是待确认草案，不是已生效规则。分类器仅以 56 条自建语料训练；请逐条确认适用范围、禁止条件与检测方法。",
+        "explanations": [
+            {
+                "rule_id": r["id"],
+                "predicted_target": r["target"],
+                "method": "原文条款映射；待用户确认",
+                "needs_confirmation": True,
+            }
+            for r in rules
+        ],
+        "notice": "仅提取原文明确要求。未实现的语义、条件和例外保留原文并待人工判断；确认后才生效。",
     }

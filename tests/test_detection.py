@@ -165,7 +165,7 @@ def test_rule_semantic_draft_keeps_unknown():
     result = draft(
         "匿名稿不得出现学校名称。材料不得超过2页。标题必须居中且使用规定字体。"
     )
-    assert result["rules"][0]["target"] == "organization"
+    assert result["rules"][0]["target"] == "school_name"
     assert result["rules"][1]["parameters"]["max_pages"] == 2
     assert result["rules"][2]["detection_method"] == "manual"
     assert all(x["needs_confirmation"] for x in result["explanations"])
@@ -179,7 +179,8 @@ def test_real_local_ocr():
         s for s in d.surfaces if s.source_type == "IMAGE_OCR" and "验证大学" in s.text
     )
     assert s.confidence > 0.9 and s.page == 1 and s.bbox
-    assert any(s.source_type == "LOGO" for s in d.surfaces)
+    assert not any(s.source_type == "LOGO" for s in d.surfaces)
+    assert d.ocr_metrics[0]["text_regions"] > 0
 
 
 def test_full_upload_recheck_report_and_decision(client):
@@ -216,8 +217,10 @@ def test_corrupt_file_no_false_pass(client):
     assert (
         run["state"] == "ERROR"
         and run["status"] == "REVIEW"
-        and run["counts"]["REVIEW"] >= 1
+        and run["counts"]["REVIEW"] == 0
     )
+    assert run["diagnostics"][0]["kind"] == "SYSTEM_DIAGNOSTIC"
+    assert not run["rule_ids_executed"]
 
 
 def test_reject_unsupported_empty_and_nonexistent(client):

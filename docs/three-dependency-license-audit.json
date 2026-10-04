@@ -1,0 +1,654 @@
+[
+  {
+    "name": "@babel/runtime",
+    "version": "7.29.7",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.29.7.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@babel_runtime-LICENSE"
+    ]
+  },
+  {
+    "name": "@dimforge/rapier3d-compat",
+    "version": "0.12.0",
+    "license": "Apache-2.0",
+    "source": "https://registry.npmjs.org/@dimforge/rapier3d-compat/-/rapier3d-compat-0.12.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@dimforge_rapier3d-compat-LICENSE"
+    ]
+  },
+  {
+    "name": "@mediapipe/tasks-vision",
+    "version": "0.10.17",
+    "license": "Apache-2.0",
+    "source": "https://registry.npmjs.org/@mediapipe/tasks-vision/-/tasks-vision-0.10.17.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": []
+  },
+  {
+    "name": "@monogrid/gainmap-js",
+    "version": "3.4.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@monogrid/gainmap-js/-/gainmap-js-3.4.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@monogrid_gainmap-js-LICENSE"
+    ]
+  },
+  {
+    "name": "@react-three/drei",
+    "version": "10.7.9",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@react-three/drei/-/drei-10.7.9.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@react-three_drei-LICENSE"
+    ]
+  },
+  {
+    "name": "@react-three/fiber",
+    "version": "9.8.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@react-three/fiber/-/fiber-9.8.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": []
+  },
+  {
+    "name": "@react-three/fiber/scheduler",
+    "version": "0.28.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/scheduler/-/scheduler-0.28.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@react-three_fiber_scheduler-LICENSE"
+    ]
+  },
+  {
+    "name": "@tweenjs/tween.js",
+    "version": "23.1.3",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@tweenjs/tween.js/-/tween.js-23.1.3.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@tweenjs_tween.js-LICENSE"
+    ]
+  },
+  {
+    "name": "@types/draco3d",
+    "version": "1.4.10",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@types/draco3d/-/draco3d-1.4.10.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@types_draco3d-LICENSE"
+    ]
+  },
+  {
+    "name": "@types/offscreencanvas",
+    "version": "2019.7.3",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@types/offscreencanvas/-/offscreencanvas-2019.7.3.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@types_offscreencanvas-LICENSE"
+    ]
+  },
+  {
+    "name": "@types/react-reconciler",
+    "version": "0.28.9",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@types/react-reconciler/-/react-reconciler-0.28.9.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@types_react-reconciler-LICENSE"
+    ]
+  },
+  {
+    "name": "@types/stats.js",
+    "version": "0.17.4",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@types/stats.js/-/stats.js-0.17.4.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@types_stats.js-LICENSE"
+    ]
+  },
+  {
+    "name": "@types/three",
+    "version": "0.186.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@types/three/-/three-0.186.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@types_three-LICENSE"
+    ]
+  },
+  {
+    "name": "@types/webxr",
+    "version": "0.5.24",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@types/webxr/-/webxr-0.5.24.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@types_webxr-LICENSE"
+    ]
+  },
+  {
+    "name": "@use-gesture/core",
+    "version": "10.3.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@use-gesture/core/-/core-10.3.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@use-gesture_core-LICENSE"
+    ]
+  },
+  {
+    "name": "@use-gesture/react",
+    "version": "10.3.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/@use-gesture/react/-/react-10.3.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\@use-gesture_react-LICENSE"
+    ]
+  },
+  {
+    "name": "base64-js",
+    "version": "1.5.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\base64-js-LICENSE"
+    ]
+  },
+  {
+    "name": "bidi-js",
+    "version": "1.1.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/bidi-js/-/bidi-js-1.1.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\bidi-js-LICENSE.txt"
+    ]
+  },
+  {
+    "name": "buffer",
+    "version": "6.0.3",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/buffer/-/buffer-6.0.3.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\buffer-LICENSE"
+    ]
+  },
+  {
+    "name": "camera-controls",
+    "version": "3.1.2",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/camera-controls/-/camera-controls-3.1.2.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\camera-controls-LICENSE"
+    ]
+  },
+  {
+    "name": "cross-env",
+    "version": "7.0.3",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/cross-env/-/cross-env-7.0.3.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\cross-env-LICENSE"
+    ]
+  },
+  {
+    "name": "cross-spawn",
+    "version": "7.0.6",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\cross-spawn-LICENSE"
+    ]
+  },
+  {
+    "name": "detect-gpu",
+    "version": "5.0.70",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/detect-gpu/-/detect-gpu-5.0.70.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\detect-gpu-LICENSE"
+    ]
+  },
+  {
+    "name": "draco3d",
+    "version": "1.5.7",
+    "license": "Apache-2.0",
+    "source": "https://registry.npmjs.org/draco3d/-/draco3d-1.5.7.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": []
+  },
+  {
+    "name": "fflate",
+    "version": "0.8.3",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/fflate/-/fflate-0.8.3.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\fflate-LICENSE"
+    ]
+  },
+  {
+    "name": "glsl-noise",
+    "version": "0.0.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/glsl-noise/-/glsl-noise-0.0.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\glsl-noise-LICENSE"
+    ]
+  },
+  {
+    "name": "hls.js",
+    "version": "1.7.3",
+    "license": "Apache-2.0",
+    "source": "https://registry.npmjs.org/hls.js/-/hls.js-1.7.3.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\hls.js-LICENSE"
+    ]
+  },
+  {
+    "name": "ieee754",
+    "version": "1.2.1",
+    "license": "BSD-3-Clause",
+    "source": "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\ieee754-LICENSE"
+    ]
+  },
+  {
+    "name": "is-promise",
+    "version": "2.2.2",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/is-promise/-/is-promise-2.2.2.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\is-promise-LICENSE"
+    ]
+  },
+  {
+    "name": "isexe",
+    "version": "2.0.0",
+    "license": "ISC",
+    "source": "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\isexe-LICENSE"
+    ]
+  },
+  {
+    "name": "its-fine",
+    "version": "2.1.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/its-fine/-/its-fine-2.1.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\its-fine-LICENSE"
+    ]
+  },
+  {
+    "name": "maath",
+    "version": "0.10.8",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/maath/-/maath-0.10.8.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": []
+  },
+  {
+    "name": "meshline",
+    "version": "3.3.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/meshline/-/meshline-3.3.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\meshline-LICENSE"
+    ]
+  },
+  {
+    "name": "meshoptimizer",
+    "version": "1.1.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/meshoptimizer/-/meshoptimizer-1.1.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\meshoptimizer-LICENSE.md"
+    ]
+  },
+  {
+    "name": "path-key",
+    "version": "3.1.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\path-key-license"
+    ]
+  },
+  {
+    "name": "potpack",
+    "version": "1.0.2",
+    "license": "ISC",
+    "source": "https://registry.npmjs.org/potpack/-/potpack-1.0.2.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\potpack-LICENSE"
+    ]
+  },
+  {
+    "name": "promise-worker-transferable",
+    "version": "1.0.4",
+    "license": "Apache-2.0",
+    "source": "https://registry.npmjs.org/promise-worker-transferable/-/promise-worker-transferable-1.0.4.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\promise-worker-transferable-LICENSE"
+    ]
+  },
+  {
+    "name": "react-use-measure",
+    "version": "2.1.7",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/react-use-measure/-/react-use-measure-2.1.7.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\react-use-measure-LICENSE"
+    ]
+  },
+  {
+    "name": "require-from-string",
+    "version": "2.0.2",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/require-from-string/-/require-from-string-2.0.2.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\require-from-string-license"
+    ]
+  },
+  {
+    "name": "shebang-command",
+    "version": "2.0.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\shebang-command-license"
+    ]
+  },
+  {
+    "name": "shebang-regex",
+    "version": "3.0.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\shebang-regex-license"
+    ]
+  },
+  {
+    "name": "stats-gl",
+    "version": "2.4.2",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/stats-gl/-/stats-gl-2.4.2.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": []
+  },
+  {
+    "name": "stats-gl/three",
+    "version": "0.170.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/three/-/three-0.170.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\stats-gl_three-LICENSE"
+    ]
+  },
+  {
+    "name": "stats.js",
+    "version": "0.17.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/stats.js/-/stats.js-0.17.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\stats.js-LICENSE"
+    ]
+  },
+  {
+    "name": "suspend-react",
+    "version": "0.1.3",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/suspend-react/-/suspend-react-0.1.3.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\suspend-react-LICENSE"
+    ]
+  },
+  {
+    "name": "three",
+    "version": "0.186.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/three/-/three-0.186.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\three-LICENSE"
+    ]
+  },
+  {
+    "name": "three-mesh-bvh",
+    "version": "0.8.3",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/three-mesh-bvh/-/three-mesh-bvh-0.8.3.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\three-mesh-bvh-LICENSE"
+    ]
+  },
+  {
+    "name": "three-stdlib",
+    "version": "2.36.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/three-stdlib/-/three-stdlib-2.36.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\three-stdlib-LICENSE"
+    ]
+  },
+  {
+    "name": "three-stdlib/fflate",
+    "version": "0.6.11",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/fflate/-/fflate-0.6.11.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\three-stdlib_fflate-LICENSE"
+    ]
+  },
+  {
+    "name": "troika-three-text",
+    "version": "0.52.5",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/troika-three-text/-/troika-three-text-0.52.5.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\troika-three-text-LICENSE"
+    ]
+  },
+  {
+    "name": "troika-three-utils",
+    "version": "0.52.5",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/troika-three-utils/-/troika-three-utils-0.52.5.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\troika-three-utils-LICENSE"
+    ]
+  },
+  {
+    "name": "troika-worker-utils",
+    "version": "0.52.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/troika-worker-utils/-/troika-worker-utils-0.52.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\troika-worker-utils-LICENSE"
+    ]
+  },
+  {
+    "name": "tunnel-rat",
+    "version": "0.1.2",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/tunnel-rat/-/tunnel-rat-0.1.2.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\tunnel-rat-LICENSE"
+    ]
+  },
+  {
+    "name": "tunnel-rat/zustand",
+    "version": "4.5.7",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/zustand/-/zustand-4.5.7.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\tunnel-rat_zustand-LICENSE"
+    ]
+  },
+  {
+    "name": "use-sync-external-store",
+    "version": "1.7.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.7.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\use-sync-external-store-LICENSE"
+    ]
+  },
+  {
+    "name": "utility-types",
+    "version": "3.11.0",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/utility-types/-/utility-types-3.11.0.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\utility-types-LICENSE"
+    ]
+  },
+  {
+    "name": "webgl-constants",
+    "version": "1.1.1",
+    "license": null,
+    "source": "https://registry.npmjs.org/webgl-constants/-/webgl-constants-1.1.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\webgl-constants-LICENSE"
+    ],
+    "verified_license": "MIT",
+    "license_evidence": "docs/third_party_notices/webgl-constants-LICENSE"
+  },
+  {
+    "name": "webgl-sdf-generator",
+    "version": "1.1.1",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/webgl-sdf-generator/-/webgl-sdf-generator-1.1.1.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\webgl-sdf-generator-LICENSE.txt"
+    ]
+  },
+  {
+    "name": "which",
+    "version": "2.0.2",
+    "license": "ISC",
+    "source": "https://registry.npmjs.org/which/-/which-2.0.2.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\which-LICENSE"
+    ]
+  },
+  {
+    "name": "zustand",
+    "version": "5.0.15",
+    "license": "MIT",
+    "source": "https://registry.npmjs.org/zustand/-/zustand-5.0.15.tgz",
+    "dev": false,
+    "modified": false,
+    "notices": [
+      "docs\\third_party_notices\\zustand-LICENSE"
+    ]
+  }
+]

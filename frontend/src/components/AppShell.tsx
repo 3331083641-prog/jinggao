@@ -1,22 +1,8 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { useEffect, Suspense } from "react";
-import {
-  Home,
-  FilePlus2,
-  LayoutGrid,
-  History,
-  BookOpen,
-  ChartNoAxesColumn,
-  LockKeyhole,
-} from "lucide-react";
-const links = [
-  ["/", "首页", Home],
-  ["/new", "新建检测", FilePlus2],
-  ["/workspace", "工作台", LayoutGrid],
-  ["/history", "历史任务", History],
-  ["/rules", "规则库", BookOpen],
-  ["/reports", "报告中心", ChartNoAxesColumn],
-] as const;
+import { LockKeyhole } from "lucide-react";
+import { motion } from "framer-motion";
+import { navigationItems } from "../navigation";
 export function AppShell() {
   const location = useLocation();
   useEffect(() => {
@@ -35,20 +21,24 @@ export function AppShell() {
         </NavLink>
         <span className="brand-line" />
         <span className="brand-sub">让科研成果更纯粹、更专注</span>
-        <span className="local-label">
+        <span
+          className="local-label"
+          tabIndex={0}
+          title="文件与检测数据保存在本机。"
+        >
           <LockKeyhole size={14} />
           本地处理 · 隐私优先
         </span>
       </header>
       <aside className="sidebar">
         <nav aria-label="主要导航">
-          {links.map(([path, name, Icon], i) => (
+          {navigationItems.map(({ path, name, icon: Icon, separated }) => (
             <NavLink
               key={path}
               to={path}
               end={path === "/"}
               className={({ isActive }) =>
-                `nav-item ${isActive ? "active" : ""} ${i === 4 ? "nav-separate" : ""}`
+                `nav-item ${isActive || (path === "/workbench" && /^\/(workspace|scan|evidence)(\/|$)/.test(location.pathname)) ? "active" : ""} ${separated ? "nav-separate" : ""}`
               }
             >
               <Icon size={21} />
@@ -56,23 +46,23 @@ export function AppShell() {
             </NavLink>
           ))}
         </nav>
-        <div className="sidebar-bottom">
-          <span className="small-dot" />
-          每一次提交，都更安心<small>科研竞赛材料智能合规助手</small>
-        </div>
       </aside>
       <main className="main-content">
         <div className="content-width">
           <Suspense
             fallback={<div className="page-loading">正在读取页面…</div>}
           >
-            <Outlet />
+            <motion.div
+              key={location.pathname}
+              className="page-content"
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Outlet />
+            </motion.div>
           </Suspense>
         </div>
-        <footer className="app-footer">
-          净稿 · 提交之前，再检查一次。
-          <span>仅针对所选规则，检测结果需结合人工复核</span>
-        </footer>
       </main>
     </div>
   );

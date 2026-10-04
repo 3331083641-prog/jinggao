@@ -1,107 +1,99 @@
 # 净稿
 
-**科研竞赛材料智能合规助手 · 提交之前，再检查一次。**
+科研竞赛材料智能合规助手。用于提交前自查，帮助把规则、真实文档证据和整改复检放在一起。
 
-面向匿名评审、科研竞赛提交与学术投稿，检查正文之外容易被遗漏的作者属性、页眉页脚、批注、修订、隐藏文字、链接与图片文字。每个结果提供规则依据、真实证据、位置和整改建议，整改后重新上传并保留每次检测记录。
+## 核心问题与能力
 
-全新工程，工作目录 `D:\jinggao`；未以旧项目为代码基座。没有登录、账号、订阅或商业后台。
+匿名评审与科研竞赛的要求散落在格式说明、模板和附件中，正文以外还可能保留属性、批注和隐藏内容。净稿支持 PDF / DOCX / PPTX / TXT / MD，导入 PDF / DOCX / TXT / MD 规则（旧 DOC 可选使用本机 Word 转换），提供原文证据、规则溯源、连续阅读、独立 Run 复检与 PDF 报告。
 
-## 核心流程
+流程：导入规则 → 确认条款 → 上传材料 → 检测 → 定位证据 → 人工判断 → 整改后复检 → 导出报告。规则与报告可以删除；删除报告不删除原始检测证据。
 
-```mermaid
-flowchart LR
- R[真实规则 / 待确认规则草案] --> S[Rule Schema]
- D[PDF / DOCX / PPTX / TXT / MD] --> P[本地 Document Surface]
- P --> OCR[本地 ONNX OCR]
- S --> E[确定性 Detector + 局部 AI 辅助]
- OCR --> E
- E --> F[PASS / REVIEW / FAIL + Evidence]
- F --> L[原文定位与人工记录]
- L --> N[整改后独立 Run 复检]
- N --> Q[前后对比与 PDF 报告]
-```
+## 规则机制
 
-PASS 只表示该项规则在已验证范围通过。模糊身份、未知检测器、未启用范围、解析失败或缺失覆盖均需要 REVIEW；零命中不能证明完全匿名。
+自定义规则使用 `STRICT_CUSTOM` 白名单模式。只执行当前选择的 RuleSet 中的规则，不加入匿名评审、学术投稿或其他默认规则。多选规则时，只联合明确选中的规则，保留每项来源和原文。内置规则仅在用户选中时执行，不冒称赛事官方要求。
 
-## 快速启动（Windows，Python 3.12 / Node 22+）
+规则文件完整解析并保存来源结构。明确要求映射为可执行 Schema；未实现的要求、条件与例外保留原文，交给用户确认和人工核对。标题、年份、背景介绍不会自动成为规则。确认后才保存生效；**不声称已经自动理解所有自然语言规则**。单次最多 100 项，超出明确报错，不截断条款。
 
-```powershell
-cd D:\jinggao
-python -m venv backend\.venv
-backend\.venv\Scripts\python.exe -m pip install --index-url https://pypi.org/simple -r backend\requirements.lock.txt
-cd frontend
-npm.cmd ci
-cd ..
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start.ps1
-```
+每个 Run 保存规则快照、`rule_set_id`、`rule_ids_executed`、`detectors_executed` 和执行模式。每个合规 Finding 关联当前 Rule，Rule 保留 `original_text`、来源文件、真实来源页码（可取得时）、章节及范围。无法确定的 DOCX 页码不会编造。
 
-浏览器：<http://127.0.0.1:5173>；后端健康检查：<http://127.0.0.1:8000/health>；API 文档：<http://127.0.0.1:8000/docs>。
+## PASS / REVIEW / FAIL
 
-需要查看实时开发日志时，在两个终端分别运行：
+- **FAIL**：当前规则范围中有明确违反证据。
+- **REVIEW**：当前条款有需要人核对的命中、条件或未实现语义要求。
+- **PASS**：确定性检查在已验证范围内通过，不表示全文绝对安全。
 
-```powershell
-cd D:\jinggao\backend
-.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
-```
+解析缺口、OCR 故障等属于 `SYSTEM_DIAGNOSTIC`，独立显示，不计入合规 Finding 数量。诊断未解决或启发式实体规则未能完整验证时，Run 不冒称通过。
+
+OCR 置信度单独偏低不产生 REVIEW。质量分析依据替换字符、缺字框、损坏字符等证据；小字号、图表、专业术语和普通中英文不因置信度判问题。学校文字、AI 标识、Logo 检查必须有对应生效规则。图形 Logo 识别仍有限制，不能把每张图片当作命中。
+
+## 文档阅读
+
+工作台 PDF 使用连续纵向阅读。所有页面都有位置占位，只在视口附近创建 PDF Canvas；缩略图可连续滚动，阅读页码双向同步。点击问题滚动到对应页与真实 bbox，定位后仍可自由阅读。文档、缩略图和问题列表独立滚动。
+
+## 技术架构
+
+React 19 + TypeScript + Vite → FastAPI → SQLite WAL。PDF.js 预览；pdfplumber / pypdf 和 OOXML 提取真实 Surface；RapidOCR ONNX 在本机识别文字；规则驱动 Detector；ReportLab 导出报告。scikit-learn 仅提供局部语境辅助，不能授权新增规则或改写检测结论。首页 Three.js Hero 与业务检测分离。
+
+## 快速运行
+
+需要 Python 3.11+、Node.js 20.19+ 或 22.12+。首次安装依赖需网络；运行和材料处理在本机完成。
 
 ```powershell
-cd D:\jinggao\frontend
-npm.cmd run dev
+python -m venv backend/.venv
+backend/.venv/Scripts/python.exe -m pip install -r backend/requirements.lock.txt
+npm.cmd --prefix frontend ci
 ```
 
-启动顺序：后端 `/health` → 上传至 `/generate` 验证 → 前端 `npm run dev` → 浏览器实际操作。`scripts/start.ps1` 不自动向生产任务写入测试材料；开发验收脚本单独执行真实上传。
-
-## 演示
-
-1. 新建检测，上传自己的 PDF 或 DOCX，选择基础规则或已确认的真实提交规范。
-2. 查看真实阶段进度；OCR 仅在存在图片 / 扫描页且启用该范围时运行。
-3. 工作台点击证据，PDF 自动跳页并突出真实 bbox；DOCX 原文 / 部件定位。
-4. 证据链记录人工判断，修改原材料，再上传复检。人工记录不会把旧证据自动改成 PASS。
-5. 在工作台对比 Run，导出真实中文 PDF 报告。
-
-合成演示材料可自行生成：`backend\.venv\Scripts\python.exe benchmark\generate_fixtures.py`。测试资料明确标为合成材料，不自动填入生产历史。
-
-## 架构与目录
-
-React + TypeScript + Vite / React Router / TanStack Query / Lucide / Framer Motion；FastAPI / Python；SQLite WAL。
-
-- `frontend/src/components`：自研 Shell、SVG Hero、PDF/DOCX 预览、证据卡片。
-- `frontend/src/pages`：首页、新建检测、扫描/工作台、证据、规则、历史、报告。
-- `backend/app/parsers`：PDF 与 OOXML 表层抽取；`detectors`：规则驱动检测；`services`：OCR / 语义辅助；`tasks`：运行与真实进度；`reports`：PDF 生成。
-- `backend/data`：本机 SQLite、原文件与报告，默认不进入 Git。
-- `tests`、`benchmark`：可复现验证；`review_screenshots`：三个桌面尺寸的浏览器截图。
-- `docs`：架构、比赛对应、创新、开源清单、许可审计、AI 使用、测试与演示说明。
-
-## 测试与构建
+两个终端分别运行：
 
 ```powershell
-cd D:\jinggao
-backend\.venv\Scripts\python.exe benchmark\generate_fixtures.py
-backend\.venv\Scripts\python.exe -m pytest -q
-backend\.venv\Scripts\python.exe benchmark\evaluate.py
-cd frontend
-$env:PLAYWRIGHT_BROWSERS_PATH='D:\jinggao\.cache\playwright'
-npx.cmd playwright install chromium
-npm.cmd run test:e2e
-npm.cmd run build
+backend/.venv/Scripts/python.exe -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000
+npm.cmd --prefix frontend run dev
 ```
 
-E2E 使用隔离数据目录与 8001/5174 端口，不修改生产材料。参见 [测试记录](docs/TEST_REPORT.md) 与 [基准结果](benchmark/results.json)。
+打开 http://127.0.0.1:5173 。数据库与上传目录在首次启动时自动创建，无需下载用户数据库。可用 `JINGGAO_DATA_DIR` 指定本地数据目录；前端 API 代理可用 `JINGGAO_API_ORIGIN` 覆盖默认地址。
 
-当前版本范围见 [完成度报告](docs/CURRENT_COMPLETION.md)。参考图与实际截图见 [视觉对照](docs/VISUAL_COMPARISON.html)。本机服务真实上传验收可显式执行 `backend\.venv\Scripts\python.exe scripts\verify_local.py`，会保存标注为 synthetic 的测试任务和两个 Run；日常启动不会自动创建示例任务。
+## 测试
 
-## 开源、自主实现与许可证
+```powershell
+backend/.venv/Scripts/python.exe -m pytest -q
+backend/.venv/Scripts/python.exe -m ruff check backend/app tests
+npm.cmd --prefix frontend run lint
+npm.cmd --prefix frontend run typecheck
+npm.cmd --prefix frontend run build
+npm.cmd --prefix frontend run test
+```
 
-自研内容：统一 Rule/Surface、中文 Recognizer、证据与覆盖缺口策略、独立 Run 复检、人工记录、报告和全部核心 UI。开源 AI 承担本地 OCR、规则草案和局部语境辅助；不是仅调用通用大模型 API。
+首次浏览器测试先安装 Chromium 到项目缓存：
 
-详细资源披露见 [开源清单](docs/OPEN_SOURCE_MANIFEST.md)、[许可审计](docs/OPEN_SOURCE_LICENSE_AUDIT.md)、[AI 工具说明](docs/AI_TOOL_USE.md)。第三方库未修改，来源与版本已盘点。当前仍有历史 OCR 权重及二进制再分发的审计事项，故暂未建立根 LICENSE；自主源码候选 MIT，当前没有公开发布或上传仓库。
+```powershell
+$env:PLAYWRIGHT_BROWSERS_PATH = "$PWD/.cache/playwright"
+node frontend/node_modules/@playwright/test/cli.js install chromium
+```
 
-## 第一版限制
+测试使用独立数据库和合成材料，覆盖规则隔离、真实 OCR、上传、删除、复检、报告、89 页连续阅读和 95 项独立滚动。`tests/build_review_fixtures.py` 可生成合成阅读与 OCR 样例；读取本机字体但不复制分发字体。
 
-- 单文件 50 MB；PDF 150 页；OCR 最多 80 个图像区域。本地处理可能耗时，不使用假进度。
-- OCR 可识别文字；Logo 图形语义仍人工复核。Qwen3-VL 尚未集成。
-- 中文 Recognizer 是词法与上下文启发式；英文机构、机构别名、无标签姓名、固定电话可能漏检，通过覆盖 REVIEW 暴露限制。小型分类模型只做辅助。
-- PDF 隐藏图层、透明文字、矢量文字、附件；OOXML 样式继承的隐藏内容、离页图形、嵌入对象内部未完整覆盖。
-- DOCX 不推测页码；浏览器版式不承诺与 Word 完全一致。PPTX 为真实表层预览，不是 PowerPoint 像素级预览。
-- 内置规则是自查建议，不冒称任何赛事/期刊官方标准。导入规范须逐条确认。
-- 本机服务不提供公网多用户部署能力。文件本地保存，不自动清理；请用合成材料演示，生产数据不纳入发布包。
+## 本地隐私与发布边界
+
+原始材料、SQLite、OCR 结果和报告留在本机，不上传云端 AI。源代码仓库不含真实比赛材料、用户文档、数据库、密钥、权重、依赖目录或本机缓存。源码发布与含二进制/权重的离线安装包发布分开审计。
+
+第三方边界见 [开源清单](docs/OPEN_SOURCE_MANIFEST.md)、[许可审计](docs/OPEN_SOURCE_LICENSE_AUDIT.md)。上游依赖仍适用其原许可证，未修改上游源码。当前公开源码供审查；自主源码拟采用 MIT，但权利和历史权重来源链尚待最终确认，暂未建立根 LICENSE。公开仓库不等同于已完成全部开源授权。
+
+## 项目结构
+
+```text
+frontend/src/        页面、连续阅读、Three.js Hero
+backend/app/         Schema、解析、检测器、任务、SQLite、报告
+benchmark/fixtures/ 合成 PDF / Office 样例
+tests/              单元、API、OCR、Playwright 测试
+scripts/             启动、合成验证、发布审计
+docs/               架构、开源披露、比赛对应与测试说明
+```
+
+## 已知限制
+
+规则提取是可审查的条款映射，不是完整法律/赛事语义理解。独立创新、AI 使用真实性及复杂条件需人工判断；不根据缺少关键词直接断定违规。OCR 不能证明每个字符都正确，普通无意义语言、严重模糊和图形 Logo 无法可靠完整自动判断。DOCX 预览不等同于 Word 排版，PPTX 提供真实表层而非像素级预览。单文件 50 MB、PDF 150 页、OCR 最多 80 个图像区域，超出会明确给出诊断。当前用于本机运行，不是公网多用户服务。
+
+## 比赛说明
+
+项目面向 AI + 开源应用创新，强调可运行的规则—证据—整改流程。神经网络 OCR 与开源工具参与真实处理，自研规则隔离、证据映射、独立复检和质量策略。比赛要求与贡献边界见 [COMPETITION_ALIGNMENT](docs/COMPETITION_ALIGNMENT.md)；合成测试指标不外推为真实世界准确率。

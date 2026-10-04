@@ -21,6 +21,10 @@ export type Rule = {
   evidence_requirement: string;
   remediation: string;
   source_clause: string;
+  original_text?: string;
+  source_page?: number | null;
+  source_section?: string;
+  source_rule_set_id?: string;
   parameters: Record<string, any>;
 };
 export type RuleSet = {
@@ -32,6 +36,7 @@ export type RuleSet = {
   version: string;
   source: string;
   updated_at: string;
+  members?: RuleSet[];
 };
 export type Finding = {
   id: string;
@@ -72,6 +77,10 @@ export type Run = {
   task_id: string;
   document_id: string;
   ruleset_id: string;
+  execution_mode?: string;
+  rule_ids_executed?: string[];
+  detectors_executed?: string[];
+  diagnostics?: Finding[];
   ruleset_snapshot: RuleSet;
   scopes: string[];
   version: number;

@@ -28,6 +28,10 @@ def init():
             con.execute(
                 f"CREATE TABLE IF NOT EXISTS {table} (id TEXT PRIMARY KEY, payload TEXT NOT NULL)"
             )
+        con.execute(
+            "CREATE TABLE IF NOT EXISTS report_deletions "
+            "(id TEXT PRIMARY KEY, deleted_at TEXT NOT NULL, archive_id TEXT NOT NULL)"
+        )
 
 
 def save(table, obj):

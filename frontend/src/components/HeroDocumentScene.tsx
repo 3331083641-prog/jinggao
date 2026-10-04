@@ -1,12 +1,19 @@
 import { useRef } from "react";
 import { useReducedMotion } from "framer-motion";
-export function HeroDocumentScene() {
+export function HeroDocumentScene({
+  compact = false,
+  staticScene = false,
+}: {
+  compact?: boolean;
+  staticScene?: boolean;
+}) {
   const ref = useRef<SVGSVGElement>(null);
-  const reduced = useReducedMotion();
+  const motionReduced = useReducedMotion();
+  const reduced = staticScene || motionReduced;
   return (
     <svg
       ref={ref}
-      className="hero-scene"
+      className={"hero-scene" + (compact ? " compact-scene" : "")}
       viewBox="0 0 900 300"
       role="img"
       aria-label="层叠纸张与合规盾牌"
@@ -15,11 +22,11 @@ export function HeroDocumentScene() {
           const r = ref.current.getBoundingClientRect();
           ref.current.style.setProperty(
             "--px",
-            `${((e.clientX - r.x) / r.width - 0.5) * 6}px`,
+            `${((e.clientX - r.x) / r.width - 0.5) * (compact ? 2 : 6)}px`,
           );
           ref.current.style.setProperty(
             "--py",
-            `${((e.clientY - r.y) / r.height - 0.5) * 4}px`,
+            `${((e.clientY - r.y) / r.height - 0.5) * (compact ? 1 : 4)}px`,
           );
         }
       }}
@@ -131,67 +138,71 @@ export function HeroDocumentScene() {
         <path d="M128 97 C256 137 438 279 695 245" />
         <path d="M318 273 C365 206 338 89 425 64" />
       </g>
-      <g fill="url(#gold)">
-        <circle cx={reduced ? 220 : 0} cy={reduced ? 235 : 0} r="4">
-          {!reduced && (
-            <animateMotion
-              dur="28s"
-              repeatCount="indefinite"
-              path="M220 235 C300 280 726 223 768 62"
+      {
+        <g fill="url(#gold)">
+          <circle cx={reduced ? 220 : 0} cy={reduced ? 235 : 0} r="4">
+            {!reduced && (
+              <animateMotion
+                dur="28s"
+                repeatCount="indefinite"
+                path="M220 235 C300 280 726 223 768 62"
+              />
+            )}
+          </circle>
+          <circle cx="768" cy="62" r="4" />
+          <circle cx="318" cy="179" r="4" />
+          <circle cx="657" cy="233" r="4" />
+          <circle cx="195" cy="131" r="4" />
+        </g>
+      }
+      {
+        <g
+          className="floating-tags"
+          fontFamily="SimSun,serif"
+          fontSize="16"
+          fill="#8e897f"
+        >
+          <g transform="translate(206 57) rotate(5)">
+            <rect
+              width="105"
+              height="61"
+              rx="3"
+              fill="#fff"
+              fillOpacity=".24"
+              stroke="#fff"
             />
-          )}
-        </circle>
-        <circle cx="768" cy="62" r="4" />
-        <circle cx="318" cy="179" r="4" />
-        <circle cx="657" cy="233" r="4" />
-        <circle cx="195" cy="131" r="4" />
-      </g>
-      <g
-        className="floating-tags"
-        fontFamily="SimSun,serif"
-        fontSize="16"
-        fill="#8e897f"
-      >
-        <g transform="translate(206 57) rotate(5)">
-          <rect
-            width="105"
-            height="61"
-            rx="3"
-            fill="#fff"
-            fillOpacity=".24"
-            stroke="#fff"
-          />
-          <text x="26" y="37">
-            更合规
-          </text>
+            <text x="26" y="37">
+              更合规
+            </text>
+          </g>
+          <g transform="translate(127 111) rotate(5)">
+            <rect
+              width="107"
+              height="70"
+              rx="3"
+              fill="#fff"
+              fillOpacity=".22"
+              stroke="#fff"
+            />
+            <text x="25" y="43">
+              更专业
+            </text>
+          </g>
+          <g transform="translate(248 155) rotate(5)">
+            <rect
+              width="110"
+              height="66"
+              rx="3"
+              fill="#fff"
+              fillOpacity=".2"
+              stroke="#fff"
+            />
+            <text x="26" y="39">
+              更安心
+            </text>
+          </g>
         </g>
-        <g transform="translate(127 111) rotate(5)">
-          <rect
-            width="107"
-            height="70"
-            rx="3"
-            fill="#fff"
-            fillOpacity=".22"
-            stroke="#fff"
-          />
-          <text x="25" y="43">
-            更专业
-          </text>
-        </g>
-        <g transform="translate(248 155) rotate(5)">
-          <rect
-            width="110"
-            height="66"
-            rx="3"
-            fill="#fff"
-            fillOpacity=".2"
-            stroke="#fff"
-          />
-          <text x="26" y="39">
-            更安心
-          </text>
-        </g>
-      </g>
+      }
     </svg>
   );
 }
