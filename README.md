@@ -53,6 +53,8 @@ npm.cmd --prefix frontend run dev
 
 打开 http://127.0.0.1:5173 。数据库与上传目录在首次启动时自动创建，无需下载用户数据库。可用 `JINGGAO_DATA_DIR` 指定本地数据目录；前端 API 代理可用 `JINGGAO_API_ORIGIN` 覆盖默认地址。
 
+配置样例见 `backend/.env.example` 与 `frontend/.env.example`，不包含密钥。程序不自动加载这些样例；需要覆盖默认值时，在启动终端中设置，例如 `$env:JINGGAO_API_ORIGIN = "http://127.0.0.1:8000"`。数据目录的相对路径以进程工作目录为准。
+
 ## 测试
 
 ```powershell
