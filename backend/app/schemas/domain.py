@@ -32,6 +32,8 @@ class Surface(BaseModel):
 
 class Rule(BaseModel):
     id: str
+    rule_id: str = ""
+    source_ruleset_id: str = ""
     category: str
     target: str
     severity: Literal["high", "medium", "low"] = "high"
@@ -56,6 +58,14 @@ class Rule(BaseModel):
     source_section: str = ""
     requirement_type: str = ""
     condition: str = ""
+    exception: str = ""
+    source_document: str = ""
+    source_paragraph: str = ""
+    normalized_requirement: str = ""
+    detector: str = ""
+    confidence: float = Field(default=1.0, ge=0, le=1)
+    needs_confirmation: bool = True
+    coverage_expectation: str = "仅验证已实现且实际执行的范围"
     parameters: dict = Field(default_factory=dict)
 
 
@@ -103,4 +113,6 @@ class ParsedDocument(BaseModel):
     warnings: list[str] = Field(default_factory=list)
     ocr_metrics: list[dict] = Field(default_factory=list)
     image_jobs: list[dict] = Field(default_factory=list)
+    visual_candidates: list[Surface] = Field(default_factory=list)
+    visual_coverage: dict = Field(default_factory=dict)
     format: str

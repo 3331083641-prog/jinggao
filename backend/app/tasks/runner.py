@@ -29,7 +29,7 @@ def record_system_diagnostic(run, message):
     }
 
 
-def create_run(task, document, ruleset, scopes):
+def create_run(task, document, ruleset, scopes, parent_run_id=None):
     ruleset = deepcopy(ruleset)
     custom = ruleset["id"] not in ("anonymous", "competition", "academic")
     for rule in ruleset["rules"]:
@@ -40,6 +40,8 @@ def create_run(task, document, ruleset, scopes):
     run = {
         "id": uuid4().hex,
         "task_id": task["id"],
+        "parent_run_id": parent_run_id or task.get("latest_run_id"),
+        "remediation": document.get("cleanup"),
         "document_id": document["id"],
         "ruleset_id": ruleset["id"],
         "rule_set_id": ruleset["id"],
@@ -48,6 +50,7 @@ def create_run(task, document, ruleset, scopes):
         "detectors_executed": [],
         "diagnostics": [],
         "unverified_rule_ids": [],
+        "coverage_matrix": [],
         "ruleset_snapshot": ruleset,
         "scopes": scopes,
         "created_at": db.now(),
@@ -134,6 +137,14 @@ def execute(id):
         document["parsed"] = parsed.model_dump()
         db.save("documents", document)
         update("match", "Running")
+        if "images" in run["scopes"] and any(
+            r.detection_method == "visual" for r in rules
+        ):
+            from app.services.vision import prepare_visual
+
+            prepare_visual(document["path"], parsed)
+            document["parsed"] = parsed.model_dump()
+            db.save("documents", document)
         for r in rules:
             result = inspect_rule(r, parsed, run["scopes"])
             if not result:
@@ -141,6 +152,11 @@ def execute(id):
             if any(f["rule_id"] != r.id for f in result):
                 raise ValueError("检测器返回了未启用规则")
             run["findings"].extend(result)
+            from app.services.coverage import rule_coverage
+
+            run["coverage_matrix"].append(
+                rule_coverage(r, parsed, run["scopes"], result)
+            )
             run["rule_ids_executed"].append(r.id)
             run["detectors_executed"] = sorted(
                 set(
@@ -172,6 +188,10 @@ def execute(id):
             )
         update("match", "Done")
         run.update(state="COMPLETED", progress=100, completed_at=db.now())
+        if run.get("parent_run_id"):
+            from app.services.run_diff import compare_runs
+
+            run["comparison"] = compare_runs(db.get("runs", run["parent_run_id"]), run)
         run["status"] = (
             "FAIL"
             if run["counts"]["FAIL"]

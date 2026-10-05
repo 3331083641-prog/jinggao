@@ -72,6 +72,26 @@ def remove_ruleset(id: str):
 
 @app.post("/api/rulesets")
 def add_ruleset(payload: RuleSetInput):
+    for rule in payload.rules:
+        if rule.parameters.get("compiler_version"):
+            source = next(
+                (
+                    d
+                    for d in payload.source_documents
+                    if d.get("name") == rule.source_document
+                ),
+                None,
+            )
+            if (
+                not source
+                or not rule.original_text
+                or rule.original_text not in source.get("text", "")
+            ):
+                raise HTTPException(422, "编译条款必须保留真实来源全文和精确原文")
+            if hashlib.sha256(
+                rule.original_text.encode()
+            ).hexdigest() != rule.parameters.get("original_sha256"):
+                raise HTTPException(422, "条款原文已更改，请重新导入确认")
     r = payload.model_dump() | {
         "id": uuid4().hex,
         "version": "1.0.0",
@@ -81,6 +101,8 @@ def add_ruleset(payload: RuleSetInput):
     r["execution_mode"] = "STRICT_CUSTOM"
     for rule in r["rules"]:
         rule["source_rule_set_id"] = r["id"]
+        rule["source_ruleset_id"] = r["id"]
+        rule["rule_id"] = rule["id"]
     return db.save("rulesets", r)
 
 
@@ -231,6 +253,110 @@ def run(id: str):
     r = require("runs", id)
     doc = require("documents", r["document_id"])
     return r | {"document": {k: v for k, v in doc.items() if k != "path"}}
+
+
+class CleanupSelection(BaseModel):
+    operations: list[str] = Field(min_length=1, max_length=6)
+
+
+class CleanupConfirmation(BaseModel):
+    preview_token: str = Field(min_length=32, max_length=32)
+
+
+@app.get("/api/runs/{id}/cleanup-options")
+def cleanup_options(id: str):
+    from app.services.cleanup import supported, OPERATIONS
+
+    r = require("runs", id)
+    doc = require("documents", r["document_id"])
+    return {
+        "operations": [
+            {"id": key, "label": OPERATIONS[key]} for key in supported(doc["path"])
+        ],
+        "copy_only": True,
+    }
+
+
+@app.post("/api/runs/{id}/cleanup-preview")
+def cleanup_preview(id: str, payload: CleanupSelection):
+    from app.services.cleanup import preview
+
+    with TASK_MUTATION_LOCK:
+        r = require("runs", id)
+        if r["state"] != "COMPLETED":
+            raise HTTPException(409, "检测完成后才能生成整改预览")
+        doc = require("documents", r["document_id"])
+        try:
+            plan = preview(doc["path"], payload.operations)
+        except ValueError as exc:
+            raise HTTPException(422, str(exc)) from exc
+        token = uuid4().hex
+        r["cleanup_preview"] = {**plan, "preview_token": token, "created_at": db.now()}
+        db.save("runs", r)
+        return r["cleanup_preview"]
+
+
+@app.post("/api/runs/{id}/cleanup-copy")
+def cleanup_copy(id: str, payload: CleanupConfirmation):
+    from app.services.cleanup import create_copy
+
+    with TASK_MUTATION_LOCK:
+        r = require("runs", id)
+        plan = r.get("cleanup_preview", {})
+        if (
+            r["state"] != "COMPLETED"
+            or plan.get("preview_token") != payload.preview_token
+        ):
+            raise HTTPException(409, "请先预览并确认本次整改项")
+        task = require("tasks", r["task_id"])
+        latest = require("runs", task["latest_run_id"])
+        if latest["state"] in ("QUEUED", "RUNNING"):
+            raise HTTPException(409, "已有检测正在运行")
+        doc = require("documents", r["document_id"])
+        try:
+            target, name, manifest = create_copy(
+                doc["path"],
+                doc["name"],
+                db.DATA / "uploads",
+                plan["operations"],
+                plan["source_sha256"],
+            )
+        except ValueError as exc:
+            raise HTTPException(422, str(exc)) from exc
+        except Exception as exc:
+            raise HTTPException(422, "副本结构校验失败；原文件保留") from exc
+        new_doc = {
+            "id": uuid4().hex,
+            "name": name,
+            "path": str(target),
+            "size": target.stat().st_size,
+            "sha256": hashlib.sha256(target.read_bytes()).hexdigest(),
+            "format": doc["format"],
+            "created_at": db.now(),
+            "parsed": None,
+            "cleanup": {
+                **manifest,
+                "source_document_id": doc["id"],
+                "parent_run_id": id,
+            },
+        }
+        db.save("documents", new_doc)
+        r.pop("cleanup_preview", None)
+        db.save("runs", r)
+        task.update(name=name, updated_at=db.now())
+        return create_run(
+            task, new_doc, r["ruleset_snapshot"], r["scopes"], parent_run_id=id
+        )
+
+
+@app.get("/api/runs/{id}/diff")
+def run_diff(id: str):
+    from app.services.run_diff import compare_runs
+
+    r = require("runs", id)
+    if not r.get("parent_run_id"):
+        raise HTTPException(404, "没有可对比的上一 Run")
+    return compare_runs(require("runs", r["parent_run_id"]), r)
 
 
 @app.post("/api/runs/{id}/cancel")

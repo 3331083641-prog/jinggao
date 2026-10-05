@@ -26,6 +26,12 @@ export type Rule = {
   source_section?: string;
   source_rule_set_id?: string;
   parameters: Record<string, any>;
+  condition?: string;
+  exception?: string;
+  normalized_requirement?: string;
+  source_document?: string;
+  source_paragraph?: string;
+  coverage_expectation?: string;
 };
 export type RuleSet = {
   id: string;
@@ -81,6 +87,9 @@ export type Run = {
   rule_ids_executed?: string[];
   detectors_executed?: string[];
   diagnostics?: Finding[];
+  parent_run_id?: string;
+  remediation?: { operations: string[]; source_sha256: string };
+  coverage_matrix?: CoverageEntry[];
   ruleset_snapshot: RuleSet;
   scopes: string[];
   version: number;
@@ -101,6 +110,24 @@ export type Run = {
   error?: string;
   document?: Document;
   document_name?: string;
+};
+export type CoverageEntry = {
+  rule_id: string;
+  rule: string;
+  status: "VERIFIED" | "PARTIAL" | "MANUAL" | "UNAVAILABLE";
+  detectors: string[];
+  scope: string[];
+  coverage: string;
+  executed: boolean;
+};
+export type RunComparison = {
+  before_run_id: string;
+  after_run_id: string;
+  comparable: boolean;
+  same_rule_snapshot: boolean;
+  counts: Record<"FAIL" | "REVIEW" | "PASS", { before: number; after: number }>;
+  pairs: { category: string; before: Finding | null; after: Finding | null }[];
+  note: string;
 };
 export type Task = {
   id: string;

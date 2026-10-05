@@ -1,6 +1,7 @@
 from pathlib import Path
 from app.parsers.document import parse_document
-from app.services.rule_parser import draft
+from app.services.rule_compiler import compile_rules
+from app.services.rule_compiler.provenance import attach
 from app.services.legacy_word import convert_doc
 
 
@@ -11,7 +12,7 @@ def parse_rule_file(document):
         if document["format"] == "doc":
             converted = convert_doc(source)
         parsed = parse_document(converted or source)
-        result = draft(
+        result = compile_rules(
             "\n".join(
                 s.text
                 for s in parsed.surfaces
@@ -34,6 +35,14 @@ def parse_rule_file(document):
             )
             r["parameters"].update(
                 source_file=document["name"], source_sha256=document["sha256"]
+            )
+            attach(
+                r,
+                [
+                    {"text": s.text, "page": s.page, "location": s.location}
+                    for s in parsed.surfaces
+                ],
+                document,
             )
         result["source_documents"] = [
             {
@@ -61,6 +70,7 @@ def parse_rule_file(document):
             source="用户导入 · " + document["name"],
             files=[{"name": document["name"], "sha256": document["sha256"]}],
             warnings=parsed.warnings
+            + result.get("compiler_warnings", [])
             + (
                 ["DOC 已由本机 Word 只读转换；宏和链接自动更新已关闭。"]
                 if converted

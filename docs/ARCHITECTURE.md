@@ -2,6 +2,16 @@
 
 React + TypeScript + Vite → FastAPI → SQLite WAL，本机运行。
 
+## 2026-10-05 比赛终版增量
+
+规则编译位于 services/rule_compiler：完整抽取文本确定性提取、条件/例外、来源映射、可选 loopback 模型注释及强制 Schema 校验。导入确认校验原文 SHA；执行仍只遍历快照，不运行模型建议中的新目标。Provider 不读取密钥，禁止公网地址、重定向、代理继承，失败退回本地确定性路径。
+
+runner 在 OCR 后仅为当前视觉规则启用 Vision 候选，随后每条实际执行规则保存 coverage_matrix。实体识别分 regex / alias / context / 可选 NER Adapter / evidence decision；弱语义与引用不直接 FAIL，明确标注的项目编号仍按规则处理。视觉徽章形状只 REVIEW，非穷尽能力单列 PARTIAL/diagnostic。
+
+cleanup 对完成 Run 预览选中结构变化，记录一次性 token + SHA；生成新上传副本、重新打开并验证，按原快照/范围派发线程池独立 Run，保存 parent_run_id/remediation。run_diff 基于证据配对，不把消失直接等同于 PASS。报告写入原文、覆盖、整改、对比和最多6个真实定位的 PDF 局部截图。详情见 RULE_COMPILER、CLEANUP_ENGINE、COVERAGE_MATRIX。
+
+前端保持既有六页与四个工作台 Tab；Coverage/Diff 默认折叠，整改接真实 API。PDF Canvas、缩略图与问题独立滚动实现保留，AI/复检异步执行不阻塞 Viewer。GitHub Actions 使用独立合成数据库与锁定依赖，禁止复用用户材料。
+
 规则文件完整解析 → 待确认 Rule Schema → 用户保存 → 严格选择规则快照 → 材料解析 Surface → 本地 OCR → 所选 Detector → 合规 Finding / 独立 System Diagnostic → 证据定位 → 人工记录 → 独立 Run 复检 → 报告。
 
 ## 规则边界

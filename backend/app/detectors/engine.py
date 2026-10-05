@@ -71,13 +71,10 @@ def make(rule, status, evidence, reason, s=None, detector=None):
 def inspect_rule(rule, parsed, scopes):
     from app.detectors.submission import inspect_submission
 
-    if rule.condition and rule.detection_method in (
-        "recognizer",
-        "literal",
-        "presence",
-        "visual",
-        "text_quality",
-        "ai_marker",
+    if (rule.condition or rule.exception) and (
+        rule.parameters.get("compiler_version")
+        or rule.detection_method
+        in ("recognizer", "literal", "presence", "visual", "text_quality", "ai_marker")
     ):
         return [
             make(
@@ -133,53 +130,28 @@ def inspect_rule(rule, parsed, scopes):
             search_text = re.sub(
                 r"(?<=[\u4e00-\u9fff])\s+(?=[\u4e00-\u9fff])", "", s.text
             )
-            for pattern in patterns:
-                for match in re.finditer(pattern, search_text):
-                    evidence = match.group()
-                    status = (
-                        "REVIEW"
-                        if rule.target in ("person", "funding", "organization")
-                        or s.confidence < 0.9
-                        else "FAIL"
+            from app.services.entities import recognize, evidence_decision
+
+            for match in recognize(search_text, rule.target, patterns):
+                status, reason = evidence_decision(
+                    match, search_text, rule.target, s.confidence
+                )
+                registration_exception = (
+                    rule.parameters.get("registration_cover_review") and s.page == 1
+                )
+                if registration_exception:
+                    status = "REVIEW"
+                    reason = "模板含实名登记页；需核对匿名条款适用范围。"
+                findings.append(
+                    make(
+                        rule,
+                        status,
+                        match["evidence"],
+                        reason,
+                        s,
+                        "EntityRecognizer/" + rule.target + "/" + match["layer"],
                     )
-                    # Clear authorship affiliation context supports a hard anonymous-policy violation.
-                    if (
-                        rule.target == "organization"
-                        and any(
-                            k in search_text
-                            for k in (
-                                "作者",
-                                "单位",
-                                "学校",
-                                "学院",
-                                "本校",
-                                "本研究",
-                                "就读",
-                                "隶属",
-                            )
-                        )
-                        and s.confidence >= 0.9
-                    ):
-                        status = "FAIL"
-                    registration_exception = (
-                        rule.parameters.get("registration_cover_review") and s.page == 1
-                    )
-                    if registration_exception:
-                        status = "REVIEW"
-                    findings.append(
-                        make(
-                            rule,
-                            status,
-                            evidence,
-                            "模板含实名登记页；此封面的身份字段是否属于匿名条款范围需核对官方提交要求。"
-                            if registration_exception
-                            else "身份线索须结合作者归属确认；引用机构不自动判违规。"
-                            if status == "REVIEW"
-                            else "在此规则范围内发现明确身份信息。",
-                            s,
-                            "ChineseRecognizer/" + rule.target,
-                        )
-                    )
+                )
         # Legacy builtin recognizers retain their explicit uncertainty boundary.
         # Narrow custom rules report only matched evidence; no invented identity rule.
         if not rule.source_rule_set_id:
@@ -260,6 +232,8 @@ def inspect_rule(rule, parsed, scopes):
         for s in selected:
             quality = analyze_text(s.text, s.confidence)
             marker = AI_MARKERS.search(s.text)
+            if not marker and s.source_type == "IMAGE_OCR":
+                marker = re.search(r"\bA[l1][ -]generated\b", s.text, re.I)
             if rule.detection_method == "text_quality" and quality["signals"]:
                 findings.append(
                     make(
@@ -277,11 +251,16 @@ def inspect_rule(rule, parsed, scopes):
                         rule,
                         "REVIEW",
                         marker.group(),
-                        "发现当前规则要求检查的显式生成标识；核对引用语境。",
+                        "发现当前规则要求检查的生成标识候选；OCR 可能混淆 I/l/1，请核对原图与引用语境。",
                         s,
                         "AIMarkerDetector",
                     )
                 )
+        if "IMAGE_OCR" in rule.scope and parsed.image_jobs and not findings:
+            diagnostic = "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+            if diagnostic not in parsed.warnings:
+                parsed.warnings.append(diagnostic)
+            return []
     elif rule.detection_method == "visual":
         candidates = [
             s
@@ -301,16 +280,28 @@ def inspect_rule(rule, parsed, scopes):
                     "VisualCoverageGuard",
                 )
             )
-        if parsed.image_jobs and not candidates:
-            findings.append(
-                make(
-                    rule,
-                    "REVIEW",
-                    "尚未具备可靠的图形 Logo 识别能力；不是发现每张图片均有 Logo。",
-                    "图片或 OCR 未覆盖，不能判定无 Logo。",
-                    detector="VisualCoverageGuard",
+        if "images" in scopes:
+            for candidate in parsed.visual_candidates:
+                findings.append(
+                    make(
+                        rule,
+                        "REVIEW",
+                        candidate.text,
+                        "存在可定位徽章形状；候选不能证明机构身份或直接判违规。",
+                        candidate,
+                        candidate.metadata.get("detector", "GeometricBadgeCandidate"),
+                    )
                 )
-            )
+        if parsed.image_jobs:
+            if (
+                "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+                not in parsed.warnings
+            ):
+                parsed.warnings.append(
+                    "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+                )
+            if not findings:
+                return []
     elif rule.detection_method == "format":
         if rule.target not in ("max_pages", "readable"):
             return findings + [

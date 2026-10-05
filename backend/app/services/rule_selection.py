@@ -20,6 +20,9 @@ def selected_rules(ids, task=None):
             rule = deepcopy(original)
             # The same rule ID can occur in different imported files.
             rule["id"] = member["id"] + ":" + original["id"]
+            rule["rule_id"] = rule["id"]
+            rule["source_ruleset_id"] = member["id"]
+            rule["source_rule_set_id"] = member["id"]
             rule.setdefault("parameters", {}).update(
                 source_ruleset_id=member["id"],
                 source_ruleset_name=member["name"],

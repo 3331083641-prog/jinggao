@@ -205,7 +205,7 @@ def office_parse(path, fmt):
             if not name.endswith(".xml") or not name.startswith(("word/", "ppt/")):
                 continue
             if not re.search(
-                r"(document|header\d*|footer\d*|comments\d*|slide\d+|notesSlide\d+)\.xml$",
+                r"(document|header\d*|footer\d*|comments\d*|comment\d*|slide\d+|notesSlide\d+)\.xml$",
                 name,
             ):
                 continue
@@ -218,7 +218,7 @@ def office_parse(path, fmt):
                 else "FOOTER"
                 if "/footer" in name
                 else "COMMENT"
-                if "comments" in name
+                if "comments" in name or "/comment" in name
                 else "NOTES"
                 if "notesSlide" in name
                 else "HIDDEN_TEXT"

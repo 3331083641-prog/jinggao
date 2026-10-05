@@ -105,3 +105,25 @@ D 安全删除：下表中经用途和绝对路径核对的可再生成内容。
 - D:\jinggao\tests\generated\e2e-data：9318530 字节。
 
 补充下载缓存计划未执行：自动安全审查拒绝删除命令，返回 blocked by policy。上述 4 个目录仍保留，未计入释放空间；全部被 Git 忽略。50 MiB 尺寸测试已通过 finally 自行删除临时 fixture。
+
+## 2026-10-05 比赛终版清理审计
+
+计划仅清理 Python/Ruff 可重建缓存；当前依赖、用户原稿和数据库、最新验收证据和源代码保留，均不随源码提交。
+
+|路径|字节|用途 / 删除依据|
+|---|---:|---|
+|backend\app\__pycache__|23587|可重建编译 / 测试缓存|
+|backend\app\core\__pycache__|3784|可重建编译 / 测试缓存|
+|backend\app\detectors\__pycache__|40266|可重建编译 / 测试缓存|
+|backend\app\parsers\__pycache__|16431|可重建编译 / 测试缓存|
+|backend\app\reports\__pycache__|16079|可重建编译 / 测试缓存|
+|backend\app\rules\__pycache__|3187|可重建编译 / 测试缓存|
+|backend\app\schemas\__pycache__|5625|可重建编译 / 测试缓存|
+|backend\app\services\__pycache__|93421|可重建编译 / 测试缓存|
+|backend\app\services\rule_compiler\__pycache__|10303|可重建编译 / 测试缓存|
+|backend\app\tasks\__pycache__|12000|可重建编译 / 测试缓存|
+|tests\__pycache__|232616|可重建编译 / 测试缓存|
+|.pytest_cache|13554|可重建编译 / 测试缓存|
+|.ruff_cache|2728|可重建编译 / 测试缓存|
+
+计划文件长度合计：473581 字节。自动审批审查拒绝递归删除命令，返回 blocked by policy；本轮没有删除，没有释放空间，不绕过拒绝。所有缓存均不进入Git。

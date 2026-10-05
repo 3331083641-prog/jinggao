@@ -1,5 +1,15 @@
 # 当前完成度
 
+## 2026-10-05 升级
+
+新增可审查规则编译器与 loopback-only 可选模型、原文确认校验、安全整改预览/副本/同快照自动复检、证据级 Diff、实际 Coverage Matrix、分层实体识别、规则门控图形候选、本地可选 Vision、报告证据裁图与 Benchmark v2。保留原6页、Three.js、删除、多规则、人工判断、连续阅读和独立系统诊断。
+
+本轮真实浏览器已完成“导入元数据规则 → 确认 → PDF上传 → Evidence/Coverage → 清理副本 → Run2 → 旧新证据 → 副本下载 → PDF报告”。全量测试与CI状态以 TEST_REPORT 和 GitHub Actions 实际记录为准。
+
+真实限制仍保留：本轮未配置/验收具体 LLM 或 VLM 权重；语义模型不能新增自动目标。跨章节条件/例外 MANUAL，图形 Logo/有限实体 PARTIAL，OCR 忽略的损坏字形没有可靠完备识别。清理不改正文，修订内容保留。根许可 BLOCKER，不假称已完成整个作品开源授权。
+
+以下为上轮验收历史记录。
+
 2026-10-04。净稿当前为可在 Windows 本机运行的六页应用：React / TypeScript / Vite、FastAPI、SQLite、本地 RapidOCR、PDF.js 与程序化 Three.js 首页。
 
 ## 本轮已验证

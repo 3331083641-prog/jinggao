@@ -24,6 +24,9 @@ import {
 import { Dialog } from "../components/Dialog";
 import { DocumentViewer } from "../components/DocumentViewer";
 import { FindingsList } from "../components/FindingsList";
+import { CoverageMatrix } from "../components/CoverageMatrix";
+import { RemediationPanel } from "../components/RemediationPanel";
+import { RunDiffPanel } from "../components/RunDiffPanel";
 import { useTasks, useRun, api, date, bytes, reportUrl } from "../api";
 import type { Finding, Task } from "../types";
 export function Workspace({ scanning = false }: { scanning?: boolean }) {
@@ -47,6 +50,15 @@ export function Workspace({ scanning = false }: { scanning?: boolean }) {
     setSelected(undefined);
     setFilter("ALL");
   }, [id]);
+  useEffect(() => {
+    const finding = run?.findings.find(
+      (f) => f.id === searchParams.get("finding"),
+    );
+    if (finding) {
+      setSelected(finding);
+      setLocateVersion((value) => value + 1);
+    }
+  }, [id, run?.state, searchParams]);
   const qc = useQueryClient();
   const { data: task } = useQuery({
     queryKey: ["task", run?.task_id],
@@ -387,15 +399,7 @@ export function Workspace({ scanning = false }: { scanning?: boolean }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2>整改 — 复检</h2>
-              <p>
-                依据右侧证据修改原材料；上传整改版本后保留当前
-                Run，并生成独立结果。
-              </p>
-              <Link to={recheck} className="button primary">
-                上传整改版本
-                <RefreshCw size={16} />
-              </Link>
+              <RemediationPanel key={run.id} run={run} recheck={recheck} />
             </motion.div>
           )}
         </div>
@@ -471,6 +475,8 @@ export function Workspace({ scanning = false }: { scanning?: boolean }) {
           </dl>
         </Dialog>
       )}
+      {!scanning && <CoverageMatrix run={run} />}
+      {!scanning && <RunDiffPanel run={run} />}
       {!!run.diagnostics?.length && (
         <details className="disclosure system-diagnostics">
           <summary>系统诊断（{run.diagnostics.length}）· 不计为违规</summary>

@@ -1,5 +1,11 @@
 # 开源及第三方资源使用清单
 
+## 2026-10-05 增量
+
+未安装新依赖；自研有边界规则编译、loopback Provider、结构清理副本、Coverage、证据Diff、视觉候选策略与报告增强。新增直接用途：lxml 6.1.3 / https://github.com/lxml/lxml（BSD-3-Clause，安全XML结构处理）；OpenCV Python 5.0.0.93 / https://github.com/opencv/opencv-python（Apache-2.0及原包第三方条款，紧凑徽章候选）；Pillow 12.3.0（MIT-CMU，局部图片）；pypdf 5.5.0（BSD-3-Clause，PDF属性副本）；pypdfium2 5.13.0（见完整许可审计，真实证据裁图）；HTTPX 0.28.1（BSD-3-Clause，显式配置本机模型）。上游源码均未修改，精确版本仍由锁文件与inventory确认。
+
+LocalRuleModelProvider / LocalVisionProvider 是自主接口适配器，不是附带或自训大模型；没有本地 LLM/VLM 权重实测结论。Qwen等仅可由用户自行安装配置，未绑定、下载、再分发。CI安装工具不构成模型权重随源码发布。
+
 准确依赖版本见 backend/requirements.txt、frontend/package-lock.json。完整安装环境与许可证逐包导出在 license_inventory.json；审计见 OPEN_SOURCE_LICENSE_AUDIT.md。
 
 | 项目 | 来源 | 使用方式 | 自主实现边界 |

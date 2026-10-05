@@ -60,7 +60,7 @@ def git(*args):
 
 def candidates():
     result = []
-    for base in ["frontend", "backend", "tests", "scripts", "docs", "benchmark"]:
+    for base in ["frontend", "backend", "tests", "scripts", "docs", "benchmark", ".github"]:
         for path in (ROOT / base).rglob("*"):
             if not path.is_file():
                 continue

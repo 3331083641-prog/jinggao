@@ -1,0 +1,1204 @@
+{
+  "version": 2,
+  "dataset": "56 synthetic sentences + 30 generated documents; no private uploads",
+  "boundary": "Candidate metrics count evidence-backed FAIL+REVIEW; confirmed_fail metrics count only FAIL against seeded risk labels. Neither is real-world accuracy. Unknown is not PASS. OCR can normalize damaged glyphs: measured misses remain in results.",
+  "sentence": {
+    "count": 56,
+    "candidate_metrics": {
+      "tp": 37,
+      "fp": 5,
+      "fn": 0,
+      "tn": 14,
+      "precision": 0.8809523809523809,
+      "recall": 1.0,
+      "f1": 0.9367088607594937,
+      "false_positive": 5,
+      "false_negative": 0,
+      "false_pass": 0,
+      "false_pass_rate": 0.0
+    },
+    "confirmed_fail_metrics": {
+      "tp": 29,
+      "fp": 0,
+      "fn": 8,
+      "tn": 19,
+      "precision": 1.0,
+      "recall": 0.7837837837837838,
+      "f1": 0.8787878787878788,
+      "false_positive": 0,
+      "false_negative": 8,
+      "false_pass": 0,
+      "false_pass_rate": 0.0
+    },
+    "cases": [
+      {
+        "target": "organization",
+        "text": "作者单位：青岚大学。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "作者就读于石溪学院。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "学校：海桥研究院。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "隶属星河实验室。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "本校为枫叶大学。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "通讯单位：晴川研究所。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "本研究在青岚大学开展。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "匿名研究团队。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "本文讨论通用文档算法。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "这是一份无单位信息的材料。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "contact",
+        "text": "邮箱：bench@example.net",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "contact",
+        "text": "联系方式：test+lab@example.com",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "contact",
+        "text": "电话：13900000000",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "contact",
+        "text": "联系手机号 15800000000",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "contact",
+        "text": "身份证明：110101199001011234",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "contact",
+        "text": "支持多个通信协议。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "contact",
+        "text": "公式系数为 1234567890。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "contact",
+        "text": "该研究使用公开数据。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "person",
+        "text": "作者：王测试",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "person",
+        "text": "指导教师：李样本",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "person",
+        "text": "通讯作者：陈验证",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "person",
+        "text": "导师：赵验证",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "person",
+        "text": "感谢孙样本老师",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "person",
+        "text": "该段未包含姓名。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "funding",
+        "text": "项目编号：DEMO202612",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "funding",
+        "text": "基金（SYNTH202601）",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "funding",
+        "text": "致谢",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "funding",
+        "text": "实验比较两种方法。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "本研究由北大团队完成。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "Author affiliation: Example University.",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "作者单位：中科院某研究中心。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "person",
+        "text": "王实验负责本文撰写。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "contact",
+        "text": "联系号码：010-87654321",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "funding",
+        "text": "受 NSFC 12345678 支持。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "参考文献引用了青岚大学的公开成果。",
+        "expected_risk": false,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "引用资料来自星河实验室。",
+        "expected_risk": false,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "school_name",
+        "text": "作者就读于清华。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "school_name",
+        "text": "本研究由北大团队开展。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "隶属中科院实验中心。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "Affiliation: School of Synthetic Science.",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "Author affiliation: Department of Synthetic Engineering.",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "作者单位：合成重点实验室。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "隶属合成科研研究中心。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "telephone",
+        "text": "电话：0371-87654321",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "telephone",
+        "text": "联系电话：010-87654321",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "project_number",
+        "text": "Supported by NSFC 12345678.",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "author_name",
+        "text": "王样本负责本文撰写。",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "References: Example University Press, 2020.",
+        "expected_risk": false,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "school_name",
+        "text": "参考文献：清华团队的公开成果。",
+        "expected_risk": false,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "school_name",
+        "text": "引用资料来自北大，非作者归属。",
+        "expected_risk": false,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW",
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "school_name",
+        "text": "中科院研究所",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "school_name",
+        "text": "Department of Synthetic Science",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "contact",
+        "text": "参数编号为 1234567890。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "person",
+        "text": "王方程是这里的算法名。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "funding",
+        "text": "实验参数 NSFC 123 并非项目号。",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      },
+      {
+        "target": "organization",
+        "text": "General anonymous material without affiliations.",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ]
+      }
+    ]
+  },
+  "document": {
+    "count": 30,
+    "candidate_metrics": {
+      "tp": 15,
+      "fp": 0,
+      "fn": 6,
+      "tn": 9,
+      "precision": 1.0,
+      "recall": 0.7142857142857143,
+      "f1": 0.8333333333333333,
+      "false_positive": 0,
+      "false_negative": 6,
+      "false_pass": 0,
+      "false_pass_rate": 0.0
+    },
+    "confirmed_fail_metrics": {
+      "tp": 12,
+      "fp": 0,
+      "fn": 9,
+      "tn": 9,
+      "precision": 1.0,
+      "recall": 0.5714285714285714,
+      "f1": 0.7272727272727273,
+      "false_positive": 0,
+      "false_negative": 9,
+      "false_pass": 0,
+      "false_pass_rate": 0.0
+    },
+    "cases": [
+      {
+        "format": "pdf",
+        "case": "normal",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ],
+        "ocr_regions": 0,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+        ]
+      },
+      {
+        "format": "pdf",
+        "case": "identity",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ],
+        "ocr_regions": 0,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+        ]
+      },
+      {
+        "format": "pdf",
+        "case": "metadata",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ],
+        "ocr_regions": 0,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+        ]
+      },
+      {
+        "format": "pdf",
+        "case": "image_identity",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+        ]
+      },
+      {
+        "format": "pdf",
+        "case": "ai_watermark",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+        ]
+      },
+      {
+        "format": "pdf",
+        "case": "normal_small_font",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "pdf",
+        "case": "normal_chart",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "pdf",
+        "case": "garbled",
+        "expected_risk": true,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "pdf",
+        "case": "missing_glyph",
+        "expected_risk": true,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "normal",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ],
+        "ocr_regions": 0,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "identity",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ],
+        "ocr_regions": 0,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "metadata",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL"
+        ],
+        "ocr_regions": 0,
+        "coverage": "VERIFIED",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "image_identity",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "ai_watermark",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "normal_small_font",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "normal_chart",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "garbled",
+        "expected_risk": true,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "missing_glyph",
+        "expected_risk": true,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "hidden_text",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL"
+        ],
+        "ocr_regions": 0,
+        "coverage": "VERIFIED",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "comment",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL"
+        ],
+        "ocr_regions": 0,
+        "coverage": "VERIFIED",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "docx",
+        "case": "revision",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL"
+        ],
+        "ocr_regions": 0,
+        "coverage": "VERIFIED",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "pptx",
+        "case": "normal",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ],
+        "ocr_regions": 0,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "pptx",
+        "case": "identity",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ],
+        "ocr_regions": 0,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "pptx",
+        "case": "metadata",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "FAIL"
+        ],
+        "ocr_regions": 0,
+        "coverage": "VERIFIED",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "pptx",
+        "case": "image_identity",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": true,
+        "actual_pass": false,
+        "statuses": [
+          "FAIL",
+          "REVIEW"
+        ],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "pptx",
+        "case": "ai_watermark",
+        "expected_risk": true,
+        "candidate": true,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [
+          "REVIEW"
+        ],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+        ]
+      },
+      {
+        "format": "pptx",
+        "case": "normal_small_font",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "pptx",
+        "case": "normal_chart",
+        "expected_risk": false,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "pptx",
+        "case": "garbled",
+        "expected_risk": true,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      },
+      {
+        "format": "pptx",
+        "case": "missing_glyph",
+        "expected_risk": true,
+        "candidate": false,
+        "confirmed_fail": false,
+        "actual_pass": false,
+        "statuses": [],
+        "ocr_regions": 1,
+        "coverage": "PARTIAL",
+        "diagnostics": [
+          "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+          "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+        ]
+      }
+    ]
+  },
+  "seconds": 16.185
+}

@@ -35,6 +35,9 @@ def generate(run, document):
         p(document["name"], heading),
         p("检测时间：" + run["created_at"]),
         p(
+            f"文件格式：{document['format']} · {document['size']} bytes · SHA-256 {document['sha256']}"
+        ),
+        p(
             "规则集："
             + run["ruleset_snapshot"]["name"]
             + " · "
@@ -85,10 +88,107 @@ def generate(run, document):
     )
     if run.get("error"):
         story.append(p(run["error"]))
+    story.append(p("规则快照与原文", heading))
+    for rule in run["ruleset_snapshot"]["rules"]:
+        story.extend(
+            [
+                p(rule["description"], heading),
+                p(
+                    "原文："
+                    + (
+                        rule.get("original_text")
+                        or rule.get("source_clause")
+                        or "用户直接创建规则"
+                    )
+                ),
+                p(
+                    "来源："
+                    + (
+                        rule.get("source_document")
+                        or rule.get("parameters", {}).get("source_file")
+                        or run["ruleset_snapshot"].get("source", "")
+                    )
+                ),
+                p(
+                    "位置："
+                    + (
+                        f"第 {rule['source_page']} 页 · "
+                        if rule.get("source_page")
+                        else ""
+                    )
+                    + rule.get("source_section", "")
+                ),
+                p("规则 ID：" + rule["id"] + "；检测范围：" + ", ".join(rule["scope"])),
+            ]
+        )
+        if rule.get("condition") or rule.get("exception"):
+            story.append(
+                p(
+                    "条件/例外："
+                    + rule.get("condition", "")
+                    + "；"
+                    + rule.get("exception", "")
+                )
+            )
+    story.append(p("检测覆盖", heading))
+    if run.get("coverage_matrix"):
+        rows = [[p("规则"), p("状态"), p("Detector / 范围"), p("覆盖说明")]]
+        for entry in run["coverage_matrix"]:
+            rows.append(
+                [
+                    p(entry["rule"]),
+                    p(entry["status"]),
+                    p(
+                        " / ".join(entry["detectors"])
+                        + "\n"
+                        + " / ".join(entry["scope"])
+                    ),
+                    p(entry["coverage"]),
+                ]
+            )
+        matrix = Table(rows, colWidths=[140, 65, 120, 155], repeatRows=1, splitInRow=1)
+        matrix.setStyle(
+            TableStyle(
+                [
+                    ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                    ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#f5f2eb")),
+                    ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
+                ]
+            )
+        )
+        story.append(matrix)
+    else:
+        story.append(p("此历史 Run 未保存覆盖矩阵，不推测已验证范围。"))
+    if run.get("remediation"):
+        story.append(p("安全整改副本", heading))
+        story.append(p("原文件 SHA-256：" + run["remediation"]["source_sha256"]))
+        for change in run["remediation"].get("changes", []):
+            story.append(p(change["description"] + " · " + change["location"]))
+    if run.get("parent_run_id"):
+        from app.services.run_diff import compare_runs
+
+        before = db.get("runs", run["parent_run_id"])
+        if before:
+            diff = compare_runs(before, run)
+            story.append(p("Run 对比与证据变化", heading))
+            for status, counts in diff["counts"].items():
+                story.append(p(f"{status}：{counts['before']} → {counts['after']}"))
+            story.append(p(diff["note"]))
+            if not diff["comparable"]:
+                story.append(
+                    p("快照、范围或完成状态不同，不将数值变化解释为整改效果。")
+                )
+            for pair in diff["pairs"]:
+                story.append(p("变化：" + pair["category"]))
+                if pair["before"]:
+                    story.append(p("旧 Evidence：" + pair["before"]["evidence"]))
+                if pair["after"]:
+                    story.append(p("新 Evidence：" + pair["after"]["evidence"]))
     if run.get("diagnostics"):
         story.append(p("系统诊断（不计为违规）", heading))
         for diagnostic in run["diagnostics"]:
             story.append(p(diagnostic["evidence"]))
+    crops = 0
     for f in run["findings"]:
         rule = next(
             (r for r in run["ruleset_snapshot"]["rules"] if r["id"] == f["rule_id"]), {}
@@ -105,11 +205,23 @@ def generate(run, document):
                 ),
                 p("证据：" + f["evidence"]),
                 p("位置：" + f["location"]),
+                p(
+                    f"页码：{f['page']}"
+                    if f.get("page")
+                    else "无可靠页码；使用结构位置"
+                ),
                 p("检测器：" + f["detector"] + f" / 置信度 {f['confidence']:.2f}"),
                 p("判断：" + f["reason"]),
                 p("整改建议：" + f["suggestion"]),
             ]
         )
+        if crops < 6 and f["status"] != "PASS":
+            from app.reports.evidence_image import evidence_image
+
+            crop = evidence_image(document, f)
+            if crop is not None:
+                story.append(crop)
+                crops += 1
         if f.get("resolution"):
             story.append(
                 p(

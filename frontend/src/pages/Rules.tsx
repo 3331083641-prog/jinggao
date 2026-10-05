@@ -583,6 +583,7 @@ export function Rules() {
                           <select
                             aria-label={`条款 ${i + 1} 检测方式`}
                             value={r.detection_method}
+                            disabled={!!(r.condition || r.exception)}
                             onChange={(e) =>
                               setDraft(
                                 (d) =>
@@ -616,9 +617,27 @@ export function Rules() {
                                   )?.confidence || 0) * 100,
                                 ) +
                                 "%"
-                              : "格式条款"}
+                              : "原文映射 · 待确认"}
                           </span>
                         </div>
+                        {r.condition && (
+                          <p className="muted">适用条件：{r.condition}</p>
+                        )}
+                        {r.exception && (
+                          <p className="muted">例外：{r.exception}</p>
+                        )}
+                        {r.coverage_expectation && (
+                          <p className="muted">
+                            覆盖：{r.coverage_expectation}
+                          </p>
+                        )}
+                        {typeof r.parameters.semantic_suggestion ===
+                          "string" && (
+                          <p className="muted">
+                            本地模型建议（不改变执行权限）：
+                            {r.parameters.semantic_suggestion}
+                          </p>
+                        )}
                       </details>
                     </div>
                   ))}

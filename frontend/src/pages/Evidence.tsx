@@ -22,6 +22,7 @@ import {
   Notice,
 } from "../components/ui";
 import { DocumentViewer } from "../components/DocumentViewer";
+import { CoverageMatrix } from "../components/CoverageMatrix";
 export function Evidence() {
   const { runId } = useParams();
   const { data: run, error } = useRun(runId);
@@ -95,6 +96,7 @@ export function Evidence() {
           </span>
         </div>
       </section>
+      <CoverageMatrix run={run} />
       <RiskSummary
         run={run}
         wide

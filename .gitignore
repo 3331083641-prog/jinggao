@@ -61,3 +61,8 @@ docs/*.json
 # Local release receipt is written after push so it can contain the exact SHA.
 FINAL_REFACTOR_REPORT.md
 frontend/vite.live-review.config.ts
+FINAL_COMPETITION_UPGRADE_REPORT.md
+public/models/
+*.onnx
+*.safetensors
+*.pt

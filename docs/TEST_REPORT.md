@@ -1,5 +1,28 @@
 # 测试报告
 
+## 2026-10-05 比赛终版升级
+
+| 验证 | 结果 |
+|---|---|
+| 完整后端 pytest | 121 passed（原74项保留，新增47项） |
+| Ruff backend/app tests | PASS |
+| 前端 lint / Prettier | PASS |
+| Typecheck | PASS |
+| Production build | PASS；既有 Three.js 懒加载包体积提醒保留 |
+| 完整 Playwright | 76 passed，9.5分钟；原73项 + 新闭环3尺寸 |
+| 最后副本流程 smoke | 1 passed；最新代码重新验收 |
+| 发布候选及 HEAD 历史扫描 | 无凭证/私人标识，候选无大于10MB文件 |
+
+新增测试：loopback拒绝公网/凭证URL、未配置模型fallback、原文授权/不能增加目标/扩大范围/删除条件例外、条件/许可/references、结构副本原SHA/可重开/修订内容保留/危险链接、同快照Run N+1、不同快照不判转PASS、实际覆盖状态、视觉门控与候选仅REVIEW、英文/高校简称/科研机构/固话/NSFC/无标签姓名、引用难负、真实/不可验证bbox裁图。
+
+新增浏览器闭环实际操作规则导入确认、PDF上传、Evidence/Coverage、整改预览、生成副本、自动复检、旧新Evidence链接、下载副本、PDF报告和六页导航。三个尺寸均执行；原89页阅读/95Finding独立滚动、连续缩略图、定位、页面切换不重建Viewer、Three.js动画/生命周期/WebGL降级与视觉基线仍通过。
+
+第一轮浏览器失败来自基金编号误降级及其后测试服务中断；已修正明确项目编号的证据决策并重新完整运行，以上只统计后一次76项成功，不把失败算通过。两项非失败Python警告为上游 TestClient deprecated alias 与 sklearn/SciPy solver iprint。
+
+Benchmark v2见专门报告：图片损坏字形漏检仍真实保留，标PARTIAL而非PASS。模型Provider授权测试使用模拟响应；本轮没有具体LLM/VLM权重的质量测试。GitHub CI 状态以本仓库 Actions 实际运行记录为准，不用本地通过冒充远端通过。
+
+以下保留上轮历史结果。
+
 2026-10-04 · 本轮最终运行。测试使用独立 SQLite 与自研合成材料；真实文件的明细和截图仅保存在被忽略的本机目录。
 
 | 验证 | 结果 |

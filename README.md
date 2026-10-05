@@ -2,11 +2,36 @@
 
 科研竞赛材料智能合规助手。用于提交前自查，帮助把规则、真实文档证据和整改复检放在一起。
 
+[![Jinggao CI](https://github.com/3331083641-prog/jinggao/actions/workflows/ci.yml/badge.svg)](https://github.com/3331083641-prog/jinggao/actions/workflows/ci.yml)
+
+核心能力：规则原文编译与确认、STRICT_CUSTOM 隔离、本地 OCR、真实证据定位、检测覆盖、安全整改副本、独立复检与证据级 Diff、PDF 报告。保留六页界面与首页 Three.js 品牌场景。
+
+产品截图在本机运行浏览器验收后生成于 `review_screenshots/competition-upgrade/`，不发布用户文档截图或未经授权的设计参考图。可按下方 Quick Start 直接体验真实界面。
+
 ## 核心问题与能力
 
 匿名评审与科研竞赛的要求散落在格式说明、模板和附件中，正文以外还可能保留属性、批注和隐藏内容。净稿支持 PDF / DOCX / PPTX / TXT / MD，导入 PDF / DOCX / TXT / MD 规则（旧 DOC 可选使用本机 Word 转换），提供原文证据、规则溯源、连续阅读、独立 Run 复检与 PDF 报告。
 
 流程：导入规则 → 确认条款 → 上传材料 → 检测 → 定位证据 → 人工判断 → 整改后复检 → 导出报告。规则与报告可以删除；删除报告不删除原始检测证据。
+
+## Quick Start
+
+需要 Python 3.12 和 Node.js 22.12+。首次安装需要联网下载依赖；之后材料处理在本机进行。
+
+```powershell
+python -m venv backend/.venv
+backend/.venv/Scripts/python.exe -m pip install -r backend/requirements.lock.txt
+npm.cmd --prefix frontend ci
+```
+
+两个终端分别启动：
+
+```powershell
+backend/.venv/Scripts/python.exe -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000
+npm.cmd --prefix frontend run dev
+```
+
+打开 http://127.0.0.1:5173 。数据库自动建表，不需要用户数据库。`JINGGAO_DATA_DIR` 和 `JINGGAO_API_ORIGIN` 可以覆盖本地目录与代理；配置样例不会自动加载，不含密钥。
 
 ## 规则机制
 
@@ -15,6 +40,16 @@
 规则文件完整解析并保存来源结构。明确要求映射为可执行 Schema；未实现的要求、条件与例外保留原文，交给用户确认和人工核对。标题、年份、背景介绍不会自动成为规则。确认后才保存生效；**不声称已经自动理解所有自然语言规则**。单次最多 100 项，超出明确报错，不截断条款。
 
 每个 Run 保存规则快照、`rule_set_id`、`rule_ids_executed`、`detectors_executed` 和执行模式。每个合规 Finding 关联当前 Rule，Rule 保留 `original_text`、来源文件、真实来源页码（可取得时）、章节及范围。无法确定的 DOCX 页码不会编造。
+
+编译器先对完整抽取文本确定性提取，再为每条原文建立条件、例外、目标、范围和溯源。可选本地 LLM 只能提出语义注释，不增加条款、扩大范围或改变检测参数；校验不通过即退回确定性草案。只接受 loopback 地址；**默认不调用任何 LLM，不连接 OpenAI/Claude/Gemini，不上传材料到公网**。没有 LLM 时全部主要流程可运行。配置与边界见 [RULE_COMPILER](docs/RULE_COMPILER.md)。
+
+## 检测、整改与报告
+
+“检测覆盖”默认折叠，逐条显示 VERIFIED / PARTIAL / MANUAL / UNAVAILABLE；VERIFIED 是实现范围已检查，不等于合规 PASS。图像语义、启发式实体和 OCR 原图字形不能冒称完整覆盖。
+
+整改 Tab 可选择清理、预览结构变化、生成 `filename.cleaned.ext` 并自动复检。同一规则快照与范围产生 Run N+1，原文件 SHA 不变。PDF 只清理安全元数据；DOCX/PPTX 清理支持的 Office 结构。修订只移除作者/日期，保留内容；正文身份、公式、引用、图片不自动改。加密、签名、表单 PDF、带宏/签名 Office 拒绝自动修改。见 [CLEANUP_ENGINE](docs/CLEANUP_ENGINE.md)。
+
+Diff 保留旧、新 Evidence，区分消失、仍存在、新增和状态转换。仅同快照、同范围、已完成且新检查 VERIFIED + 实际 PASS 才列为“转通过”。PDF 报告含原文规则、来源、覆盖、人工记录、系统诊断、整改和 Diff；局部截图只来自已验证 PDF 坐标。
 
 ## PASS / REVIEW / FAIL
 
@@ -34,26 +69,18 @@ OCR 置信度单独偏低不产生 REVIEW。质量分析依据替换字符、缺
 
 React 19 + TypeScript + Vite → FastAPI → SQLite WAL。PDF.js 预览；pdfplumber / pypdf 和 OOXML 提取真实 Surface；RapidOCR ONNX 在本机识别文字；规则驱动 Detector；ReportLab 导出报告。scikit-learn 仅提供局部语境辅助，不能授权新增规则或改写检测结论。首页 Three.js Hero 与业务检测分离。
 
-## 快速运行
-
-需要 Python 3.11+、Node.js 20.19+ 或 22.12+。首次安装依赖需网络；运行和材料处理在本机完成。
-
-```powershell
-python -m venv backend/.venv
-backend/.venv/Scripts/python.exe -m pip install -r backend/requirements.lock.txt
-npm.cmd --prefix frontend ci
+```mermaid
+flowchart LR
+  A[规则全文] --> B[编译与原文校验]
+  B --> C[用户确认与快照]
+  C --> D[Surface / OCR / 所选 Detector]
+  D --> E[Evidence / Coverage / Diagnostic]
+  E --> F[人工判断与安全副本]
+  F --> G[同快照独立复检]
+  G --> H[证据 Diff / PDF 报告]
 ```
 
-两个终端分别运行：
-
-```powershell
-backend/.venv/Scripts/python.exe -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000
-npm.cmd --prefix frontend run dev
-```
-
-打开 http://127.0.0.1:5173 。数据库与上传目录在首次启动时自动创建，无需下载用户数据库。可用 `JINGGAO_DATA_DIR` 指定本地数据目录；前端 API 代理可用 `JINGGAO_API_ORIGIN` 覆盖默认地址。
-
-配置样例见 `backend/.env.example` 与 `frontend/.env.example`，不包含密钥。程序不自动加载这些样例；需要覆盖默认值时，在启动终端中设置，例如 `$env:JINGGAO_API_ORIGIN = "http://127.0.0.1:8000"`。数据目录的相对路径以进程工作目录为准。
+自主增量是规则授权边界、可验证覆盖、安全副本和证据闭环；开源 OCR 承担真实神经网络推理。可选本地语义/视觉 Provider 未随仓库附带模型，不宣称其已达到通用规则理解或 Logo 识别精度。
 
 ## 测试
 
@@ -74,6 +101,14 @@ node frontend/node_modules/@playwright/test/cli.js install chromium
 ```
 
 测试使用独立数据库和合成材料，覆盖规则隔离、真实 OCR、上传、删除、复检、报告、89 页连续阅读和 95 项独立滚动。`tests/build_review_fixtures.py` 可生成合成阅读与 OCR 样例；读取本机字体但不复制分发字体。
+
+GitHub Actions 分别执行后端 pytest/Ruff/Benchmark、前端格式/类型/构建及关键浏览器闭环。完整浏览器套件在本机运行，保留 1920×1080、1440×900、1366×768 验收。具体运行记录见 [TEST_REPORT](docs/TEST_REPORT.md)。
+
+## Benchmark
+
+原 `benchmark/results.json` 保留。`backend/.venv/Scripts/python.exe benchmark/v2.py` 生成 `results_v2.json`：56 条合成句、30 个实际 PDF/DOCX/PPTX，包含身份、属性、隐藏、批注、修订、图片文字、水印与正常小字/图表。
+
+候选召回（FAIL+REVIEW）和确定 FAIL 分开统计；未判 FAIL 的人工候选不冒称最终识别成功。原图损坏字形可能被 OCR 忽略，漏检保留，PARTIAL 不算 PASS。公开指标、误报漏报和边界见 [BENCHMARK_V2](docs/BENCHMARK_V2.md)，不能外推真实赛事材料准确率。
 
 ## 本地隐私与发布边界
 
