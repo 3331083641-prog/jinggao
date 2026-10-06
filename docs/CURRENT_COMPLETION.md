@@ -2,6 +2,8 @@
 
 ## 2026-10-06 终版收口候选
 
+候选功能提交22ac6cc已通过128项pytest、76项完整Playwright和[实际远端CI](https://github.com/3331083641-prog/jinggao/actions/runs/37414817762)，已push master。主线停止增加功能；最终文档提交的HEAD/CI继续单独核验。根许可和团队标签审核未完成，所以冻结的是可审查候选，不冒称正式Release已经成立。
+
 保留现有检测/阅读/整改/报告/UI主线，只新增复现实验与发布证据：真实本机 Ollama Qwen3.5 4B 规则注释评测（60条）、120句＋84份实际文件冻结合成Hold-out、数据及检测代码哈希、真实脱敏截图、许可范围与Release门槛。模型只读精确原文，loopback限制保持，缺省不开启模型；条件/例外与执行授权无扩权。
 
 模型实验已执行，但大量输出不符合规则数组契约，授权指标没有提升。Hold-out与开发fixture分离，未依据结果修改检测器；标签仍待团队人工复核，不声称外部人类盲测。详见 RULE_COMPILER_EVALUATION 与 HOLDOUT_BENCHMARK；最终本轮检查见 TEST_REPORT。

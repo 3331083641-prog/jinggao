@@ -5,10 +5,10 @@
 - [ ] 团队确认自主成果权利和全体共同权利人 MIT 授权
 - [ ] 根 LICENSE 与 LICENSE_SCOPE 一致
 - [ ] 团队复核合成规则与 Hold-out 标签（当前为 Codex 编写，不冒称人类盲标）
-- [ ] 本轮全量 pytest、Ruff、前端检查与完整 Playwright 实际通过
-- [ ] 当前 master HEAD 的 GitHub Actions 实际绿色
-- [ ] 发布树无用户材料、数据库、密钥、模型权重、缓存和参考原图
-- [ ] README 三张截图均来自真实合成数据运行
+- [x] 本轮全量 pytest 128、Ruff、前端检查与完整 Playwright 76 实际通过
+- [x] 终版功能提交22ac6cc的GitHub Actions实际绿色（37414817762；最终HEAD另核验）
+- [x] 发布树无用户材料、数据库、密钥、模型权重、缓存和参考原图
+- [x] README 三张截图均来自真实合成数据运行
 - [ ] 发布 tag 指向已验证的 master SHA
 
 当前版权确认未完成，**不创建正式 Release**。工程验证完成后可冻结候选源码，等待团队确认；公开 GitHub 不替代许可证授权。

@@ -25,7 +25,7 @@
 
 冻结数据哈希保留首次运行值；只兼容Git的LF/CRLF等价转换，不允许内容换题。全批Hold-out结果不因后续smoke重写；模拟越权测试和真实模型效果分开披露。模型JSON低接受率、实体/引用误报、图像字形漏检均公开。
 
-最新master的远端CI需在本次push后实际核验，动态结果见[GitHub Actions](https://github.com/3331083641-prog/jinggao/actions/workflows/ci.yml)。本地通过不冒充远端通过；推送SHA与实际Actions运行写入本机最终收口报告。
+终版功能提交22ac6cc606e1064b6cd08225409469bf384c0244已push并完成[真实GitHub Actions](https://github.com/3331083641-prog/jinggao/actions/runs/37414817762)：backend、frontend、browser-smoke全部success，完整Hold-out手动job按配置skipped。远端从新checkout安装锁定依赖，通过pytest/Ruff/v2/规则编译确定性/冻结Hold-out smoke及前端检查和两个关键浏览器闭环。最新master状态继续以[动态Actions](https://github.com/3331083641-prog/jinggao/actions/workflows/ci.yml)核验；本地通过不冒充远端通过，最终HEAD及其CI运行写入本机收口报告。
 
 
 ## 2026-10-06 CI 路径修复
