@@ -1,0 +1,5276 @@
+{
+  "version": 1,
+  "annotation_status": "Codex-authored explicit semantic labels; team human sign-off pending, not claimed as independently human-labelled",
+  "case_count": 60,
+  "deterministic": {
+    "metrics": {
+      "rule_count_accuracy": {
+        "correct": 56,
+        "total": 60,
+        "rate": 0.9333333333333333
+      },
+      "target_accuracy": {
+        "correct": 29,
+        "total": 60,
+        "rate": 0.48333333333333334
+      },
+      "scope_preservation": {
+        "correct": 46,
+        "total": 60,
+        "rate": 0.7666666666666667
+      },
+      "condition_preservation": {
+        "correct": 57,
+        "total": 60,
+        "rate": 0.95
+      },
+      "exception_preservation": {
+        "correct": 47,
+        "total": 60,
+        "rate": 0.7833333333333333
+      },
+      "requirement_type_accuracy": {
+        "correct": 57,
+        "total": 60,
+        "rate": 0.95
+      },
+      "source_grounding_accuracy": {
+        "correct": 57,
+        "total": 60,
+        "rate": 0.95
+      }
+    },
+    "cases": [
+      {
+        "id": "RC001",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现学校名称。",
+            "normalized_requirement": "正文不得出现学校名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.004
+      },
+      {
+        "id": "RC002",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得包含作者姓名。",
+            "normalized_requirement": "附录不得包含作者姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC003",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "logo",
+            "scope": [
+              "IMAGE_OCR",
+              "LOGO"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面不得出现学校 Logo。",
+            "normalized_requirement": "封面不得出现学校 Logo。",
+            "detection_method": "visual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC004",
+        "quality": {
+          "rule_count_accuracy": false,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 2,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "文档属性中不得保留作者姓名。",
+            "normalized_requirement": "文档属性中不得保留作者姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          },
+          {
+            "target": "metadata",
+            "scope": [
+              "METADATA"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "文档属性中不得保留作者姓名。",
+            "normalized_requirement": "文档属性中不得保留作者姓名。",
+            "detection_method": "presence",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.002
+      },
+      {
+        "id": "RC005",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "hidden",
+            "scope": [
+              "HIDDEN_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "Word 隐藏文字中不得出现身份信息。",
+            "normalized_requirement": "Word 隐藏文字中不得出现身份信息。",
+            "detection_method": "presence",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC006",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 2,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "IMAGE_OCR"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "图片中不得出现学校名称或学校 Logo。",
+            "normalized_requirement": "图片中不得出现学校名称或学校 Logo。",
+            "detection_method": "recognizer",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          },
+          {
+            "target": "logo",
+            "scope": [
+              "IMAGE_OCR",
+              "LOGO"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "图片中不得出现学校名称或学校 Logo。",
+            "normalized_requirement": "图片中不得出现学校名称或学校 Logo。",
+            "detection_method": "visual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.001
+      },
+      {
+        "id": "RC007",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 2,
+        "rules": [
+          {
+            "target": "email",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现邮箱和电话号码。",
+            "normalized_requirement": "正文不得出现邮箱和电话号码。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          },
+          {
+            "target": "telephone",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现邮箱和电话号码。",
+            "normalized_requirement": "正文不得出现邮箱和电话号码。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC008",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "匿名材料中不得出现基金项目编号。",
+            "normalized_requirement": "匿名材料中不得出现基金项目编号。",
+            "detection_method": "recognizer",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC009",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "advisor_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文禁止出现指导教师姓名。",
+            "normalized_requirement": "正文禁止出现指导教师姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC010",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得包含院校名称。",
+            "normalized_requirement": "正文不得包含院校名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC011",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "organization_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现单位名称。",
+            "normalized_requirement": "正文不得出现单位名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC012",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "identity_number",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文禁止保留身份证号码。",
+            "normalized_requirement": "正文禁止保留身份证号码。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC013",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "ai_marker",
+            "scope": [
+              "IMAGE_OCR"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "图片不得带有 AI 生成水印。",
+            "normalized_requirement": "图片不得带有 AI 生成水印。",
+            "detection_method": "ai_marker",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC014",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文及附录不得出现学校名称。",
+            "normalized_requirement": "正文及附录不得出现学校名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC015",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面和正文不得出现作者姓名。",
+            "normalized_requirement": "封面和正文不得出现作者姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body",
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC016",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "metadata",
+            "scope": [
+              "METADATA"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "文档元数据不得包含创建人信息。",
+            "normalized_requirement": "文档元数据不得包含创建人信息。",
+            "detection_method": "presence",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC017",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "hidden",
+            "scope": [
+              "COMMENT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "不得保留 Word 批注。",
+            "normalized_requirement": "不得保留 Word 批注。",
+            "detection_method": "presence",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC018",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "hidden",
+            "scope": [
+              "REVISION"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "不得保留 Word 修订记录。",
+            "normalized_requirement": "不得保留 Word 修订记录。",
+            "detection_method": "presence",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC019",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "contact",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文禁止出现联系方式。",
+            "normalized_requirement": "正文禁止出现联系方式。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC020",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "text_quality",
+            "scope": [
+              "IMAGE_OCR"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "图片不得出现文字渲染损坏和乱码。",
+            "normalized_requirement": "图片不得出现文字渲染损坏和乱码。",
+            "detection_method": "text_quality",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC021",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得出现基金编号。",
+            "normalized_requirement": "附录不得出现基金编号。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC022",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "organization_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面禁止出现实验室名称。",
+            "normalized_requirement": "封面禁止出现实验室名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC023",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现队员姓名。",
+            "normalized_requirement": "正文不得出现队员姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC024",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "telephone",
+            "scope": [
+              "IMAGE_OCR"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "图片中不得出现手机号。",
+            "normalized_requirement": "图片中不得出现手机号。",
+            "detection_method": "recognizer",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC025",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "摘要必须包含关键词。",
+            "normalized_requirement": "摘要必须包含关键词。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.002
+      },
+      {
+        "id": "RC026",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "论文必须提供参考文献。",
+            "normalized_requirement": "论文必须提供参考文献。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "references"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC027",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "附录应当提供代码说明。",
+            "normalized_requirement": "附录应当提供代码说明。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC028",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "封面必须包含论文题目。",
+            "normalized_requirement": "封面必须包含论文题目。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC029",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "max_pages",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "材料最多 40 页。",
+            "normalized_requirement": "材料最多 40 页。",
+            "detection_method": "format",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC030",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "正文需要说明实验数据来源。",
+            "normalized_requirement": "正文需要说明实验数据来源。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC031",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "必须提供人工智能工具使用声明。",
+            "normalized_requirement": "必须提供人工智能工具使用声明。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC032",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "附录须说明工具名称及使用范围。",
+            "normalized_requirement": "附录须说明工具名称及使用范围。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC033",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "图像必须清晰可读。",
+            "normalized_requirement": "图像必须清晰可读。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC034",
+        "quality": {
+          "rule_count_accuracy": false,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": false,
+          "exception_preservation": false,
+          "requirement_type_accuracy": false,
+          "source_grounding_accuracy": false
+        },
+        "actual_rule_count": 0,
+        "rules": [],
+        "compiler_mode": null,
+        "warnings": [],
+        "error": "ValueError",
+        "seconds": 0.001
+      },
+      {
+        "id": "RC035",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "参考文献必须保留出处。",
+            "normalized_requirement": "参考文献必须保留出处。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "references"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC036",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "摘要必须单独成页。",
+            "normalized_requirement": "摘要必须单独成页。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC037",
+        "quality": {
+          "rule_count_accuracy": false,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": false,
+          "exception_preservation": false,
+          "requirement_type_accuracy": false,
+          "source_grounding_accuracy": false
+        },
+        "actual_rule_count": 0,
+        "rules": [],
+        "compiler_mode": null,
+        "warnings": [],
+        "error": "ValueError",
+        "seconds": 0.0
+      },
+      {
+        "id": "RC038",
+        "quality": {
+          "rule_count_accuracy": false,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": false,
+          "exception_preservation": false,
+          "requirement_type_accuracy": false,
+          "source_grounding_accuracy": false
+        },
+        "actual_rule_count": 0,
+        "rules": [],
+        "compiler_mode": null,
+        "warnings": [],
+        "error": "ValueError",
+        "seconds": 0.0
+      },
+      {
+        "id": "RC039",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "如果进行匿名评审",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "如果进行匿名评审，正文不得出现学校名称。",
+            "normalized_requirement": "如果进行匿名评审，正文不得出现学校名称。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC040",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "仅当提交匿名稿时",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "仅当提交匿名稿时，附录不得出现作者姓名。",
+            "normalized_requirement": "仅当提交匿名稿时，附录不得出现作者姓名。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC041",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "若插图含有学校 Logo",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "若插图含有学校 Logo，必须更换插图。",
+            "normalized_requirement": "若插图含有学校 Logo，必须更换插图。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC042",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "如果提交 Word",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "如果提交 Word，必须删除隐藏文字。",
+            "normalized_requirement": "如果提交 Word，必须删除隐藏文字。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC043",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "若数据来自外部",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "若数据来自外部，应当在正文注明来源。",
+            "normalized_requirement": "若数据来自外部，应当在正文注明来源。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC044",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "如果使用人工智能工具",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "如果使用人工智能工具，附录必须列出工具版本。",
+            "normalized_requirement": "如果使用人工智能工具，附录必须列出工具版本。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC045",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "仅限正文使用匿名表述",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "仅限正文使用匿名表述",
+            "normalized_requirement": "仅限正文使用匿名表述",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC046",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "若包含基金项目",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "若包含基金项目，正文不得出现项目编号。",
+            "normalized_requirement": "若包含基金项目，正文不得出现项目编号。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC047",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但参考文献中的单位名称除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现学校名称，但参考文献中的单位名称除外。",
+            "normalized_requirement": "正文不得出现学校名称，但参考文献中的单位名称除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "references"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC048",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但引用文献中的作者不受此限制。",
+            "requirement_type": "prohibition",
+            "original_text": "正文与附录不得出现作者姓名，但引用文献中的作者不受此限制。",
+            "normalized_requirement": "正文与附录不得出现作者姓名，但引用文献中的作者不受此限制。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC049",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "但公开数据集编号不在此限。",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得出现项目编号，但公开数据集编号不在此限。",
+            "normalized_requirement": "附录不得出现项目编号，但公开数据集编号不在此限。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC050",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "IMAGE_OCR"
+            ],
+            "condition": "",
+            "exception": "但参考案例图片除外。",
+            "requirement_type": "prohibition",
+            "original_text": "图片不得出现学校 Logo，但参考案例图片除外。",
+            "normalized_requirement": "图片不得出现学校 Logo，但参考案例图片除外。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC051",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但文献中的公开联系方式除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现邮箱，但文献中的公开联系方式除外。",
+            "normalized_requirement": "正文不得出现邮箱，但文献中的公开联系方式除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC052",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "除引用文献和公开背景介绍外，正文与附录不得出现能够识别参赛单位的信息。",
+            "normalized_requirement": "除引用文献和公开背景介绍外，正文与附录不得出现能够识别参赛单位的信息。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC053",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "除了参考文献，正文不得出现院校名称。",
+            "requirement_type": "prohibition",
+            "original_text": "除了参考文献，正文不得出现院校名称。",
+            "normalized_requirement": "除了参考文献，正文不得出现院校名称。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "references"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC054",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但经授权的参考文献署名除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现指导教师姓名，但经授权的参考文献署名除外。",
+            "normalized_requirement": "正文不得出现指导教师姓名，但经授权的参考文献署名除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "references"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC055",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "但软件创建者字段除外。",
+            "requirement_type": "prohibition",
+            "original_text": "文档属性不得保留作者姓名，但软件创建者字段除外。",
+            "normalized_requirement": "文档属性不得保留作者姓名，但软件创建者字段除外。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC056",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "除非仅供内部登记使用。",
+            "requirement_type": "prohibition",
+            "original_text": "封面不得出现单位名称，除非仅供内部登记使用。",
+            "normalized_requirement": "封面不得出现单位名称，除非仅供内部登记使用。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC057",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "permission",
+            "original_text": "可以使用公开数据",
+            "normalized_requirement": "可以使用公开数据",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC058",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "permission",
+            "original_text": "允许在附录提交代码",
+            "normalized_requirement": "允许在附录提交代码",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC059",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "permission",
+            "original_text": "正文可使用通用技术术语",
+            "normalized_requirement": "正文可使用通用技术术语",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "RC060",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "permission",
+            "original_text": "可以保留普通图表",
+            "normalized_requirement": "可以保留普通图表",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      }
+    ]
+  },
+  "local_llm": {
+    "status": "EXECUTED",
+    "model": "qwen3.5:4b",
+    "base_url": "http://127.0.0.1:11434/v1",
+    "reasoning_effort": "none",
+    "metrics": {
+      "rule_count_accuracy": {
+        "correct": 56,
+        "total": 60,
+        "rate": 0.9333333333333333
+      },
+      "target_accuracy": {
+        "correct": 29,
+        "total": 60,
+        "rate": 0.48333333333333334
+      },
+      "scope_preservation": {
+        "correct": 46,
+        "total": 60,
+        "rate": 0.7666666666666667
+      },
+      "condition_preservation": {
+        "correct": 57,
+        "total": 60,
+        "rate": 0.95
+      },
+      "exception_preservation": {
+        "correct": 47,
+        "total": 60,
+        "rate": 0.7833333333333333
+      },
+      "requirement_type_accuracy": {
+        "correct": 57,
+        "total": 60,
+        "rate": 0.95
+      },
+      "source_grounding_accuracy": {
+        "correct": 57,
+        "total": 60,
+        "rate": 0.95
+      }
+    },
+    "validated_cases": 3,
+    "fallback_cases": 57,
+    "network_attempts": 57,
+    "transport_errors": 0,
+    "raw_proposal_safety": {
+      "hallucinated_rule_count": 0,
+      "ungrounded_rule_count": 0,
+      "unauthorized_scope_expansion_count": 0,
+      "unauthorized_scope_change_count": 0,
+      "unauthorized_target_change_count": 0,
+      "dropped_condition_count": 0,
+      "dropped_exception_count": 0,
+      "invalid_rule_objects": 0
+    },
+    "accepted_authority_safety": {
+      "hallucinated_rule_count": 0,
+      "ungrounded_rule_count": 0,
+      "unauthorized_scope_expansion_count": 0,
+      "unauthorized_scope_change_count": 0,
+      "unauthorized_target_change_count": 0,
+      "dropped_condition_count": 0,
+      "dropped_exception_count": 0,
+      "invalid_rule_objects": 0
+    },
+    "attempts": [
+      {
+        "case_id": "RC001",
+        "seconds": 8.152,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文不得出现学校名称。",
+          "normalized_requirement": "正文不得出现学校名称。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC002",
+        "seconds": 4.503,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "附录不得包含作者姓名。",
+          "normalized_requirement": "附录不得包含作者姓名。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC003",
+        "seconds": 5.07,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "封面不得出现学校 Logo。",
+          "normalized_requirement": "封面不得出现学校 Logo。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC004",
+        "seconds": 6.035,
+        "error": null,
+        "missing_proposal_count": 0,
+        "response": {
+          "rules": [
+            {
+              "id": "rule-1",
+              "original_text": "文档属性中不得保留作者姓名。",
+              "normalized_requirement": "文档属性中不得保留作者姓名。",
+              "confidence": 1.0
+            },
+            {
+              "id": "rule-2",
+              "original_text": "文档属性中不得保留作者姓名。",
+              "normalized_requirement": "文档属性中不得保留作者姓名。",
+              "confidence": 1.0
+            }
+          ]
+        },
+        "proposals": [
+          {
+            "id": "rule-1",
+            "original_text": "文档属性中不得保留作者姓名。",
+            "normalized_requirement": "文档属性中不得保留作者姓名。",
+            "confidence": 1.0
+          },
+          {
+            "id": "rule-2",
+            "original_text": "文档属性中不得保留作者姓名。",
+            "normalized_requirement": "文档属性中不得保留作者姓名。",
+            "confidence": 1.0
+          }
+        ]
+      },
+      {
+        "case_id": "RC005",
+        "seconds": 5.236,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "Word 隐藏文字中不得出现身份信息。",
+          "normalized_requirement": "Word 隐藏文字中不得出现身份信息。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC006",
+        "seconds": 6.018,
+        "error": null,
+        "missing_proposal_count": 0,
+        "response": {
+          "rules": [
+            {
+              "id": "rule-1",
+              "original_text": "图片中不得出现学校名称或学校 Logo。",
+              "normalized_requirement": "图片中不得出现学校名称或学校 Logo。",
+              "confidence": 1.0
+            },
+            {
+              "id": "rule-2",
+              "original_text": "图片中不得出现学校名称或学校 Logo。",
+              "normalized_requirement": "图片中不得出现学校名称或学校 Logo。",
+              "confidence": 1.0
+            }
+          ]
+        },
+        "proposals": [
+          {
+            "id": "rule-1",
+            "original_text": "图片中不得出现学校名称或学校 Logo。",
+            "normalized_requirement": "图片中不得出现学校名称或学校 Logo。",
+            "confidence": 1.0
+          },
+          {
+            "id": "rule-2",
+            "original_text": "图片中不得出现学校名称或学校 Logo。",
+            "normalized_requirement": "图片中不得出现学校名称或学校 Logo。",
+            "confidence": 1.0
+          }
+        ]
+      },
+      {
+        "case_id": "RC007",
+        "seconds": 5.665,
+        "error": null,
+        "missing_proposal_count": 0,
+        "response": {
+          "rules": [
+            {
+              "id": "rule-1",
+              "original_text": "正文不得出现邮箱和电话号码。",
+              "normalized_requirement": "正文不得出现邮箱和电话号码。",
+              "confidence": 1.0
+            },
+            {
+              "id": "rule-2",
+              "original_text": "正文不得出现邮箱和电话号码。",
+              "normalized_requirement": "正文不得出现邮箱和电话号码。",
+              "confidence": 1.0
+            }
+          ]
+        },
+        "proposals": [
+          {
+            "id": "rule-1",
+            "original_text": "正文不得出现邮箱和电话号码。",
+            "normalized_requirement": "正文不得出现邮箱和电话号码。",
+            "confidence": 1.0
+          },
+          {
+            "id": "rule-2",
+            "original_text": "正文不得出现邮箱和电话号码。",
+            "normalized_requirement": "正文不得出现邮箱和电话号码。",
+            "confidence": 1.0
+          }
+        ]
+      },
+      {
+        "case_id": "RC008",
+        "seconds": 5.036,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "匿名材料中不得出现基金项目编号。",
+          "normalized_requirement": "匿名材料中不得出现基金项目编号。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC009",
+        "seconds": 4.94,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文禁止出现指导教师姓名。",
+          "normalized_requirement": "正文禁止出现指导教师姓名。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC010",
+        "seconds": 5.009,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文不得包含院校名称。",
+          "normalized_requirement": "正文不得包含院校名称。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC011",
+        "seconds": 4.989,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文不得出现单位名称。",
+          "normalized_requirement": "正文不得出现单位名称。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC012",
+        "seconds": 5.019,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文禁止保留身份证号码。",
+          "normalized_requirement": "正文禁止保留身份证号码。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC013",
+        "seconds": 5.067,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "图片不得带有 AI 生成水印。",
+          "normalized_requirement": "图片不得带有 AI 生成水印。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC014",
+        "seconds": 4.992,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文及附录不得出现学校名称。",
+          "normalized_requirement": "正文及附录不得出现学校名称。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC015",
+        "seconds": 5.028,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "封面和正文不得出现作者姓名。",
+          "normalized_requirement": "封面和正文不得出现作者姓名。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC016",
+        "seconds": 5.251,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "文档元数据不得包含创建人信息。",
+          "normalized_requirement": "文档元数据不得包含创建人信息。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC017",
+        "seconds": 5.051,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "不得保留 Word 批注。",
+          "normalized_requirement": "不得保留 Word 批注。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC018",
+        "seconds": 4.621,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "不得保留 Word 修订记录。",
+          "normalized_requirement": "不得保留 Word 修订记录。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC019",
+        "seconds": 4.567,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文禁止出现联系方式。",
+          "normalized_requirement": "正文禁止出现联系方式。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC020",
+        "seconds": 4.316,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "图片不得出现文字渲染损坏和乱码。",
+          "normalized_requirement": "图片不得出现文字渲染损坏和乱码。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC021",
+        "seconds": 5.03,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "附录不得出现基金编号。",
+          "normalized_requirement": "附录不得出现基金编号。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC022",
+        "seconds": 4.855,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "封面禁止出现实验室名称。",
+          "normalized_requirement": "封面禁止出现实验室名称。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC023",
+        "seconds": 2.401,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文不得出现队员姓名。",
+          "normalized_requirement": "正文不得出现队员姓名。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC024",
+        "seconds": 4.747,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "470ae6a79cd9cd40fead33cfde01885798",
+          "original_text": "图片中不得出现手机号。",
+          "normalized_requirement": "图片中不得出现手机号。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC025",
+        "seconds": 5.174,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "摘要必须包含关键词。",
+          "normalized_requirement": "摘要必须包含关键词。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC026",
+        "seconds": 4.993,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "论文必须提供参考文献。",
+          "normalized_requirement": "论文必须提供参考文献。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC027",
+        "seconds": 5.003,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "附录应当提供代码说明。",
+          "normalized_requirement": "附录应当提供代码说明。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC028",
+        "seconds": 5.091,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "封面必须包含论文题目。",
+          "normalized_requirement": "封面必须包含论文题目。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC029",
+        "seconds": 5.245,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "材料最多 40 页。",
+          "normalized_requirement": "材料最多 40 页。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC030",
+        "seconds": 4.945,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文需要说明实验数据来源。",
+          "normalized_requirement": "正文需要说明实验数据来源。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC031",
+        "seconds": 4.185,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "必须提供人工智能工具使用声明。",
+          "normalized_requirement": "必须提供人工智能工具使用声明。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC032",
+        "seconds": 1.939,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "附录须说明工具名称及使用范围。",
+          "normalized_requirement": "附录须说明工具名称及使用范围。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC033",
+        "seconds": 3.811,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "图像必须清晰可读。",
+          "normalized_requirement": "图像必须清晰可读。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC035",
+        "seconds": 5.092,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "参考文献必须保留出处。",
+          "normalized_requirement": "参考文献必须保留出处。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC036",
+        "seconds": 6.204,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "摘要必须单独成页。",
+          "normalized_requirement": "摘要必须单独成页。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC039",
+        "seconds": 4.966,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "如果进行匿名评审，正文不得出现学校名称。",
+          "normalized_requirement": "如果进行匿名评审，正文不得出现学校名称。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC040",
+        "seconds": 5.324,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "仅当提交匿名稿时，附录不得出现作者姓名。",
+          "normalized_requirement": "仅当提交匿名稿时，附录不得出现作者姓名。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC041",
+        "seconds": 4.83,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "若插图含有学校 Logo，必须更换插图。",
+          "normalized_requirement": "若插图含有学校 Logo，必须更换插图。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC042",
+        "seconds": 7.483,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "如果提交 Word，必须删除隐藏文字。",
+          "normalized_requirement": "如果提交 Word，必须删除隐藏文字。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC043",
+        "seconds": 4.809,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "若数据来自外部，应当在正文注明来源。",
+          "normalized_requirement": "若数据来自外部，应当在正文注明来源。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC044",
+        "seconds": 3.732,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "如果使用人工智能工具，附录必须列出工具版本。",
+          "normalized_requirement": "如果使用人工智能工具，附录必须列出工具版本。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC045",
+        "seconds": 5.138,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "仅限正文使用匿名表述",
+          "normalized_requirement": "仅限正文使用匿名表述",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC046",
+        "seconds": 5.043,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "若包含基金项目，正文不得出现项目编号。",
+          "normalized_requirement": "若包含基金项目，正文不得出现项目编号。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC047",
+        "seconds": 4.124,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文不得出现学校名称，但参考文献中的单位名称除外。",
+          "normalized_requirement": "正文中禁止出现学校名称，除非该名称出现在参考文献的单位部分。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC048",
+        "seconds": 5.397,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文与附录不得出现作者姓名，但引用文献中的作者不受此限制。",
+          "normalized_requirement": "正文与附录中禁止出现作者姓名，例外情况为引用文献中的作者。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC049",
+        "seconds": 4.556,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "附录不得出现项目编号，但公开数据集编号不在此限。",
+          "normalized_requirement": "在附录中禁止出现项目编号，除非该编号属于公开数据集。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC050",
+        "seconds": 4.094,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "图片不得出现学校 Logo，但参考案例图片除外。",
+          "normalized_requirement": "图片不得出现学校 Logo，但参考案例图片除外。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC051",
+        "seconds": 4.195,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文不得出现邮箱，但文献中的公开联系方式除外。",
+          "normalized_requirement": "正文不得出现邮箱，但文献中的公开联系方式除外。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC052",
+        "seconds": 4.334,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "除引用文献和公开背景介绍外，正文与附录不得出现能够识别参赛单位的信息。",
+          "normalized_requirement": "除引用文献和公开背景介绍外，正文与附录不得出现能够识别参赛单位的信息。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC053",
+        "seconds": 4.64,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "除了参考文献，正文不得出现院校名称。",
+          "normalized_requirement": "除了参考文献，正文不得出现院校名称。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC054",
+        "seconds": 4.887,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文不得出现指导教师姓名，但经授权的参考文献署名除外。",
+          "normalized_requirement": "正文不得出现指导教师姓名，但经授权的参考文献署名除外。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC055",
+        "seconds": 4.572,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "文档属性不得保留作者姓名，但软件创建者字段除外。",
+          "normalized_requirement": "文档属性不得保留作者姓名，但软件创建者字段除外。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC056",
+        "seconds": 4.818,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "封面不得出现单位名称，除非仅供内部登记使用。",
+          "normalized_requirement": "封面不得出现单位名称，除非仅供内部登记使用。",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC057",
+        "seconds": 3.721,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "可以使用公开数据",
+          "normalized_requirement": "可以使用公开数据",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC058",
+        "seconds": 4.069,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "允许在附录提交代码",
+          "normalized_requirement": "允许在附录提交代码",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC059",
+        "seconds": 4.17,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "正文可使用通用技术术语",
+          "normalized_requirement": "正文可使用通用技术术语",
+          "confidence": 1.0
+        },
+        "proposals": []
+      },
+      {
+        "case_id": "RC060",
+        "seconds": 4.005,
+        "error": null,
+        "missing_proposal_count": 1,
+        "response": {
+          "id": "rule-1",
+          "original_text": "可以保留普通图表",
+          "normalized_requirement": "可以保留普通图表",
+          "confidence": 1.0
+        },
+        "proposals": []
+      }
+    ],
+    "cases": [
+      {
+        "id": "RC001",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现学校名称。",
+            "normalized_requirement": "正文不得出现学校名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 8.152
+      },
+      {
+        "id": "RC002",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得包含作者姓名。",
+            "normalized_requirement": "附录不得包含作者姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.503
+      },
+      {
+        "id": "RC003",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "logo",
+            "scope": [
+              "IMAGE_OCR",
+              "LOGO"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面不得出现学校 Logo。",
+            "normalized_requirement": "封面不得出现学校 Logo。",
+            "detection_method": "visual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.071
+      },
+      {
+        "id": "RC004",
+        "quality": {
+          "rule_count_accuracy": false,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 2,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "文档属性中不得保留作者姓名。",
+            "normalized_requirement": "文档属性中不得保留作者姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [],
+            "semantic_suggestion": "文档属性中不得保留作者姓名。"
+          },
+          {
+            "target": "metadata",
+            "scope": [
+              "METADATA"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "文档属性中不得保留作者姓名。",
+            "normalized_requirement": "文档属性中不得保留作者姓名。",
+            "detection_method": "presence",
+            "semantic_scope": [],
+            "semantic_suggestion": "文档属性中不得保留作者姓名。"
+          }
+        ],
+        "compiler_mode": "LOCAL_MODEL_VALIDATED",
+        "warnings": [],
+        "error": null,
+        "seconds": 6.036
+      },
+      {
+        "id": "RC005",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "hidden",
+            "scope": [
+              "HIDDEN_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "Word 隐藏文字中不得出现身份信息。",
+            "normalized_requirement": "Word 隐藏文字中不得出现身份信息。",
+            "detection_method": "presence",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.237
+      },
+      {
+        "id": "RC006",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 2,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "IMAGE_OCR"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "图片中不得出现学校名称或学校 Logo。",
+            "normalized_requirement": "图片中不得出现学校名称或学校 Logo。",
+            "detection_method": "recognizer",
+            "semantic_scope": [],
+            "semantic_suggestion": "图片中不得出现学校名称或学校 Logo。"
+          },
+          {
+            "target": "logo",
+            "scope": [
+              "IMAGE_OCR",
+              "LOGO"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "图片中不得出现学校名称或学校 Logo。",
+            "normalized_requirement": "图片中不得出现学校名称或学校 Logo。",
+            "detection_method": "visual",
+            "semantic_scope": [],
+            "semantic_suggestion": "图片中不得出现学校名称或学校 Logo。"
+          }
+        ],
+        "compiler_mode": "LOCAL_MODEL_VALIDATED",
+        "warnings": [],
+        "error": null,
+        "seconds": 6.018
+      },
+      {
+        "id": "RC007",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 2,
+        "rules": [
+          {
+            "target": "email",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现邮箱和电话号码。",
+            "normalized_requirement": "正文不得出现邮箱和电话号码。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": "正文不得出现邮箱和电话号码。"
+          },
+          {
+            "target": "telephone",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现邮箱和电话号码。",
+            "normalized_requirement": "正文不得出现邮箱和电话号码。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": "正文不得出现邮箱和电话号码。"
+          }
+        ],
+        "compiler_mode": "LOCAL_MODEL_VALIDATED",
+        "warnings": [],
+        "error": null,
+        "seconds": 5.666
+      },
+      {
+        "id": "RC008",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "匿名材料中不得出现基金项目编号。",
+            "normalized_requirement": "匿名材料中不得出现基金项目编号。",
+            "detection_method": "recognizer",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.037
+      },
+      {
+        "id": "RC009",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "advisor_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文禁止出现指导教师姓名。",
+            "normalized_requirement": "正文禁止出现指导教师姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.94
+      },
+      {
+        "id": "RC010",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得包含院校名称。",
+            "normalized_requirement": "正文不得包含院校名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.01
+      },
+      {
+        "id": "RC011",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "organization_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现单位名称。",
+            "normalized_requirement": "正文不得出现单位名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.99
+      },
+      {
+        "id": "RC012",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "identity_number",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文禁止保留身份证号码。",
+            "normalized_requirement": "正文禁止保留身份证号码。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.02
+      },
+      {
+        "id": "RC013",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "ai_marker",
+            "scope": [
+              "IMAGE_OCR"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "图片不得带有 AI 生成水印。",
+            "normalized_requirement": "图片不得带有 AI 生成水印。",
+            "detection_method": "ai_marker",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.068
+      },
+      {
+        "id": "RC014",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文及附录不得出现学校名称。",
+            "normalized_requirement": "正文及附录不得出现学校名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.992
+      },
+      {
+        "id": "RC015",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面和正文不得出现作者姓名。",
+            "normalized_requirement": "封面和正文不得出现作者姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body",
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.028
+      },
+      {
+        "id": "RC016",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "metadata",
+            "scope": [
+              "METADATA"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "文档元数据不得包含创建人信息。",
+            "normalized_requirement": "文档元数据不得包含创建人信息。",
+            "detection_method": "presence",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.251
+      },
+      {
+        "id": "RC017",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "hidden",
+            "scope": [
+              "COMMENT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "不得保留 Word 批注。",
+            "normalized_requirement": "不得保留 Word 批注。",
+            "detection_method": "presence",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.051
+      },
+      {
+        "id": "RC018",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "hidden",
+            "scope": [
+              "REVISION"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "不得保留 Word 修订记录。",
+            "normalized_requirement": "不得保留 Word 修订记录。",
+            "detection_method": "presence",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.621
+      },
+      {
+        "id": "RC019",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "contact",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文禁止出现联系方式。",
+            "normalized_requirement": "正文禁止出现联系方式。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.567
+      },
+      {
+        "id": "RC020",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "text_quality",
+            "scope": [
+              "IMAGE_OCR"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "图片不得出现文字渲染损坏和乱码。",
+            "normalized_requirement": "图片不得出现文字渲染损坏和乱码。",
+            "detection_method": "text_quality",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.317
+      },
+      {
+        "id": "RC021",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得出现基金编号。",
+            "normalized_requirement": "附录不得出现基金编号。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.03
+      },
+      {
+        "id": "RC022",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "organization_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面禁止出现实验室名称。",
+            "normalized_requirement": "封面禁止出现实验室名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.856
+      },
+      {
+        "id": "RC023",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现队员姓名。",
+            "normalized_requirement": "正文不得出现队员姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 2.402
+      },
+      {
+        "id": "RC024",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "telephone",
+            "scope": [
+              "IMAGE_OCR"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "图片中不得出现手机号。",
+            "normalized_requirement": "图片中不得出现手机号。",
+            "detection_method": "recognizer",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.748
+      },
+      {
+        "id": "RC025",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "摘要必须包含关键词。",
+            "normalized_requirement": "摘要必须包含关键词。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.174
+      },
+      {
+        "id": "RC026",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "论文必须提供参考文献。",
+            "normalized_requirement": "论文必须提供参考文献。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "references"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.993
+      },
+      {
+        "id": "RC027",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "附录应当提供代码说明。",
+            "normalized_requirement": "附录应当提供代码说明。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.003
+      },
+      {
+        "id": "RC028",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "封面必须包含论文题目。",
+            "normalized_requirement": "封面必须包含论文题目。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.092
+      },
+      {
+        "id": "RC029",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "max_pages",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "材料最多 40 页。",
+            "normalized_requirement": "材料最多 40 页。",
+            "detection_method": "format",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.246
+      },
+      {
+        "id": "RC030",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "正文需要说明实验数据来源。",
+            "normalized_requirement": "正文需要说明实验数据来源。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.946
+      },
+      {
+        "id": "RC031",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "必须提供人工智能工具使用声明。",
+            "normalized_requirement": "必须提供人工智能工具使用声明。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.185
+      },
+      {
+        "id": "RC032",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "附录须说明工具名称及使用范围。",
+            "normalized_requirement": "附录须说明工具名称及使用范围。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 1.94
+      },
+      {
+        "id": "RC033",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "图像必须清晰可读。",
+            "normalized_requirement": "图像必须清晰可读。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 3.812
+      },
+      {
+        "id": "RC034",
+        "quality": {
+          "rule_count_accuracy": false,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": false,
+          "exception_preservation": false,
+          "requirement_type_accuracy": false,
+          "source_grounding_accuracy": false
+        },
+        "actual_rule_count": 0,
+        "rules": [],
+        "compiler_mode": null,
+        "warnings": [],
+        "error": "ValueError",
+        "seconds": 0.0
+      },
+      {
+        "id": "RC035",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "参考文献必须保留出处。",
+            "normalized_requirement": "参考文献必须保留出处。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "references"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.092
+      },
+      {
+        "id": "RC036",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "摘要必须单独成页。",
+            "normalized_requirement": "摘要必须单独成页。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 6.204
+      },
+      {
+        "id": "RC037",
+        "quality": {
+          "rule_count_accuracy": false,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": false,
+          "exception_preservation": false,
+          "requirement_type_accuracy": false,
+          "source_grounding_accuracy": false
+        },
+        "actual_rule_count": 0,
+        "rules": [],
+        "compiler_mode": null,
+        "warnings": [],
+        "error": "ValueError",
+        "seconds": 0.0
+      },
+      {
+        "id": "RC038",
+        "quality": {
+          "rule_count_accuracy": false,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": false,
+          "exception_preservation": false,
+          "requirement_type_accuracy": false,
+          "source_grounding_accuracy": false
+        },
+        "actual_rule_count": 0,
+        "rules": [],
+        "compiler_mode": null,
+        "warnings": [],
+        "error": "ValueError",
+        "seconds": 0.0
+      },
+      {
+        "id": "RC039",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "如果进行匿名评审",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "如果进行匿名评审，正文不得出现学校名称。",
+            "normalized_requirement": "如果进行匿名评审，正文不得出现学校名称。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.966
+      },
+      {
+        "id": "RC040",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "仅当提交匿名稿时",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "仅当提交匿名稿时，附录不得出现作者姓名。",
+            "normalized_requirement": "仅当提交匿名稿时，附录不得出现作者姓名。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.324
+      },
+      {
+        "id": "RC041",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "若插图含有学校 Logo",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "若插图含有学校 Logo，必须更换插图。",
+            "normalized_requirement": "若插图含有学校 Logo，必须更换插图。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.83
+      },
+      {
+        "id": "RC042",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "如果提交 Word",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "如果提交 Word，必须删除隐藏文字。",
+            "normalized_requirement": "如果提交 Word，必须删除隐藏文字。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 7.483
+      },
+      {
+        "id": "RC043",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "若数据来自外部",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "若数据来自外部，应当在正文注明来源。",
+            "normalized_requirement": "若数据来自外部，应当在正文注明来源。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.809
+      },
+      {
+        "id": "RC044",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "如果使用人工智能工具",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "如果使用人工智能工具，附录必须列出工具版本。",
+            "normalized_requirement": "如果使用人工智能工具，附录必须列出工具版本。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 3.732
+      },
+      {
+        "id": "RC045",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "仅限正文使用匿名表述",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "仅限正文使用匿名表述",
+            "normalized_requirement": "仅限正文使用匿名表述",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.139
+      },
+      {
+        "id": "RC046",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "若包含基金项目",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "若包含基金项目，正文不得出现项目编号。",
+            "normalized_requirement": "若包含基金项目，正文不得出现项目编号。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.043
+      },
+      {
+        "id": "RC047",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但参考文献中的单位名称除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现学校名称，但参考文献中的单位名称除外。",
+            "normalized_requirement": "正文不得出现学校名称，但参考文献中的单位名称除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "references"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.124
+      },
+      {
+        "id": "RC048",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但引用文献中的作者不受此限制。",
+            "requirement_type": "prohibition",
+            "original_text": "正文与附录不得出现作者姓名，但引用文献中的作者不受此限制。",
+            "normalized_requirement": "正文与附录不得出现作者姓名，但引用文献中的作者不受此限制。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 5.397
+      },
+      {
+        "id": "RC049",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "但公开数据集编号不在此限。",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得出现项目编号，但公开数据集编号不在此限。",
+            "normalized_requirement": "附录不得出现项目编号，但公开数据集编号不在此限。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.557
+      },
+      {
+        "id": "RC050",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "IMAGE_OCR"
+            ],
+            "condition": "",
+            "exception": "但参考案例图片除外。",
+            "requirement_type": "prohibition",
+            "original_text": "图片不得出现学校 Logo，但参考案例图片除外。",
+            "normalized_requirement": "图片不得出现学校 Logo，但参考案例图片除外。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.095
+      },
+      {
+        "id": "RC051",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但文献中的公开联系方式除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现邮箱，但文献中的公开联系方式除外。",
+            "normalized_requirement": "正文不得出现邮箱，但文献中的公开联系方式除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.195
+      },
+      {
+        "id": "RC052",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "除引用文献和公开背景介绍外，正文与附录不得出现能够识别参赛单位的信息。",
+            "normalized_requirement": "除引用文献和公开背景介绍外，正文与附录不得出现能够识别参赛单位的信息。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.334
+      },
+      {
+        "id": "RC053",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "除了参考文献，正文不得出现院校名称。",
+            "requirement_type": "prohibition",
+            "original_text": "除了参考文献，正文不得出现院校名称。",
+            "normalized_requirement": "除了参考文献，正文不得出现院校名称。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "references"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.64
+      },
+      {
+        "id": "RC054",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但经授权的参考文献署名除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现指导教师姓名，但经授权的参考文献署名除外。",
+            "normalized_requirement": "正文不得出现指导教师姓名，但经授权的参考文献署名除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "references"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.888
+      },
+      {
+        "id": "RC055",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": false,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "但软件创建者字段除外。",
+            "requirement_type": "prohibition",
+            "original_text": "文档属性不得保留作者姓名，但软件创建者字段除外。",
+            "normalized_requirement": "文档属性不得保留作者姓名，但软件创建者字段除外。",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.572
+      },
+      {
+        "id": "RC056",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": false,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "除非仅供内部登记使用。",
+            "requirement_type": "prohibition",
+            "original_text": "封面不得出现单位名称，除非仅供内部登记使用。",
+            "normalized_requirement": "封面不得出现单位名称，除非仅供内部登记使用。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.819
+      },
+      {
+        "id": "RC057",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "permission",
+            "original_text": "可以使用公开数据",
+            "normalized_requirement": "可以使用公开数据",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 3.721
+      },
+      {
+        "id": "RC058",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "permission",
+            "original_text": "允许在附录提交代码",
+            "normalized_requirement": "允许在附录提交代码",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.069
+      },
+      {
+        "id": "RC059",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "permission",
+            "original_text": "正文可使用通用技术术语",
+            "normalized_requirement": "正文可使用通用技术术语",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.17
+      },
+      {
+        "id": "RC060",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": false,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "manual",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "permission",
+            "original_text": "可以保留普通图表",
+            "normalized_requirement": "可以保留普通图表",
+            "detection_method": "manual",
+            "semantic_scope": [],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [
+          "本地语义模型响应未通过原文/授权校验或服务不可用，已使用确定性草案。"
+        ],
+        "error": null,
+        "seconds": 4.005
+      }
+    ],
+    "identity": {
+      "name": "qwen3.5:4b",
+      "digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+      "size": 3389983735,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "4.7B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560
+      },
+      "server": "Ollama",
+      "version": "0.35.1"
+    }
+  },
+  "boundary": "B only adds validated annotations. Quality metrics use curated semantic labels; safety compares model proposals against deterministic authorization. Absence of LLM quality improvement is an expected consequence of immutable authorization; not universal understanding accuracy.",
+  "dataset_sha256": "8252ad3e9c71a39f70de1982fdf6fc6f431763632b7ca5a74a9973c1efa98652"
+}

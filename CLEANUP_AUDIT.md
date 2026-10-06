@@ -127,3 +127,31 @@ D 安全删除：下表中经用途和绝对路径核对的可再生成内容。
 |.ruff_cache|2728|可重建编译 / 测试缓存|
 
 计划文件长度合计：473581 字节。自动审批审查拒绝递归删除命令，返回 blocked by policy；本轮没有删除，没有释放空间，不绕过拒绝。所有缓存均不进入Git。
+
+## 2026-10-06 终版清理审计
+
+已完成128项后端及76项完整浏览器测试。本轮未删除依赖、原稿、数据库或必要历史Evidence；正式测试fixture、截图基线、docs/assets与benchmark结果保留。用户材料和所有运行产物不进入Git。
+
+|路径|字节|用途|
+|---|---:|---|
+|.pytest_cache|32083|可重建的编译/测试缓存|
+|.ruff_cache|3071|可重建的编译/测试缓存|
+|backend\app\__pycache__|23587|可重建的编译/测试缓存|
+|backend\app\core\__pycache__|3784|可重建的编译/测试缓存|
+|backend\app\detectors\__pycache__|40266|可重建的编译/测试缓存|
+|backend\app\parsers\__pycache__|16431|可重建的编译/测试缓存|
+|backend\app\reports\__pycache__|16079|可重建的编译/测试缓存|
+|backend\app\rules\__pycache__|3187|可重建的编译/测试缓存|
+|backend\app\schemas\__pycache__|5625|可重建的编译/测试缓存|
+|backend\app\services\__pycache__|93831|可重建的编译/测试缓存|
+|backend\app\services\rule_compiler\__pycache__|10303|可重建的编译/测试缓存|
+|backend\app\tasks\__pycache__|12000|可重建的编译/测试缓存|
+|tests\__pycache__|250585|可重建的编译/测试缓存|
+|scripts\__pycache__|11578|可重建的编译/测试缓存|
+|benchmark\__pycache__|11661|可重建的编译/测试缓存|
+|benchmark\holdout\__pycache__|36160|可重建的编译/测试缓存|
+|benchmark\rule_compiler\__pycache__|27759|可重建的编译/测试缓存|
+
+缓存计划长度合计：597990 字节。
+自动审批审查拒绝本轮递归删除命令，返回 blocked by policy；未执行删除，实际释放0字节，不绕过拒绝。缓存全部被Git忽略。未按文件名猜测删除旧源码/备份；不确定是否包含唯一内容的本地文件仍保留。
+本轮补充 .gitignore 排除 GGUF、bin、data、reports、video/trace 与最终本机报告。已审查的自主源码、原合成fixture、基准、三张脱敏截图、锁文件、CI和许可notices进入发布候选。

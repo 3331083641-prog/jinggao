@@ -1,0 +1,2440 @@
+{
+  "version": 1,
+  "freeze_base_commit": "7d31127263be1310352df24b03d12c7da290cac9",
+  "detector_file_hashes": {
+    "backend/app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/core/storage.py": "1cdbad629cfc4bedd5d522f29f7bc713ff5bd86ec544abff86ad8b29b9a7b41a",
+    "backend/app/detectors/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/detectors/engine.py": "26937ce5ac475358c6d0f042ee417ae1215737440f044e54f6864785c1f07d2c",
+    "backend/app/detectors/submission.py": "fad1066e779c5cf924ced9b4dfff80f56a3d0ee9783b970637ae15bb24407053",
+    "backend/app/main.py": "cd4da9a47ffeb157706963138968f2d700c9acae240ec58444c393633a9e1984",
+    "backend/app/parsers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/parsers/document.py": "c00f25c552de7af04749a37b53d085894a8d50cf718e26f711b625fffe473f42",
+    "backend/app/reports/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/reports/evidence_image.py": "bfe270f68bcf0aa90afd7473e3fb32c3835d63dda669968624e8cabba7a388f3",
+    "backend/app/reports/pdf.py": "324f0746fb0cb922302c914a3f2a19b9a490c2e7c50677887f4cf38463987914",
+    "backend/app/rules/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/rules/builtin.py": "a18ac7f0ef9d64636b83a60e8516cf8bda410273e410482babd992e373de38ff",
+    "backend/app/schemas/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/schemas/domain.py": "927f7aceed9c931bcf265236dd43530006856b0267ed4928f54a08b6f203c8ad",
+    "backend/app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/services/cleanup.py": "3be5d99d2f580fdca90e37e7710c4f52619a2efd702d4b624328b8cac14172b1",
+    "backend/app/services/coverage.py": "65ff38d72e2f5a849080f4721a71ec9c0119fee59f33af180e089a3d6eeec588",
+    "backend/app/services/entities.py": "be3735211d36a46f912400f4597ea7cdca101dd8fc046c3b302d57c333388285",
+    "backend/app/services/evidence_review.py": "977fb171079f58d812d3f40ea06efa18f0a66d6a6f866a9b2a099fb3fa95c555",
+    "backend/app/services/legacy_word.py": "31704495af044fde79407ba6ad410bf195fd23e3e6d7c6b2cf5dfec267dd6148",
+    "backend/app/services/local_models.py": "60aadc66bbd4fd2c57a893414994de8fe9337b5aee65d26787d5b6a878dd833d",
+    "backend/app/services/ocr.py": "611ac66ac0da14612ebf9981687921fb5d7b821f68c7965b521e0fd8b2aa74f3",
+    "backend/app/services/report_deletion.py": "2771771376fe84cc248ee565c0ad585bd76accff5f06ca64e9f4a2e3d2961ab9",
+    "backend/app/services/rule_compiler/__init__.py": "94e865f1ed22b1ad380a1fec18bb94b4f3a4f193e7ccb062f45e7a03b5f56cbc",
+    "backend/app/services/rule_compiler/compiler.py": "93a354da5393a50df424d1fc53dffc245c9ecb74ecc4d858cac34bebb111337b",
+    "backend/app/services/rule_compiler/fallback.py": "a9a3ef5c1598413d37f6be6f2cfc43873986bc8c66de9b41d4d77d3deec5f78f",
+    "backend/app/services/rule_compiler/provenance.py": "8e99ca24af3043d741048ce1a4dd4e95c53e28c8c979a4672d662f1e13cafa7b",
+    "backend/app/services/rule_compiler/schema_validator.py": "2a5a9564a4b268d5655fd8fc61e4f6a266355d1c72ca2bee7e9e66f06cc136ea",
+    "backend/app/services/rule_compiler/semantic_parser.py": "2eb4c65cf204456b561b28dbde342c8ebac5fde636fcd9e9995773c1556eb9e0",
+    "backend/app/services/rule_deletion.py": "551444ecd57ccf333c01feb12cc1f5c7b71fdc3114a70e19d6e8922f21ededa8",
+    "backend/app/services/rule_import.py": "5511f0ce33cd3fa452af38880e805fb85fda7062219f7b16dda219fd629ee4ae",
+    "backend/app/services/rule_parser.py": "a5ba71efb245db560e4d80069c742a81f8125cd685c2744b884dcffea29cc7db",
+    "backend/app/services/rule_selection.py": "a8ab0f95d8c81ee74850b1c00b81ef928b24502bda69c6478247a54d224d3fc9",
+    "backend/app/services/run_diff.py": "f0d3857446241923ecff275e7204c11178b19231dabf71f930ada5d16e362228",
+    "backend/app/services/submission_rules.py": "4312ee27a950756e5acb12b374279a088127e47d45dd583600168ce4a8d7daac",
+    "backend/app/services/task_deletion.py": "3eb1992cc417bd58e8c6d31c91f584643989fda339ffb6dfaf88deb57b65cb8d",
+    "backend/app/services/text_quality.py": "e4ff797ffe08befedf8ce5d09b8a868fe629934939bf5de6c501e5bb5987d57b",
+    "backend/app/services/vision.py": "d02d6a05a91687fbc1709b07df6982a70d5f9ab763f3babf9d57b862eba5eb45",
+    "backend/app/tasks/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/tasks/runner.py": "f2294fd17b5342e0f010c2ad0379d7e37dcd4892f6a192afa5170290cf1f7aab"
+  },
+  "annotation_status": "Codex-authored separate synthetic ground truth, pending team human review; not an external blinded study",
+  "protocol": "Dataset locked before first evaluation. No detector tuning against these outputs. New sentences, files and renderers; no developer fixture imports. Existing public university aliases occur only in synthetic statements. Placeholder contacts are not real participant records.",
+  "sentence_cases": [
+    {
+      "text": "署名页注明作者单位：霁舟合成1大学，本文为模拟材料。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS001"
+    },
+    {
+      "text": "Author affiliation: Meridian Synthetic1 University; a fictional team.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS002"
+    },
+    {
+      "text": "本校简称清华，组别为合成样例1，用于匿名检查实验。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS003"
+    },
+    {
+      "text": "作者单位：虚构第1研究中心，数据为合成样本。",
+      "target": "organization_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS004"
+    },
+    {
+      "text": "作者：赵合成，实验批次1。",
+      "target": "author_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS005"
+    },
+    {
+      "text": "指导教师：周虚构，合成组1。",
+      "target": "advisor_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS006"
+    },
+    {
+      "text": "联系邮箱为 entrant1@sample.invalid，仅为测试占位。",
+      "target": "email",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS007"
+    },
+    {
+      "text": "手机号：19900000001，此号码为合成占位。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS008"
+    },
+    {
+      "text": "联系固定电话：021-00000001，仅作合成材料。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS009"
+    },
+    {
+      "text": "项目编号：HJ-SYN-0001；正文保留此编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS010"
+    },
+    {
+      "text": "基金号：SIM-0001，匿名稿保留该身份线索。",
+      "target": "funding",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS011"
+    },
+    {
+      "text": "本研究获得 NSFC 00000001 资助（合成编号）。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS012"
+    },
+    {
+      "text": "张虚构负责本文撰写，模拟记录编号1。",
+      "target": "author_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS013"
+    },
+    {
+      "text": "文中插图标注 Made with AI; example 1。",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "ai_marker",
+      "id": "HS014"
+    },
+    {
+      "text": "图注字符为 ����，图号1。",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS015"
+    },
+    {
+      "text": "公式标注出现 □□□□，样例1。",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS016"
+    },
+    {
+      "text": "乱码段落：�?�?�?�?，例1。",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS017"
+    },
+    {
+      "text": "Prepared by Fictional Participant 1; author information remains.",
+      "target": "author_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS018"
+    },
+    {
+      "text": "修稿由钱合成完成，模拟批次1。",
+      "target": "person",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS019"
+    },
+    {
+      "text": "匿名稿的资助记为 QZ-SIM-0001，原条款禁止项目编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS020"
+    },
+    {
+      "text": "大学生学习策略实验第1组，不包含参赛单位名称。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS021"
+    },
+    {
+      "text": "参考文献[1]：澄岚合成大学出版的公开方法报告。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS022"
+    },
+    {
+      "text": "研究背景比较映河合成学院的公开案例，例1与参赛者无关。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS023"
+    },
+    {
+      "text": "Public Institute of Synthetic Statistics published a reference dataset 1.",
+      "target": "organization_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS024"
+    },
+    {
+      "text": "References [1]: Meridian Synthetic University Press, public survey.",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS025"
+    },
+    {
+      "text": "背景介绍清华公开成果，合成例1，并非本队归属。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS026"
+    },
+    {
+      "text": "Department of Energy is a cited public source, sample 1.",
+      "target": "organization_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS027"
+    },
+    {
+      "text": "技术术语为王氏插值算法，版本1，没有作者署名。",
+      "target": "person",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS028"
+    },
+    {
+      "text": "联系人参数不涉及个人信息；邮箱占位为 [redacted-1]。",
+      "target": "email",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS029"
+    },
+    {
+      "text": "随机种子为 01234567891，不是电话号码。",
+      "target": "telephone",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS030"
+    },
+    {
+      "text": "NSFC 是文献主题缩写，不列出编号，示例1。",
+      "target": "project_number",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS031"
+    },
+    {
+      "text": "图表纵轴范围 0.001 至 0.01，标签使用小字号。",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS032"
+    },
+    {
+      "text": "Eigenvalue lambda_1 belongs to a Hermitian operator.",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS033"
+    },
+    {
+      "text": "正常符号：α β ∑ ∫ → ≤ ± √，第1组。",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS034"
+    },
+    {
+      "text": "The matrix has rank 1; neural inference is described without watermarks.",
+      "target": "ai_marker",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "ai_marker",
+      "id": "HS035"
+    },
+    {
+      "text": "参考文献[1]：公开研究所统计年鉴；与作者无关。",
+      "target": "organization_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS036"
+    },
+    {
+      "text": "本材料只有算法流程与计算结果，共1个阶段。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS037"
+    },
+    {
+      "text": "作者姓名栏已经匿名化，保留合成编号1。",
+      "target": "author_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS038"
+    },
+    {
+      "text": "指导教师信息已删除，使用匿名合成组1。",
+      "target": "advisor_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS039"
+    },
+    {
+      "text": "仅有计算机网络的电子邮件协议说明，样例1。",
+      "target": "contact",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS040"
+    },
+    {
+      "text": "署名页注明作者单位：霁舟合成2大学，本文为模拟材料。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS041"
+    },
+    {
+      "text": "Author affiliation: Meridian Synthetic2 University; a fictional team.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS042"
+    },
+    {
+      "text": "本校简称清华，组别为合成样例2，用于匿名检查实验。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS043"
+    },
+    {
+      "text": "作者单位：虚构第2研究中心，数据为合成样本。",
+      "target": "organization_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS044"
+    },
+    {
+      "text": "作者：赵合成，实验批次2。",
+      "target": "author_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS045"
+    },
+    {
+      "text": "指导教师：周虚构，合成组2。",
+      "target": "advisor_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS046"
+    },
+    {
+      "text": "联系邮箱为 entrant2@sample.invalid，仅为测试占位。",
+      "target": "email",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS047"
+    },
+    {
+      "text": "手机号：19900000002，此号码为合成占位。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS048"
+    },
+    {
+      "text": "联系固定电话：021-00000002，仅作合成材料。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS049"
+    },
+    {
+      "text": "项目编号：HJ-SYN-0002；正文保留此编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS050"
+    },
+    {
+      "text": "基金号：SIM-0002，匿名稿保留该身份线索。",
+      "target": "funding",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS051"
+    },
+    {
+      "text": "本研究获得 NSFC 00000002 资助（合成编号）。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS052"
+    },
+    {
+      "text": "张虚构负责本文撰写，模拟记录编号2。",
+      "target": "author_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS053"
+    },
+    {
+      "text": "文中插图标注 Made with AI; example 2。",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "ai_marker",
+      "id": "HS054"
+    },
+    {
+      "text": "图注字符为 ����，图号2。",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS055"
+    },
+    {
+      "text": "公式标注出现 □□□□，样例2。",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS056"
+    },
+    {
+      "text": "乱码段落：�?�?�?�?，例2。",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS057"
+    },
+    {
+      "text": "Prepared by Fictional Participant 2; author information remains.",
+      "target": "author_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS058"
+    },
+    {
+      "text": "修稿由钱合成完成，模拟批次2。",
+      "target": "person",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS059"
+    },
+    {
+      "text": "匿名稿的资助记为 QZ-SIM-0002，原条款禁止项目编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS060"
+    },
+    {
+      "text": "大学生学习策略实验第2组，不包含参赛单位名称。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS061"
+    },
+    {
+      "text": "参考文献[2]：澄岚合成大学出版的公开方法报告。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS062"
+    },
+    {
+      "text": "研究背景比较映河合成学院的公开案例，例2与参赛者无关。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS063"
+    },
+    {
+      "text": "Public Institute of Synthetic Statistics published a reference dataset 2.",
+      "target": "organization_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS064"
+    },
+    {
+      "text": "References [2]: Meridian Synthetic University Press, public survey.",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS065"
+    },
+    {
+      "text": "背景介绍清华公开成果，合成例2，并非本队归属。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS066"
+    },
+    {
+      "text": "Department of Energy is a cited public source, sample 2.",
+      "target": "organization_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS067"
+    },
+    {
+      "text": "技术术语为王氏插值算法，版本2，没有作者署名。",
+      "target": "person",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS068"
+    },
+    {
+      "text": "联系人参数不涉及个人信息；邮箱占位为 [redacted-2]。",
+      "target": "email",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS069"
+    },
+    {
+      "text": "随机种子为 01234567892，不是电话号码。",
+      "target": "telephone",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS070"
+    },
+    {
+      "text": "NSFC 是文献主题缩写，不列出编号，示例2。",
+      "target": "project_number",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS071"
+    },
+    {
+      "text": "图表纵轴范围 0.001 至 0.02，标签使用小字号。",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS072"
+    },
+    {
+      "text": "Eigenvalue lambda_2 belongs to a Hermitian operator.",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS073"
+    },
+    {
+      "text": "正常符号：α β ∑ ∫ → ≤ ± √，第2组。",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS074"
+    },
+    {
+      "text": "The matrix has rank 2; neural inference is described without watermarks.",
+      "target": "ai_marker",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "ai_marker",
+      "id": "HS075"
+    },
+    {
+      "text": "参考文献[2]：公开研究所统计年鉴；与作者无关。",
+      "target": "organization_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS076"
+    },
+    {
+      "text": "本材料只有算法流程与计算结果，共2个阶段。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS077"
+    },
+    {
+      "text": "作者姓名栏已经匿名化，保留合成编号2。",
+      "target": "author_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS078"
+    },
+    {
+      "text": "指导教师信息已删除，使用匿名合成组2。",
+      "target": "advisor_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS079"
+    },
+    {
+      "text": "仅有计算机网络的电子邮件协议说明，样例2。",
+      "target": "contact",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS080"
+    },
+    {
+      "text": "署名页注明作者单位：霁舟合成3大学，本文为模拟材料。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS081"
+    },
+    {
+      "text": "Author affiliation: Meridian Synthetic3 University; a fictional team.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS082"
+    },
+    {
+      "text": "本校简称清华，组别为合成样例3，用于匿名检查实验。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS083"
+    },
+    {
+      "text": "作者单位：虚构第3研究中心，数据为合成样本。",
+      "target": "organization_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS084"
+    },
+    {
+      "text": "作者：赵合成，实验批次3。",
+      "target": "author_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS085"
+    },
+    {
+      "text": "指导教师：周虚构，合成组3。",
+      "target": "advisor_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS086"
+    },
+    {
+      "text": "联系邮箱为 entrant3@sample.invalid，仅为测试占位。",
+      "target": "email",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS087"
+    },
+    {
+      "text": "手机号：19900000003，此号码为合成占位。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS088"
+    },
+    {
+      "text": "联系固定电话：021-00000003，仅作合成材料。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS089"
+    },
+    {
+      "text": "项目编号：HJ-SYN-0003；正文保留此编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS090"
+    },
+    {
+      "text": "基金号：SIM-0003，匿名稿保留该身份线索。",
+      "target": "funding",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS091"
+    },
+    {
+      "text": "本研究获得 NSFC 00000003 资助（合成编号）。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS092"
+    },
+    {
+      "text": "张虚构负责本文撰写，模拟记录编号3。",
+      "target": "author_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS093"
+    },
+    {
+      "text": "文中插图标注 Made with AI; example 3。",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "ai_marker",
+      "id": "HS094"
+    },
+    {
+      "text": "图注字符为 ����，图号3。",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS095"
+    },
+    {
+      "text": "公式标注出现 □□□□，样例3。",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS096"
+    },
+    {
+      "text": "乱码段落：�?�?�?�?，例3。",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS097"
+    },
+    {
+      "text": "Prepared by Fictional Participant 3; author information remains.",
+      "target": "author_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS098"
+    },
+    {
+      "text": "修稿由钱合成完成，模拟批次3。",
+      "target": "person",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS099"
+    },
+    {
+      "text": "匿名稿的资助记为 QZ-SIM-0003，原条款禁止项目编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS100"
+    },
+    {
+      "text": "大学生学习策略实验第3组，不包含参赛单位名称。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS101"
+    },
+    {
+      "text": "参考文献[3]：澄岚合成大学出版的公开方法报告。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS102"
+    },
+    {
+      "text": "研究背景比较映河合成学院的公开案例，例3与参赛者无关。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS103"
+    },
+    {
+      "text": "Public Institute of Synthetic Statistics published a reference dataset 3.",
+      "target": "organization_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS104"
+    },
+    {
+      "text": "References [3]: Meridian Synthetic University Press, public survey.",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS105"
+    },
+    {
+      "text": "背景介绍清华公开成果，合成例3，并非本队归属。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS106"
+    },
+    {
+      "text": "Department of Energy is a cited public source, sample 3.",
+      "target": "organization_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS107"
+    },
+    {
+      "text": "技术术语为王氏插值算法，版本3，没有作者署名。",
+      "target": "person",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS108"
+    },
+    {
+      "text": "联系人参数不涉及个人信息；邮箱占位为 [redacted-3]。",
+      "target": "email",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS109"
+    },
+    {
+      "text": "随机种子为 01234567893，不是电话号码。",
+      "target": "telephone",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS110"
+    },
+    {
+      "text": "NSFC 是文献主题缩写，不列出编号，示例3。",
+      "target": "project_number",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS111"
+    },
+    {
+      "text": "图表纵轴范围 0.001 至 0.03，标签使用小字号。",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS112"
+    },
+    {
+      "text": "Eigenvalue lambda_3 belongs to a Hermitian operator.",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS113"
+    },
+    {
+      "text": "正常符号：α β ∑ ∫ → ≤ ± √，第3组。",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "text_quality",
+      "id": "HS114"
+    },
+    {
+      "text": "The matrix has rank 3; neural inference is described without watermarks.",
+      "target": "ai_marker",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "ai_marker",
+      "id": "HS115"
+    },
+    {
+      "text": "参考文献[3]：公开研究所统计年鉴；与作者无关。",
+      "target": "organization_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS116"
+    },
+    {
+      "text": "本材料只有算法流程与计算结果，共3个阶段。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS117"
+    },
+    {
+      "text": "作者姓名栏已经匿名化，保留合成编号3。",
+      "target": "author_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS118"
+    },
+    {
+      "text": "指导教师信息已删除，使用匿名合成组3。",
+      "target": "advisor_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS119"
+    },
+    {
+      "text": "仅有计算机网络的电子邮件协议说明，样例3。",
+      "target": "contact",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HS120"
+    }
+  ],
+  "document_cases": [
+    {
+      "text": "作者单位：汀澜虚构大学。本稿说明测量方法及参数。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD001",
+      "format": "pdf",
+      "variant": 0
+    },
+    {
+      "text": "Author affiliation: Lattice Fictional University. Methods follow.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD002",
+      "format": "pdf",
+      "variant": 1
+    },
+    {
+      "text": "数据联系邮箱：review@heldout.invalid，所有内容为模拟。",
+      "target": "email",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD003",
+      "format": "pdf",
+      "variant": 2
+    },
+    {
+      "text": "联系电话：020-00001234，用于合成匿名残留测试。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD004",
+      "format": "pdf",
+      "variant": 3
+    },
+    {
+      "text": "项目编号：HOUT-FAKE-9042。结果报告保留该编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD005",
+      "format": "pdf",
+      "variant": 4
+    },
+    {
+      "text": "参考文献：沧屿合成大学的公开研究，与作者无关。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD006",
+      "format": "pdf",
+      "variant": 5
+    },
+    {
+      "text": "背景案例：听潮虚构学院的公开实验，不代表参赛归属。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD007",
+      "format": "pdf",
+      "variant": 6
+    },
+    {
+      "text": "匿名算法材料：矩阵求解、误差曲线与参数表。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD008",
+      "format": "pdf",
+      "variant": 7
+    },
+    {
+      "text": "作者单位：汀澜虚构大学。本稿说明测量方法及参数。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD009",
+      "format": "docx",
+      "variant": 0
+    },
+    {
+      "text": "Author affiliation: Lattice Fictional University. Methods follow.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD010",
+      "format": "docx",
+      "variant": 1
+    },
+    {
+      "text": "数据联系邮箱：review@heldout.invalid，所有内容为模拟。",
+      "target": "email",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD011",
+      "format": "docx",
+      "variant": 2
+    },
+    {
+      "text": "联系电话：020-00001234，用于合成匿名残留测试。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD012",
+      "format": "docx",
+      "variant": 3
+    },
+    {
+      "text": "项目编号：HOUT-FAKE-9042。结果报告保留该编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD013",
+      "format": "docx",
+      "variant": 4
+    },
+    {
+      "text": "参考文献：沧屿合成大学的公开研究，与作者无关。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD014",
+      "format": "docx",
+      "variant": 5
+    },
+    {
+      "text": "背景案例：听潮虚构学院的公开实验，不代表参赛归属。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD015",
+      "format": "docx",
+      "variant": 6
+    },
+    {
+      "text": "匿名算法材料：矩阵求解、误差曲线与参数表。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD016",
+      "format": "docx",
+      "variant": 7
+    },
+    {
+      "text": "作者单位：汀澜虚构大学。本稿说明测量方法及参数。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD017",
+      "format": "pptx",
+      "variant": 0
+    },
+    {
+      "text": "Author affiliation: Lattice Fictional University. Methods follow.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD018",
+      "format": "pptx",
+      "variant": 1
+    },
+    {
+      "text": "数据联系邮箱：review@heldout.invalid，所有内容为模拟。",
+      "target": "email",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD019",
+      "format": "pptx",
+      "variant": 2
+    },
+    {
+      "text": "联系电话：020-00001234，用于合成匿名残留测试。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD020",
+      "format": "pptx",
+      "variant": 3
+    },
+    {
+      "text": "项目编号：HOUT-FAKE-9042。结果报告保留该编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD021",
+      "format": "pptx",
+      "variant": 4
+    },
+    {
+      "text": "参考文献：沧屿合成大学的公开研究，与作者无关。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD022",
+      "format": "pptx",
+      "variant": 5
+    },
+    {
+      "text": "背景案例：听潮虚构学院的公开实验，不代表参赛归属。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD023",
+      "format": "pptx",
+      "variant": 6
+    },
+    {
+      "text": "匿名算法材料：矩阵求解、误差曲线与参数表。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD024",
+      "format": "pptx",
+      "variant": 7
+    },
+    {
+      "text": "作者单位：汀澜虚构大学。本稿说明测量方法及参数。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD025",
+      "format": "txt",
+      "variant": 0
+    },
+    {
+      "text": "Author affiliation: Lattice Fictional University. Methods follow.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD026",
+      "format": "txt",
+      "variant": 1
+    },
+    {
+      "text": "数据联系邮箱：review@heldout.invalid，所有内容为模拟。",
+      "target": "email",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD027",
+      "format": "txt",
+      "variant": 2
+    },
+    {
+      "text": "联系电话：020-00001234，用于合成匿名残留测试。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD028",
+      "format": "txt",
+      "variant": 3
+    },
+    {
+      "text": "项目编号：HOUT-FAKE-9042。结果报告保留该编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD029",
+      "format": "txt",
+      "variant": 4
+    },
+    {
+      "text": "参考文献：沧屿合成大学的公开研究，与作者无关。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD030",
+      "format": "txt",
+      "variant": 5
+    },
+    {
+      "text": "背景案例：听潮虚构学院的公开实验，不代表参赛归属。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD031",
+      "format": "txt",
+      "variant": 6
+    },
+    {
+      "text": "匿名算法材料：矩阵求解、误差曲线与参数表。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD032",
+      "format": "txt",
+      "variant": 7
+    },
+    {
+      "text": "作者单位：汀澜虚构大学。本稿说明测量方法及参数。",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD033",
+      "format": "md",
+      "variant": 0
+    },
+    {
+      "text": "Author affiliation: Lattice Fictional University. Methods follow.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD034",
+      "format": "md",
+      "variant": 1
+    },
+    {
+      "text": "数据联系邮箱：review@heldout.invalid，所有内容为模拟。",
+      "target": "email",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD035",
+      "format": "md",
+      "variant": 2
+    },
+    {
+      "text": "联系电话：020-00001234，用于合成匿名残留测试。",
+      "target": "telephone",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD036",
+      "format": "md",
+      "variant": 3
+    },
+    {
+      "text": "项目编号：HOUT-FAKE-9042。结果报告保留该编号。",
+      "target": "project_number",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD037",
+      "format": "md",
+      "variant": 4
+    },
+    {
+      "text": "参考文献：沧屿合成大学的公开研究，与作者无关。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD038",
+      "format": "md",
+      "variant": 5
+    },
+    {
+      "text": "背景案例：听潮虚构学院的公开实验，不代表参赛归属。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD039",
+      "format": "md",
+      "variant": 6
+    },
+    {
+      "text": "匿名算法材料：矩阵求解、误差曲线与参数表。",
+      "target": "school_name",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer",
+      "id": "HD040",
+      "format": "md",
+      "variant": 7
+    },
+    {
+      "text": "Anonymous structural test document, no genuine participants.",
+      "target": "metadata",
+      "expected_risk": true,
+      "kind": "metadata",
+      "scope": [
+        "METADATA"
+      ],
+      "method": "presence",
+      "id": "HD041",
+      "format": "pdf"
+    },
+    {
+      "text": "Anonymous structural test document, no genuine participants.",
+      "target": "metadata",
+      "expected_risk": false,
+      "kind": "normal_metadata",
+      "scope": [
+        "METADATA"
+      ],
+      "method": "presence",
+      "id": "HD042",
+      "format": "pdf"
+    },
+    {
+      "text": "Anonymous structural test document, no genuine participants.",
+      "target": "metadata",
+      "expected_risk": true,
+      "kind": "metadata",
+      "scope": [
+        "METADATA"
+      ],
+      "method": "presence",
+      "id": "HD043",
+      "format": "docx"
+    },
+    {
+      "text": "Anonymous structural test document, no genuine participants.",
+      "target": "hidden",
+      "expected_risk": true,
+      "kind": "hidden",
+      "scope": [
+        "HIDDEN_TEXT"
+      ],
+      "method": "presence",
+      "id": "HD044",
+      "format": "docx"
+    },
+    {
+      "text": "Anonymous structural test document, no genuine participants.",
+      "target": "hidden",
+      "expected_risk": true,
+      "kind": "comment",
+      "scope": [
+        "COMMENT"
+      ],
+      "method": "presence",
+      "id": "HD045",
+      "format": "docx"
+    },
+    {
+      "text": "Anonymous structural test document, no genuine participants.",
+      "target": "hidden",
+      "expected_risk": true,
+      "kind": "revision",
+      "scope": [
+        "REVISION"
+      ],
+      "method": "presence",
+      "id": "HD046",
+      "format": "docx"
+    },
+    {
+      "text": "Anonymous structural test document, no genuine participants.",
+      "target": "metadata",
+      "expected_risk": true,
+      "kind": "metadata",
+      "scope": [
+        "METADATA"
+      ],
+      "method": "presence",
+      "id": "HD047",
+      "format": "pptx"
+    },
+    {
+      "text": "Anonymous structural test document, no genuine participants.",
+      "target": "hidden",
+      "expected_risk": true,
+      "kind": "hidden_slide",
+      "scope": [
+        "HIDDEN_TEXT"
+      ],
+      "method": "presence",
+      "id": "HD048",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "image_identity",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "recognizer",
+      "id": "HD049",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "kind": "ai_watermark",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "ai_marker",
+      "id": "HD050",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "garbled",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD051",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "missing_glyph",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD052",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "replacement",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD053",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "small_font",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD054",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "chart",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD055",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": true,
+      "kind": "badge",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD056",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "circle",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD057",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "qr_pattern",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD058",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "flow",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD059",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "apparatus",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD060",
+      "format": "pdf"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "image_identity",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "recognizer",
+      "id": "HD061",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "kind": "ai_watermark",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "ai_marker",
+      "id": "HD062",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "garbled",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD063",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "missing_glyph",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD064",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "replacement",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD065",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "small_font",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD066",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "chart",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD067",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": true,
+      "kind": "badge",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD068",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "circle",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD069",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "qr_pattern",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD070",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "flow",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD071",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "apparatus",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD072",
+      "format": "docx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "school_name",
+      "expected_risk": true,
+      "kind": "image_identity",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "recognizer",
+      "id": "HD073",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "kind": "ai_watermark",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "ai_marker",
+      "id": "HD074",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "garbled",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD075",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "missing_glyph",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD076",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": true,
+      "kind": "replacement",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD077",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "text_quality",
+      "expected_risk": false,
+      "kind": "small_font",
+      "scope": [
+        "IMAGE_OCR"
+      ],
+      "method": "text_quality",
+      "id": "HD078",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "chart",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD079",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": true,
+      "kind": "badge",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD080",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "circle",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD081",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "qr_pattern",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD082",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "flow",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD083",
+      "format": "pptx"
+    },
+    {
+      "text": "Image-bearing anonymous synthetic article.",
+      "target": "logo",
+      "expected_risk": false,
+      "kind": "apparatus",
+      "scope": [
+        "IMAGE_OCR",
+        "LOGO"
+      ],
+      "method": "visual",
+      "id": "HD084",
+      "format": "pptx"
+    }
+  ]
+}

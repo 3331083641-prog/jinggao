@@ -33,6 +33,9 @@ class LocalModelProvider:
     def __init__(self, kind="LLM"):
         self.base = os.environ.get(f"JINGGAO_LOCAL_{kind}_BASE_URL", "")
         self.model = os.environ.get(f"JINGGAO_LOCAL_{kind}_MODEL", "")
+        self.reasoning_effort = os.environ.get(
+            f"JINGGAO_LOCAL_{kind}_REASONING_EFFORT", ""
+        )
 
     @property
     def configured(self):
@@ -42,19 +45,24 @@ class LocalModelProvider:
         if not self.configured:
             return None
         base = loopback_url(self.base)
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "temperature": 0,
+            "max_tokens": 2000,
+            "response_format": {"type": "json_object"},
+        }
+        if self.reasoning_effort:
+            if self.reasoning_effort not in ("none", "low", "medium", "high"):
+                raise ValueError("无效本地模型 reasoning_effort")
+            payload["reasoning_effort"] = self.reasoning_effort
         with httpx.Client(
             timeout=20, trust_env=False, follow_redirects=False
         ) as client:
             with client.stream(
                 "POST",
                 base + "/chat/completions",
-                json={
-                    "model": self.model,
-                    "messages": messages,
-                    "temperature": 0,
-                    "max_tokens": 2000,
-                    "response_format": {"type": "json_object"},
-                },
+                json=payload,
             ) as response:
                 response.raise_for_status()
                 data = bytearray()

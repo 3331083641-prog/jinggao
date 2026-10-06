@@ -62,7 +62,14 @@ docs/*.json
 FINAL_REFACTOR_REPORT.md
 frontend/vite.live-review.config.ts
 FINAL_COMPETITION_UPGRADE_REPORT.md
+FINAL_COMPETITION_CLOSEOUT_REPORT.md
 public/models/
 *.onnx
 *.safetensors
 *.pt
+*.gguf
+*.bin
+/data/
+/reports/
+*.webm
+*.trace

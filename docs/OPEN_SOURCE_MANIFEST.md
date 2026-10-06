@@ -60,3 +60,9 @@ LocalRuleModelProvider / LocalVisionProvider 是自主接口适配器，不是�
 2026-10-03 首页 Three.js 增量：精确到 60 个新增安装包的版本、发行源、许可、notice 和修改标记见 `three-dependency-license-audit.json`。安装依赖不等同于全部参与运行时打包；例如 Drei 及其模型/解码/物理辅助功能未参与本 Hero。没有复制外部三维模型，全部模型自主程序生成。
 
 2026-10-04 联合规则导入增量：没有安装新依赖。旧 DOC 规则转换可选调用用户本机已安装的 Microsoft Word（本次验证版本 16.0.20430.20092，来源为本机 Office16/WINWORD.EXE）。Word 是用户既有的专有软件，不随净稿分发；其安装和使用许可由用户本机提供。净稿自主实现 COM 调用、只读打开、禁用宏与自动更新链接、转换临时副本及清理。未复制 Word 代码、字体或安装文件。没有 Word 时明确提示另存为 DOCX，不假装已经解析成功。
+
+## 2026-10-06 终版增量边界
+
+未安装新依赖、未下载或重新分发模型。已有本机 Ollama 0.35.1 提供 Qwen3.5 4B Q4_K_M 规则语义注释实验，记录在 benchmark/rule_compiler/results.json；模型许可与 digest 独立记录，源码候选 MIT 不覆盖权重。新增 reasoning_effort 可选配置用于兼容本机模型非推理 JSON 响应，默认请求不变，loopback 安全边界不变。
+
+新增评测器、数据生成器、合成标签及真实脱敏截图由 Codex 辅助编写/生成，未复制外部材料。人类标签复核与自主版权确认尚待团队完成。第三方 notices、原始审计、模型/字体/二进制义务见 LICENSE_SCOPE 和 OPEN_SOURCE_LICENSE_AUDIT。

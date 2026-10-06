@@ -5,6 +5,10 @@ const root = path.resolve(import.meta.dirname, "..");
 const testData = root + "/tests/generated/e2e-data/" + Date.now();
 const apiPort = 18001;
 const uiPort = 15174;
+// Opt in only for a separately started, isolated local verification service.
+// This avoids Windows shell-child lifecycle interruptions during long suites;
+// CI continues to own fresh webServer processes by default.
+const externalServers = process.env.JINGGAO_E2E_EXTERNAL_SERVERS === "1";
 export default defineConfig({
   testDir: "../tests/e2e",
   fullyParallel: false,
@@ -26,7 +30,7 @@ export default defineConfig({
         apiPort,
       cwd: root + "/backend",
       url: "http://127.0.0.1:" + apiPort + "/health",
-      reuseExistingServer: false,
+      reuseExistingServer: externalServers,
       env: {
         JINGGAO_DATA_DIR: testData,
         PYTHONUTF8: "1",
@@ -42,7 +46,7 @@ export default defineConfig({
         '" node_modules/vite/bin/vite.js --host 127.0.0.1 --port ' +
         uiPort,
       url: "http://127.0.0.1:" + uiPort,
-      reuseExistingServer: false,
+      reuseExistingServer: externalServers,
       // Vite otherwise treats EOF on a Windows automation pipe as SIGTERM.
       env: { CI: "true", JINGGAO_API_ORIGIN: "http://127.0.0.1:" + apiPort },
     },

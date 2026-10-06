@@ -1,5 +1,9 @@
 # 可审查规则编译器
 
+2026-10-06 已用本机既有 Ollama Qwen3.5 4B Q4_K_M 完成 60 条真实语义注释评测。3 例通过响应/原文/授权校验，57 例 fallback；语义质量未提升，不把接入模型当作理解能力验证成功。数据、响应、digest及边界见 [RULE_COMPILER_EVALUATION](RULE_COMPILER_EVALUATION.md)。下文“未配置验收”对应 2026-10-05 的历史记录。
+
+可选 JINGGAO_LOCAL_LLM_REASONING_EFFORT=none，用于本机模型在20秒预算内返回JSON。默认留空，不改变既有请求；不会放宽原文、scope、exception或loopback校验。用户应自行确认本机服务与已安装模型。
+
 编译路径：完整文档结构抽取 → 确定性候选条款 → 条件/例外/范围结构 → 可选本地语义注释 → Schema 校验 → 原文来源映射 → 用户逐条确认 → STRICT_CUSTOM 快照执行。
 
 `services/rule_compiler/` 包含 compiler、semantic_parser、schema_validator、provenance、fallback。输出保留 id/rule_id、规则集来源、来源文件/页/章节/段落、精确 original_text、normalized_requirement、requirement_type、condition、exception、scope、target、detector、parameters、confidence、needs_confirmation、coverage_expectation。文件 SHA 和原文 SHA 留在参数；规则集 ID 在确认保存后赋值，多成员执行 ID 加来源命名空间。

@@ -1,0 +1,4771 @@
+{
+  "version": 1,
+  "dataset_sha256": "559eb7722712a29a195b85a52609241ce05cde5adb7f1cef84926322545fc02b",
+  "annotation_status": "Codex-authored separate synthetic ground truth, pending team human review; not an external blinded study",
+  "protocol": "Dataset locked before first evaluation. No detector tuning against these outputs. New sentences, files and renderers; no developer fixture imports. Existing public university aliases occur only in synthetic statements. Placeholder contacts are not real participant records.",
+  "mode": "FULL",
+  "sentence_metrics": {
+    "count": 120,
+    "evidence_candidate": {
+      "tp": 42,
+      "fp": 21,
+      "fn": 18,
+      "tn": 39,
+      "precision": 0.6666666666666666,
+      "recall": 0.7,
+      "f1": 0.6829268292682926,
+      "false_positive": 21,
+      "false_negative": 18,
+      "false_pass": 0,
+      "false_pass_rate": 0.0,
+      "positive_rule_pass_count": 0
+    },
+    "confirmed_fail": {
+      "tp": 27,
+      "fp": 12,
+      "fn": 33,
+      "tn": 48,
+      "precision": 0.6923076923076923,
+      "recall": 0.45,
+      "f1": 0.5454545454545455,
+      "false_positive": 12,
+      "false_negative": 33,
+      "false_pass": 0,
+      "false_pass_rate": 0.0,
+      "positive_rule_pass_count": 0
+    },
+    "coverage": {
+      "PARTIAL": 108,
+      "VERIFIED": 12
+    }
+  },
+  "document_metrics": {
+    "count": 84,
+    "evidence_candidate": {
+      "tp": 39,
+      "fp": 10,
+      "fn": 11,
+      "tn": 24,
+      "precision": 0.7959183673469388,
+      "recall": 0.78,
+      "f1": 0.7878787878787878,
+      "false_positive": 10,
+      "false_negative": 11,
+      "false_pass": 0,
+      "false_pass_rate": 0.0,
+      "positive_rule_pass_count": 0
+    },
+    "confirmed_fail": {
+      "tp": 34,
+      "fp": 5,
+      "fn": 16,
+      "tn": 29,
+      "precision": 0.8717948717948718,
+      "recall": 0.68,
+      "f1": 0.7640449438202247,
+      "false_positive": 5,
+      "false_negative": 16,
+      "false_pass": 0,
+      "false_pass_rate": 0.0,
+      "positive_rule_pass_count": 0
+    },
+    "coverage": {
+      "PARTIAL": 77,
+      "VERIFIED": 7
+    }
+  },
+  "sentence_cases": [
+    {
+      "id": "HS001",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS002",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS003",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "清华",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/alias"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS004",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS005",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "作者：赵合成",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/author_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS006",
+      "format": "sentence",
+      "kind": "text",
+      "target": "advisor_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "指导教师：周虚构",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/advisor_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS007",
+      "format": "sentence",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "entrant1@sample.invalid",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/email/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS008",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "19900000001",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS009",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "021-00000001",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS010",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "项目编号：HJ-SYN-0001",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS011",
+      "format": "sentence",
+      "kind": "text",
+      "target": "funding",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "基金号：SIM-0001",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/funding/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS012",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "NSFC 00000001",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS013",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "张虚构",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/author_name/context"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS014",
+      "format": "sentence",
+      "kind": "text",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "Made with AI",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "AIMarkerDetector"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS015",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "图注字符为 ����，图号1。",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS016",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "公式标注出现 □□□□，样例1。",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS017",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "乱码段落：�?�?�?�?，例1。",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS018",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS019",
+      "format": "sentence",
+      "kind": "text",
+      "target": "person",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS020",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS021",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS022",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "澄岚合成大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS023",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "研究背景比较映河合成学院",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS024",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Public Institute",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS025",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "Meridian Synthetic University",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS026",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "清华",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/alias"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS027",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Department of Energy is a cited public source",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS028",
+      "format": "sentence",
+      "kind": "text",
+      "target": "person",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS029",
+      "format": "sentence",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS030",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS031",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS032",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS033",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS034",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS035",
+      "format": "sentence",
+      "kind": "text",
+      "target": "ai_marker",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS036",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "公开研究所",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS037",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS038",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS039",
+      "format": "sentence",
+      "kind": "text",
+      "target": "advisor_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS040",
+      "format": "sentence",
+      "kind": "text",
+      "target": "contact",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS041",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS042",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS043",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "清华",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/alias"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS044",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS045",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "作者：赵合成",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/author_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS046",
+      "format": "sentence",
+      "kind": "text",
+      "target": "advisor_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "指导教师：周虚构",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/advisor_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS047",
+      "format": "sentence",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "entrant2@sample.invalid",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/email/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS048",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "19900000002",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS049",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "021-00000002",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS050",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "项目编号：HJ-SYN-0002",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS051",
+      "format": "sentence",
+      "kind": "text",
+      "target": "funding",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "基金号：SIM-0002",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/funding/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS052",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "NSFC 00000002",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS053",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "张虚构",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/author_name/context"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS054",
+      "format": "sentence",
+      "kind": "text",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "Made with AI",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "AIMarkerDetector"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS055",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "图注字符为 ����，图号2。",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS056",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "公式标注出现 □□□□，样例2。",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS057",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "乱码段落：�?�?�?�?，例2。",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS058",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS059",
+      "format": "sentence",
+      "kind": "text",
+      "target": "person",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS060",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS061",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS062",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "澄岚合成大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS063",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "研究背景比较映河合成学院",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS064",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Public Institute",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS065",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "Meridian Synthetic University",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS066",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "清华",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/alias"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS067",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Department of Energy is a cited public source",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS068",
+      "format": "sentence",
+      "kind": "text",
+      "target": "person",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS069",
+      "format": "sentence",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS070",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS071",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS072",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS073",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS074",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS075",
+      "format": "sentence",
+      "kind": "text",
+      "target": "ai_marker",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS076",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "公开研究所",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS077",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS078",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS079",
+      "format": "sentence",
+      "kind": "text",
+      "target": "advisor_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS080",
+      "format": "sentence",
+      "kind": "text",
+      "target": "contact",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS081",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS082",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS083",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "清华",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/alias"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS084",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS085",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "作者：赵合成",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/author_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS086",
+      "format": "sentence",
+      "kind": "text",
+      "target": "advisor_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "指导教师：周虚构",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/advisor_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS087",
+      "format": "sentence",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "entrant3@sample.invalid",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/email/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS088",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "19900000003",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS089",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "021-00000003",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS090",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "项目编号：HJ-SYN-0003",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS091",
+      "format": "sentence",
+      "kind": "text",
+      "target": "funding",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "基金号：SIM-0003",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/funding/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS092",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "NSFC 00000003",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS093",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "张虚构",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/author_name/context"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS094",
+      "format": "sentence",
+      "kind": "text",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "Made with AI",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "AIMarkerDetector"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS095",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "图注字符为 ����，图号3。",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS096",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "公式标注出现 □□□□，样例3。",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS097",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "乱码段落：�?�?�?�?，例3。",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS098",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS099",
+      "format": "sentence",
+      "kind": "text",
+      "target": "person",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS100",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS101",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS102",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "澄岚合成大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS103",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "研究背景比较映河合成学院",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS104",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Public Institute",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS105",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "Meridian Synthetic University",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS106",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "清华",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/alias"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS107",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Department of Energy is a cited public source",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS108",
+      "format": "sentence",
+      "kind": "text",
+      "target": "person",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS109",
+      "format": "sentence",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS110",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS111",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS112",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS113",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS114",
+      "format": "sentence",
+      "kind": "text",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS115",
+      "format": "sentence",
+      "kind": "text",
+      "target": "ai_marker",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": true,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS116",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "公开研究所",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS117",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS118",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS119",
+      "format": "sentence",
+      "kind": "text",
+      "target": "advisor_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "HS120",
+      "format": "sentence",
+      "kind": "text",
+      "target": "contact",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    }
+  ],
+  "document_cases": [
+    {
+      "id": "HD001",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "汀澜虚构大学",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "d51b6323063938faead833309710a2b374ab82ac4eaba647d4f2067134122d58"
+    },
+    {
+      "id": "HD002",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "bf3627233b421614279bc3a8c6b1c6e0262ea6766e1f3df099e67977a57340aa"
+    },
+    {
+      "id": "HD003",
+      "format": "pdf",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "review@heldout.invalid",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/email/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "930d42003a20f88c1a7a2fb44899a5c11b4a5dc044746a3be0825f111703f888"
+    },
+    {
+      "id": "HD004",
+      "format": "pdf",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "020-00001234",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "52722f5a5b56a565a58201b0de3a5580515c59b963470d008afe81ce377b4a7f"
+    },
+    {
+      "id": "HD005",
+      "format": "pdf",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "项目编号：HOUT-FAKE-9042",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "fe0d508c3252c4e0e09f5f367467dcb41e234edeefafd91f911503221e9ba22a"
+    },
+    {
+      "id": "HD006",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "沧屿合成大学",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "21d7f3c3d57d20ef8b42d02fb559563fca78573b35ed19b75a3d38173daa1249"
+    },
+    {
+      "id": "HD007",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "听潮虚构学院",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "9e8e83dcaad5394f06342af8c2bcddd219fce77ee45d88ef9f11aeb3a17ab1dd"
+    },
+    {
+      "id": "HD008",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "1c2b890411834f543a719234451f3fef526027190386ac0a386f02b7dc960f06"
+    },
+    {
+      "id": "HD009",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "汀澜虚构大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "6ec6671329af51c477c8d28b0592bd3cb3e57be4b07f2e74674f562af3c5a1a3"
+    },
+    {
+      "id": "HD010",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Lattice Fictional University",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "4022345beb25fbe157543b3c20316c51d01257330bcc7cf6bfa5f1071af4b033"
+    },
+    {
+      "id": "HD011",
+      "format": "docx",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "review@heldout.invalid",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/email/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "a22fd313cd787b1d836fa73041fd477435126c344239461f2ba95552a8d3a081"
+    },
+    {
+      "id": "HD012",
+      "format": "docx",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "020-00001234",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "42c65c2933cc300baf3d520a97db8297862355ce256ba8cd0f33d8c76928471c"
+    },
+    {
+      "id": "HD013",
+      "format": "docx",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "项目编号：HOUT-FAKE-9042",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "5349fc27505affd004d7783b251824d88d4a932d67cd9d2659d1bed7a582bb06"
+    },
+    {
+      "id": "HD014",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "沧屿合成大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "84b74ef335df50c33dc7a31715f93502da5d501523d6b65897c503b8b5095ed8"
+    },
+    {
+      "id": "HD015",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "听潮虚构学院",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "b9bee47ad9189e99950a834f1bfe56d9a2c4ee445c52119cc378ad9994b967a5"
+    },
+    {
+      "id": "HD016",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "118e518520fff8a133d53e41d547750777919eb790c80d9c549ae0d66c42d325"
+    },
+    {
+      "id": "HD017",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "汀澜虚构大学",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "7d770d075387471e6bd260f6ca30b38c5bc5f5308a9539d8d0639294c6115cc4"
+    },
+    {
+      "id": "HD018",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Lattice Fictional University",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "e220e3131707ce88cba53243b96f0c12db261689c564920d47a599b4af53405f"
+    },
+    {
+      "id": "HD019",
+      "format": "pptx",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "review@heldout.invalid",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/email/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "f8b9b86817a16fe96cc9681b5d6ea16d777cc134ce55598b0db3f6118abfd2a6"
+    },
+    {
+      "id": "HD020",
+      "format": "pptx",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "020-00001234",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "dc77d3a2f1e8a7b2dd103e7665c1306aec344b5eaad1ad8d5e14add94eb77719"
+    },
+    {
+      "id": "HD021",
+      "format": "pptx",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "项目编号：HOUT-FAKE-9042",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "57a21aa5e58c3b68daadf468ac2122c0011302ce4661a2388e658cebc29abec6"
+    },
+    {
+      "id": "HD022",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "沧屿合成大学",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "5edd8ae209e355a2f71356448d247b42a3fcf630f438aa7019acfdabfc3c6c45"
+    },
+    {
+      "id": "HD023",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "听潮虚构学院",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "df4efddf56a6eb91a3c684846242708f25696f594ef302255445dfcc1ebfea52"
+    },
+    {
+      "id": "HD024",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "9738fbcd565d26bfae14fe7de7bd298095821e7d7d4cc5f47ce16a005f309ccd"
+    },
+    {
+      "id": "HD025",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "汀澜虚构大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "752648263d9cc3de0903389ce8e8fae12804c825e7a3a9189e7042ac468dcf02"
+    },
+    {
+      "id": "HD026",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Lattice Fictional University",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "c0217a360f46857b498e1c4ceab5a84c2144085e8621b0a581cca1426f67c61a"
+    },
+    {
+      "id": "HD027",
+      "format": "txt",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "review@heldout.invalid",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/email/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "45c29b63c6017c36cc394466afde59f3d3cb4f6545b114b888cc6a22cbbc12c1"
+    },
+    {
+      "id": "HD028",
+      "format": "txt",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "020-00001234",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "68046b323a40159b756131b29f9268d57c43220a11ae841dedd2e746160834ab"
+    },
+    {
+      "id": "HD029",
+      "format": "txt",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "项目编号：HOUT-FAKE-9042",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "68fb21097f42065c519f931bcbf620d71d93a409d130cdea459a9a41a52d9240"
+    },
+    {
+      "id": "HD030",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "沧屿合成大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "51ba61f4f884230637484c9fb0892969759bfc570b9d762acb99a632e3c10728"
+    },
+    {
+      "id": "HD031",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "听潮虚构学院",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "d9483938bfc8621b9f03d02896331ae54db3af66d824196398e6059f4fd13704"
+    },
+    {
+      "id": "HD032",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "22d1907d6ec759f9d63600cf9c04bcb92dd1509823e47b46c21623fd66d8149b"
+    },
+    {
+      "id": "HD033",
+      "format": "md",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "汀澜虚构大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "752648263d9cc3de0903389ce8e8fae12804c825e7a3a9189e7042ac468dcf02"
+    },
+    {
+      "id": "HD034",
+      "format": "md",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Lattice Fictional University",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "c0217a360f46857b498e1c4ceab5a84c2144085e8621b0a581cca1426f67c61a"
+    },
+    {
+      "id": "HD035",
+      "format": "md",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "review@heldout.invalid",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/email/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "45c29b63c6017c36cc394466afde59f3d3cb4f6545b114b888cc6a22cbbc12c1"
+    },
+    {
+      "id": "HD036",
+      "format": "md",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "020-00001234",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "68046b323a40159b756131b29f9268d57c43220a11ae841dedd2e746160834ab"
+    },
+    {
+      "id": "HD037",
+      "format": "md",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "项目编号：HOUT-FAKE-9042",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "68fb21097f42065c519f931bcbf620d71d93a409d130cdea459a9a41a52d9240"
+    },
+    {
+      "id": "HD038",
+      "format": "md",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "沧屿合成大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "51ba61f4f884230637484c9fb0892969759bfc570b9d762acb99a632e3c10728"
+    },
+    {
+      "id": "HD039",
+      "format": "md",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "听潮虚构学院",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "d9483938bfc8621b9f03d02896331ae54db3af66d824196398e6059f4fd13704"
+    },
+    {
+      "id": "HD040",
+      "format": "md",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "22d1907d6ec759f9d63600cf9c04bcb92dd1509823e47b46c21623fd66d8149b"
+    },
+    {
+      "id": "HD041",
+      "format": "pdf",
+      "kind": "metadata",
+      "target": "metadata",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL",
+        "REVIEW"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "FictionalHoldoutAuthor",
+          "source_type": "METADATA",
+          "page": null,
+          "detector": "OOXML/PropertyDetector"
+        },
+        {
+          "status": "REVIEW",
+          "evidence": "Synthetic document generator",
+          "source_type": "METADATA",
+          "page": null,
+          "detector": "PropertyDetector"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "c0ed8c26fde7ac31b80022f9fd4587e09f733c58e44c9065632472ff691180d4"
+    },
+    {
+      "id": "HD042",
+      "format": "pdf",
+      "kind": "normal_metadata",
+      "target": "metadata",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": true,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "PASS"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "44d2e8e02c8394c671b8f4d5b791be0b00a7089d9106fb131e4e41cf631efa28"
+    },
+    {
+      "id": "HD043",
+      "format": "docx",
+      "kind": "metadata",
+      "target": "metadata",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "FictionalHoldoutAuthor",
+          "source_type": "METADATA",
+          "page": null,
+          "detector": "OOXML/PropertyDetector"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "2e90f91e04a5e90a3ab7499ab8ead3fb29d4c06903dedfb758282f5ef4f68e8a"
+    },
+    {
+      "id": "HD044",
+      "format": "docx",
+      "kind": "hidden",
+      "target": "hidden",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Anonymous structural test document, no genuine participants.",
+          "source_type": "HIDDEN_TEXT",
+          "page": null,
+          "detector": "OOXML/PropertyDetector"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "d65b1f4e1f45746b633fe3a6b5c6f43893db1b5a0f03741fbbdb87462e16ec41"
+    },
+    {
+      "id": "HD045",
+      "format": "docx",
+      "kind": "comment",
+      "target": "hidden",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Anonymous structural test document, no genuine participants.",
+          "source_type": "COMMENT",
+          "page": null,
+          "detector": "OOXML/PropertyDetector"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "e3000ba3b737db1b28964b0200724d26a0f8648de9e531baa7be22823eed6f1e"
+    },
+    {
+      "id": "HD046",
+      "format": "docx",
+      "kind": "revision",
+      "target": "hidden",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Anonymous structural test document, no genuine participants.",
+          "source_type": "REVISION",
+          "page": null,
+          "detector": "OOXML/PropertyDetector"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "98a48b31a0e5668be3587c43adf41eb5b4f26da2bb22aa9919e9dc9869269843"
+    },
+    {
+      "id": "HD047",
+      "format": "pptx",
+      "kind": "metadata",
+      "target": "metadata",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "FictionalHoldoutAuthor",
+          "source_type": "METADATA",
+          "page": null,
+          "detector": "OOXML/PropertyDetector"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "ecd5d45c5e11ee992ee92ef30505006f949030ce329f05b5eae682dc4e9c8fb1"
+    },
+    {
+      "id": "HD048",
+      "format": "pptx",
+      "kind": "hidden_slide",
+      "target": "hidden",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "VERIFIED",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Anonymous structural test document, no genuine participants.",
+          "source_type": "HIDDEN_TEXT",
+          "page": 1,
+          "detector": "OOXML/PropertyDetector"
+        }
+      ],
+      "ocr_regions": 0,
+      "document_sha256": "e5a9514822c89b97fc12c512135c057e4283ae99901ccf0aa0da348f65d60bf6"
+    },
+    {
+      "id": "HD049",
+      "format": "pdf",
+      "kind": "image_identity",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Tidal Synthetic University",
+          "source_type": "IMAGE_OCR",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 1,
+      "document_sha256": "9f10a1d4dd134b691739a9606b030edfc3a2114d730f5dd6e626c795492d4ae8"
+    },
+    {
+      "id": "HD050",
+      "format": "pdf",
+      "kind": "ai_watermark",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "3700da058681d6af519d98982f575ec589817eaeaa3e1bc7ff3c4d2bac3b07dd"
+    },
+    {
+      "id": "HD051",
+      "format": "pdf",
+      "kind": "garbled",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "7b1134054603be464b653fc80d89fee4086e31efa8315319a496de2e4ff5e5d7"
+    },
+    {
+      "id": "HD052",
+      "format": "pdf",
+      "kind": "missing_glyph",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "4d42841b1203bd1ec9810107e79912a52266d3fd3fc50bf4d97f9875228ba30f"
+    },
+    {
+      "id": "HD053",
+      "format": "pdf",
+      "kind": "replacement",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "85ec35dfe439efcdf8003be4a85be145b7178296e1012717c1fe9e982f7b96da"
+    },
+    {
+      "id": "HD054",
+      "format": "pdf",
+      "kind": "small_font",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "18462417b140523315c143e2b2d94fedc9f5696f22dbcb1976e894a75be46121"
+    },
+    {
+      "id": "HD055",
+      "format": "pdf",
+      "kind": "chart",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "e0982ad37491d8b757cd42e958c2690993ffb53725645aef302dab2dab949b8a"
+    },
+    {
+      "id": "HD056",
+      "format": "pdf",
+      "kind": "badge",
+      "target": "logo",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "紧凑徽章形状候选（不是确定 Logo 身份）",
+          "source_type": "LOGO",
+          "page": 1,
+          "detector": "GeometricBadgeCandidate"
+        }
+      ],
+      "ocr_regions": 2,
+      "document_sha256": "7643befb276620e5cfb926459dd933f12fd745ae39e9350bb5ebb10d7edf1574"
+    },
+    {
+      "id": "HD057",
+      "format": "pdf",
+      "kind": "circle",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "c9aec0bd18a52335ec05b089ab50e7d9d51cfe7f6ce282db8bcf86a44e66bf8a"
+    },
+    {
+      "id": "HD058",
+      "format": "pdf",
+      "kind": "qr_pattern",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 2,
+      "document_sha256": "d149c34b733085b30c7569b22e3cc01091a59c51f4abb36c22bf1add8d9e92cc"
+    },
+    {
+      "id": "HD059",
+      "format": "pdf",
+      "kind": "flow",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 3,
+      "document_sha256": "6a63dc2eb25be156e7fc0e61b633ba4f74918c653ddc933f3ceda5153ff4b706"
+    },
+    {
+      "id": "HD060",
+      "format": "pdf",
+      "kind": "apparatus",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "137c52d6a9b9b62446eaadbee897cdec869d0885f7b19639e5a8920dbb8e9fba"
+    },
+    {
+      "id": "HD061",
+      "format": "docx",
+      "kind": "image_identity",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Tidal Synthetic University",
+          "source_type": "IMAGE_OCR",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 1,
+      "document_sha256": "d13a9d2324b6d82d35d036bd1aa88035457e13b18304a6128899e9b58b8ac057"
+    },
+    {
+      "id": "HD062",
+      "format": "docx",
+      "kind": "ai_watermark",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "2f1dd4c351986199a8aac7950b38bef432ae6e0dcc40715b5d2f24c9c87024ca"
+    },
+    {
+      "id": "HD063",
+      "format": "docx",
+      "kind": "garbled",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "3331fa0f0665f3940f2bae2b03058e30fa440f687078e7ec11e9539428e10f2c"
+    },
+    {
+      "id": "HD064",
+      "format": "docx",
+      "kind": "missing_glyph",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "嵌入图片 · word/media/image1.png：识别文本含损坏字符，人工核对原图；Labels:  □□□"
+      ],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "Labels:  □□□",
+          "source_type": "IMAGE_OCR",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 1,
+      "document_sha256": "e610e1993ef0062b02256ec6aa30f7a501d77c77d9e37f1de31e17c095628d01"
+    },
+    {
+      "id": "HD065",
+      "format": "docx",
+      "kind": "replacement",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "3e08b2c8632b2f906636348456e869595430294b1722fd051d3668b6a32b3035"
+    },
+    {
+      "id": "HD066",
+      "format": "docx",
+      "kind": "small_font",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "f80f089998d919625ffb89e45896f15772b16932610220491cf0a038f7c31a01"
+    },
+    {
+      "id": "HD067",
+      "format": "docx",
+      "kind": "chart",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "1bfa9addf471abf3420443235cbda5c754c7fdc1ad73925ab8ed53de08bd3d20"
+    },
+    {
+      "id": "HD068",
+      "format": "docx",
+      "kind": "badge",
+      "target": "logo",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "紧凑徽章形状候选（不是确定 Logo 身份）",
+          "source_type": "LOGO",
+          "page": null,
+          "detector": "GeometricBadgeCandidate"
+        }
+      ],
+      "ocr_regions": 1,
+      "document_sha256": "301ac9333605198d449edd52d121f2dc9f2803407881cdb920e5886c8be9d4b0"
+    },
+    {
+      "id": "HD069",
+      "format": "docx",
+      "kind": "circle",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "63317857a72f1f0da2acb4ecfaaaa216deec260c593720628e15dbc00af3590e"
+    },
+    {
+      "id": "HD070",
+      "format": "docx",
+      "kind": "qr_pattern",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "4af0dd3d218ca85cc4730a8f22de78915e6517720f887f58ccbf4d78938f1895"
+    },
+    {
+      "id": "HD071",
+      "format": "docx",
+      "kind": "flow",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 3,
+      "document_sha256": "f2f1f8a46bf62c72a09eff47d14cd4bbd7a4b2a141dee42d55fc1ee8d761b7f3"
+    },
+    {
+      "id": "HD072",
+      "format": "docx",
+      "kind": "apparatus",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "0b0e61e712860f10879596a25d7203c81580149b4763ada72742648bf781057c"
+    },
+    {
+      "id": "HD073",
+      "format": "pptx",
+      "kind": "image_identity",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Tidal Synthetic University",
+          "source_type": "IMAGE_OCR",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 1,
+      "document_sha256": "6f668be4ebfff57cbb819560c850e81bda537b5a194c35ad021168659579edd3"
+    },
+    {
+      "id": "HD074",
+      "format": "pptx",
+      "kind": "ai_watermark",
+      "target": "ai_marker",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "56cbfee981b9471589fddb1ce1df45ddb70ed16c8fd324f7ce952f24a5000f86"
+    },
+    {
+      "id": "HD075",
+      "format": "pptx",
+      "kind": "garbled",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "419a263b9836a4a899f451568a8e8482ec7ffdbe758f4e75b040c6287632cb02"
+    },
+    {
+      "id": "HD076",
+      "format": "pptx",
+      "kind": "missing_glyph",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "嵌入图片 · ppt/media/image1.png：识别文本含损坏字符，人工核对原图；Labels:  □□□"
+      ],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "Labels:  □□□",
+          "source_type": "IMAGE_OCR",
+          "page": null,
+          "detector": "TextQualityAnalyzer"
+        }
+      ],
+      "ocr_regions": 1,
+      "document_sha256": "94b08f10353c5f12ff28c8619bb249546b69ce0289f957d6e335d28b1f6ebe7c"
+    },
+    {
+      "id": "HD077",
+      "format": "pptx",
+      "kind": "replacement",
+      "target": "text_quality",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "81c23ba378fa2d9cd9896bd93b1073cc8e5a14b672d5c5c8900bb90d3407c18b"
+    },
+    {
+      "id": "HD078",
+      "format": "pptx",
+      "kind": "small_font",
+      "target": "text_quality",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图像标识/文字质量仅覆盖 OCR 可读文本；识别器可能忽略损坏字形，不能证明原图没有异常。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "c7b5f0fdd066517bfd4c65b5a1d938e3d96c0b590cdea2edc7b3be12bd84aa78"
+    },
+    {
+      "id": "HD079",
+      "format": "pptx",
+      "kind": "chart",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "452181fa11b505a8f3c4ae1c1e30376cc1d33f6b5cb984b0e91cabf505ebb9c3"
+    },
+    {
+      "id": "HD080",
+      "format": "pptx",
+      "kind": "badge",
+      "target": "logo",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "REVIEW"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [
+        {
+          "status": "REVIEW",
+          "evidence": "紧凑徽章形状候选（不是确定 Logo 身份）",
+          "source_type": "LOGO",
+          "page": null,
+          "detector": "GeometricBadgeCandidate"
+        }
+      ],
+      "ocr_regions": 1,
+      "document_sha256": "a4279e9425d83e5d130dad8372923f9789a4c749247ff988802395320a8a80d0"
+    },
+    {
+      "id": "HD081",
+      "format": "pptx",
+      "kind": "circle",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "c877ed40cd229c04ae7e0504fb8ecfd5da41a82e769a897bad678f3300a678fa"
+    },
+    {
+      "id": "HD082",
+      "format": "pptx",
+      "kind": "qr_pattern",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 1,
+      "document_sha256": "c34d9a50c17fa5b98672e40bf0b1c2314ec4cd3688bb024aa23836c90a950458"
+    },
+    {
+      "id": "HD083",
+      "format": "pptx",
+      "kind": "flow",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 3,
+      "document_sha256": "2aafd0f9c4905ad6f8c44afdaa811d4f23f383df2e8b5c53f92d56bddefb6f47"
+    },
+    {
+      "id": "HD084",
+      "format": "pptx",
+      "kind": "apparatus",
+      "target": "logo",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。",
+        "图形身份仍为 PARTIAL：几何/本地模型仅提出候选，不能证明所有图片没有 Logo。",
+        "图形 Logo 识别仅部分覆盖；不把每张图片当作风险。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0,
+      "document_sha256": "05e5cf8f95d6d4ba381336e2e42becfe5186ab1acff4a72b4d9ef9ed43a6002f"
+    }
+  ],
+  "interpretation": "Separate frozen synthetic hold-out, not an external human blind study. REVIEW counts only as evidence candidate. PARTIAL/MANUAL/UNAVAILABLE never count as PASS. False PASS also reports per-rule PASS on positive cases."
+}

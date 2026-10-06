@@ -1,5 +1,9 @@
 # 比赛对应
 
+2026-10-06 终版表达统一为五条主线：[Rule-aware、Evidence-first、Unknown ≠ Clean、Safe Remediation Loop、Local-first AI](INNOVATION.md)。原已核验赛事方向、评分维度与材料要求保留，不新增或推测官方标准。
+
+真实 AI 实验补充本机既有 Qwen3.5 4B 的 60 条语义注释评测；低接受率与无执行指标提升均披露。新 Hold-out 为冻结合成数据，不称外部人类盲测；FP/FN与覆盖状态单列。三张对外截图来自真实运行合成材料。源代码主线可在验证后冻结，正式 Release 仍等待团队自主版权确认；参赛提交与标签审核需团队实际完成。
+
 申报方向：开源赋能的 AI 应用创新。
 
 官方来源：https://www.aicomp.cn/tracks/tracks-5/4924.html，核对日期 2026-10-02。已阅读官方附件 1《竞赛规则及作品提交要求》和附件 2《技术报告参考大纲》。

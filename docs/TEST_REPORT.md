@@ -1,5 +1,33 @@
 # 测试报告
 
+## 2026-10-06 终版收口验证
+
+| 项目 | 实际结果 |
+|---|---|
+| Backend pytest | 128 passed，2 项已有上游非失败警告 |
+| Ruff backend/app tests | PASS |
+| Frontend lint / Prettier | PASS |
+| Typecheck | PASS |
+| Production build | PASS，保留既有 Three.js 分块体积提醒 |
+| 完整 Playwright | 76 passed，0 failed / skipped / flaky，11.1 分钟 |
+| 桌面尺寸 | 1920×1080、1440×900、1366×768 |
+| Benchmark v2 | 实际重跑，指标不变；原 v1 保留 |
+| Rule Compiler A/B | 60 条，真实本机 Qwen3.5 4B；A/B 执行质量未提升 |
+| Frozen Hold-out | 120 句＋84 份文件，真实解析/OCR，FP/FN 公布 |
+| README 截图 | 3 张真实 1440×900 脱敏合成界面 |
+| 截图流程 | /health → /generate → dev → 规则确认/上传/副本/同快照复检/Diff/PDF |
+
+新增7项测试覆盖opt-in reasoning参数及不继承代理、非法配置拒绝、评测原始越权计数、REVIEW/PARTIAL不算PASS、数据/代码锁和Git换行兼容。模型没有新规则、扩大范围或删除例外的授权。
+
+完整浏览器套件保持89页连续阅读、95项问题独立滚动、Finding定位、PDF/DOCX上传、联合规则、删除、真实OCR、Coverage、整改预览、副本下载、同快照Run2、旧新Evidence、报告与Three.js交互/生命周期/reduced-motion/WebGL降级。PPTX解析/安全副本由后端测试和实际Hold-out覆盖，不冒称新增像素级PPTX浏览器预览。
+
+先前两次全量浏览器运行因Windows测试服务中断产生连锁失败，另一次启动失败，均未计通过。最终用单独启动且独立数据目录的本机服务执行完整npm run test，通过76项；仅通过JINGGAO_E2E_EXTERNAL_SERVERS=1显式选择复用，默认与GitHub CI仍由Playwright启动新服务。未修改产品UI或Detector。首轮截图脚本的导航等待/选择器错误已修正并完成真实流程。
+
+冻结数据哈希保留首次运行值；只兼容Git的LF/CRLF等价转换，不允许内容换题。全批Hold-out结果不因后续smoke重写；模拟越权测试和真实模型效果分开披露。模型JSON低接受率、实体/引用误报、图像字形漏检均公开。
+
+最新master的远端CI需在本次push后实际核验，动态结果见[GitHub Actions](https://github.com/3331083641-prog/jinggao/actions/workflows/ci.yml)。本地通过不冒充远端通过；推送SHA与实际Actions运行写入本机最终收口报告。
+
+
 ## 2026-10-06 CI 路径修复
 
 首轮远端 CI 的前端与浏览器任务通过，后端临时目录初始化失败：旧 pytest.ini 固定使用 D:/jinggao，GitHub checkout 实际位于 Runner 工作目录。现由 conftest 按仓库根目录配置 .cache/pytest，提前创建父目录，并保留命令行 --basetemp 的优先级。此修复不改业务逻辑；远端最终结果以 Actions 实际记录为准。

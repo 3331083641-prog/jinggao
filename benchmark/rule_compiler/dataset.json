@@ -1,0 +1,855 @@
+{
+  "version": 1,
+  "origin": "Original synthetic clauses with separately authored labels; not copied from developer fixtures",
+  "annotation_status": "Codex-authored explicit semantic labels; team human sign-off pending, not claimed as independently human-labelled",
+  "scope_definition": "Logical authorized document sections; references in exceptions are excluded. Metadata/hidden/images are separate surfaces.",
+  "cases": [
+    {
+      "id": "RC001",
+      "source_text": "正文不得出现学校名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC002",
+      "source_text": "附录不得包含作者姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "author_name"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC003",
+      "source_text": "封面不得出现学校 Logo。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "logo"
+      ],
+      "expected_scope": [
+        "cover"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC004",
+      "source_text": "文档属性中不得保留作者姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "metadata"
+      ],
+      "expected_scope": [
+        "metadata"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC005",
+      "source_text": "Word 隐藏文字中不得出现身份信息。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "hidden"
+      ],
+      "expected_scope": [
+        "hidden"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC006",
+      "source_text": "图片中不得出现学校名称或学校 Logo。",
+      "expected_rule_count": 2,
+      "expected_target": [
+        "school_name",
+        "logo"
+      ],
+      "expected_scope": [
+        "images"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC007",
+      "source_text": "正文不得出现邮箱和电话号码。",
+      "expected_rule_count": 2,
+      "expected_target": [
+        "email",
+        "telephone"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC008",
+      "source_text": "匿名材料中不得出现基金项目编号。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "project_number"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC009",
+      "source_text": "正文禁止出现指导教师姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "advisor_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC010",
+      "source_text": "正文不得包含院校名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC011",
+      "source_text": "正文不得出现单位名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "organization_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC012",
+      "source_text": "正文禁止保留身份证号码。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "identity_number"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC013",
+      "source_text": "图片不得带有 AI 生成水印。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "ai_marker"
+      ],
+      "expected_scope": [
+        "images"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC014",
+      "source_text": "正文及附录不得出现学校名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "body",
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC015",
+      "source_text": "封面和正文不得出现作者姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "author_name"
+      ],
+      "expected_scope": [
+        "cover",
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC016",
+      "source_text": "文档元数据不得包含创建人信息。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "metadata"
+      ],
+      "expected_scope": [
+        "metadata"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC017",
+      "source_text": "不得保留 Word 批注。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "hidden"
+      ],
+      "expected_scope": [
+        "hidden"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC018",
+      "source_text": "不得保留 Word 修订记录。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "hidden"
+      ],
+      "expected_scope": [
+        "hidden"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC019",
+      "source_text": "正文禁止出现联系方式。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "contact"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC020",
+      "source_text": "图片不得出现文字渲染损坏和乱码。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "text_quality"
+      ],
+      "expected_scope": [
+        "images"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC021",
+      "source_text": "附录不得出现基金编号。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "project_number"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC022",
+      "source_text": "封面禁止出现实验室名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "organization_name"
+      ],
+      "expected_scope": [
+        "cover"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC023",
+      "source_text": "正文不得出现队员姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "author_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC024",
+      "source_text": "图片中不得出现手机号。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "telephone"
+      ],
+      "expected_scope": [
+        "images"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC025",
+      "source_text": "摘要必须包含关键词。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "keywords"
+      ],
+      "expected_scope": [
+        "abstract"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC026",
+      "source_text": "论文必须提供参考文献。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "references"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC027",
+      "source_text": "附录应当提供代码说明。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "code_disclosure"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC028",
+      "source_text": "封面必须包含论文题目。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "title"
+      ],
+      "expected_scope": [
+        "cover"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC029",
+      "source_text": "材料最多 40 页。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "max_pages"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC030",
+      "source_text": "正文需要说明实验数据来源。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "data_source"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC031",
+      "source_text": "必须提供人工智能工具使用声明。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "ai_disclosure"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC032",
+      "source_text": "附录须说明工具名称及使用范围。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "ai_disclosure"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC033",
+      "source_text": "图像必须清晰可读。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "readability"
+      ],
+      "expected_scope": [
+        "images"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC034",
+      "source_text": "仅检查封面和正文，不检查附件。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "inspection_scope"
+      ],
+      "expected_scope": [
+        "cover",
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC035",
+      "source_text": "参考文献必须保留出处。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "citation"
+      ],
+      "expected_scope": [
+        "references"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC036",
+      "source_text": "摘要必须单独成页。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "abstract_layout"
+      ],
+      "expected_scope": [
+        "abstract"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC037",
+      "source_text": "若作品采用人工智能生成内容，应在附录中披露。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "ai_disclosure"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "若作品采用人工智能生成内容",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC038",
+      "source_text": "若使用生成式 AI，应说明工具名称及使用范围。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "ai_disclosure"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "若使用生成式 AI",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC039",
+      "source_text": "如果进行匿名评审，正文不得出现学校名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "如果进行匿名评审",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC040",
+      "source_text": "仅当提交匿名稿时，附录不得出现作者姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "author_name"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "仅当提交匿名稿时",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC041",
+      "source_text": "若插图含有学校 Logo，必须更换插图。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "logo"
+      ],
+      "expected_scope": [
+        "images"
+      ],
+      "expected_condition": "若插图含有学校 Logo",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC042",
+      "source_text": "如果提交 Word，必须删除隐藏文字。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "hidden"
+      ],
+      "expected_scope": [
+        "hidden"
+      ],
+      "expected_condition": "如果提交 Word",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC043",
+      "source_text": "若数据来自外部，应当在正文注明来源。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "data_source"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "若数据来自外部",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC044",
+      "source_text": "如果使用人工智能工具，附录必须列出工具版本。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "ai_disclosure"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "如果使用人工智能工具",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC045",
+      "source_text": "仅限正文使用匿名表述。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "anonymity"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "仅限正文使用匿名表述",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "RC046",
+      "source_text": "若包含基金项目，正文不得出现项目编号。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "project_number"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "若包含基金项目",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC047",
+      "source_text": "正文不得出现学校名称，但参考文献中的单位名称除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但参考文献中的单位名称除外",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC048",
+      "source_text": "正文与附录不得出现作者姓名，但引用文献中的作者不受此限制。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "author_name"
+      ],
+      "expected_scope": [
+        "body",
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但引用文献中的作者不受此限制",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC049",
+      "source_text": "附录不得出现项目编号，但公开数据集编号不在此限。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "project_number"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但公开数据集编号不在此限",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC050",
+      "source_text": "图片不得出现学校 Logo，但参考案例图片除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "logo"
+      ],
+      "expected_scope": [
+        "images"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但参考案例图片除外",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC051",
+      "source_text": "正文不得出现邮箱，但文献中的公开联系方式除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "email"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但文献中的公开联系方式除外",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC052",
+      "source_text": "除引用文献和公开背景介绍外，正文与附录不得出现能够识别参赛单位的信息。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "organization_name"
+      ],
+      "expected_scope": [
+        "body",
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "除引用文献和公开背景介绍外",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC053",
+      "source_text": "除了参考文献，正文不得出现院校名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "除了参考文献",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC054",
+      "source_text": "正文不得出现指导教师姓名，但经授权的参考文献署名除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "advisor_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但经授权的参考文献署名除外",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC055",
+      "source_text": "文档属性不得保留作者姓名，但软件创建者字段除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "metadata"
+      ],
+      "expected_scope": [
+        "metadata"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但软件创建者字段除外",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC056",
+      "source_text": "封面不得出现单位名称，除非仅供内部登记使用。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "organization_name"
+      ],
+      "expected_scope": [
+        "cover"
+      ],
+      "expected_condition": "",
+      "expected_exception": "除非仅供内部登记使用",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "RC057",
+      "source_text": "可以使用公开数据。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "permitted_content"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "permission"
+    },
+    {
+      "id": "RC058",
+      "source_text": "允许在附录提交代码。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "permitted_content"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "permission"
+    },
+    {
+      "id": "RC059",
+      "source_text": "正文可使用通用技术术语。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "permitted_content"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "permission"
+    },
+    {
+      "id": "RC060",
+      "source_text": "可以保留普通图表。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "permitted_content"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "permission"
+    }
+  ]
+}
