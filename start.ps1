@@ -16,6 +16,13 @@ try {
     New-Item -ItemType Directory -Force -Path $paths.Logs | Out-Null
     $launchLock=[IO.File]::Open((Join-Path $paths.Runtime 'launch.lock'),[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None)
     $state=Read-LaunchState $paths $root
+    $requestedData=$env:JINGGAO_DATA_DIR
+    if (-not $requestedData) { $requestedData=Join-Path $root 'backend\data' }
+    if (-not [IO.Path]::IsPathRooted($requestedData)) { $requestedData=Join-Path $root $requestedData }
+    $dataDir=[IO.Path]::GetFullPath($requestedData)
+    if ($state -and ((Test-OwnedWrapper $state.backend $root) -or (Test-OwnedWrapper $state.frontend $root))) {
+        if (-not $state.PSObject.Properties['dataDir'] -or $state.dataDir -ne $dataDir) { throw '当前实例的数据目录与本次请求不一致或旧记录未绑定目录。请先运行 .\stop.ps1，再重新启动；不会切换运行中的用户数据。' }
+    }
     if ($state -and $state.backend -and $state.frontend -and ($state.backend.port -ne $BackendPort -or $state.frontend.port -ne $FrontendPort)) { throw '当前目录已有其他端口的启动记录，请先运行 .\stop.ps1。' }
     foreach ($item in @(@{name='backend';port=$BackendPort},@{name='frontend';port=$FrontendPort})) {
         $owners=@(Get-PortOwners $item.port)
@@ -28,14 +35,14 @@ try {
         if ($LASTEXITCODE -ne 0) { throw '首次初始化失败，详情见 setup.log。' }
     }
     $env:PYTHONUTF8='1'
-    if (-not $env:JINGGAO_DATA_DIR) { $env:JINGGAO_DATA_DIR=Join-Path $root 'backend\data' }
-    $dataDir=[IO.Path]::GetFullPath($env:JINGGAO_DATA_DIR)
+    $env:JINGGAO_DATA_DIR=$dataDir
     Write-Host '检查本地 SQLite 与 PDF/OCR 资源…'
     & $paths.Python (Join-Path $root 'scripts\launcher\verify_runtime.py') --initialize
     if ($LASTEXITCODE -ne 0) { throw '本地数据库或 OCR 资源检查失败。' }
     & $environment.Node (Join-Path $root 'scripts\prepare-pdf-assets.mjs')
     if ($LASTEXITCODE -ne 0) { throw '本地 PDF 资源准备失败。' }
-    if (-not $state) { $state=@{version=1;root=$root;backend=$null;frontend=$null} }
+    if ($state) { $state=@{version=1;root=$root;backend=$state.backend;frontend=$state.frontend;dataDir=$dataDir} }
+    else { $state=@{version=1;root=$root;backend=$null;frontend=$null;dataDir=$dataDir} }
     foreach ($item in @(@{name='backend';port=$BackendPort},@{name='frontend';port=$FrontendPort})) {
         $service=$state.($item.name)
         if ($service -and (Test-OwnedWrapper $service $root)) { Write-Host ($item.name+' 已由当前实例启动，复用进程。') }

@@ -13,6 +13,7 @@
 | 镜像失败 | 本机原 pip 镜像 TLS 失败时非零退出，未显示成功；官方 HTTPS PyPI 安装成功，最终入口默认官方源，不关闭证书验证 |
 | 首次启动 | SQLite / RapidOCR 本地资源验证，FastAPI 身份、首页与代理真实访问成功，浏览器自动化进入首页 |
 | 重复启动 | 同一 PID、创建时间与实例标识，没有新增前后端实例 |
+| 数据目录 | 运行中的实例绑定目录，变更请求被拒绝，不创建或静默切换另一份用户数据库 |
 | 端口冲突 | 8000 实际为其他项目；明确拒绝，不杀/不认领。独立假服务端口自动测试也保留正常运行 |
 | 安全停止 | 校验可执行文件、PID/创建时间/实例标识/当前目录和父子链；只停止验收实例，独立服务仍响应 |
 | 文件/历史 | 原合成 PDF SHA 不变、SQLite 存在；重启仍可读取原 COMPLETED Run |
@@ -22,7 +23,7 @@
 | GUI 双击 | CMD 内容及 PS 5.1 解析验证；鼠标双击、系统安全弹窗及默认浏览器 GUI 行为仍需 Windows 人工验收，未伪造通过 |
 | AI 默认状态 | LLM/VISION 未配置，不发请求；默认确定性解析与本地 RapidOCR，安装 Ollama 不等于模型可用 |
 
-自动验收器 `scripts/launcher/acceptance.py` 包含八项实际服务断言、失败源安装与保留检查。完整原始日志与 JSON 在被 Git 忽略的 tests/generated 和 runtime 内。CI browser-smoke 加入 setup + 同一验收器，再运行既有关键业务闭环。推送后最新远端结果以 [实际 Actions](https://github.com/3331083641-prog/jinggao/actions/workflows/ci.yml) 为准；最终 HEAD 和冷安装复核记入本地 `JUDGE_LAUNCH_RECEIPT.md`。
+自动验收器 `scripts/launcher/acceptance.py` 包含九项实际服务断言、失败源安装与保留检查。完整原始日志与 JSON 在被 Git 忽略的 tests/generated 和 runtime 内。CI browser-smoke 加入 setup + 同一验收器，再运行既有关键业务闭环。推送后最新远端结果以 [实际 Actions](https://github.com/3331083641-prog/jinggao/actions/workflows/ci.yml) 为准；最终 HEAD 和冷安装复核记入本地 `JUDGE_LAUNCH_RECEIPT.md`。
 
 ## 回归结果
 

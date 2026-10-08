@@ -35,7 +35,7 @@ Windows 10/11，64 位 Python 3.12，Node.js 22.12+（含 npm），可写的仓�
 .\start.ps1 -BackendPort 8001 -FrontendPort 5174
 ~~~
 
-切换端口前先停止当前实例。手动运行的 Uvicorn/Vite 没有此入口的身份记录，会提示冲突，不自动认领。数据默认在 `backend/data/`；明确设置 `JINGGAO_DATA_DIR` 可另选本地目录，脚本不会读取 `.env`。
+切换端口或数据目录前先停止当前实例。手动运行的 Uvicorn/Vite 没有此入口的身份记录，会提示冲突，不自动认领。数据默认在 `backend/data/`；明确设置 `JINGGAO_DATA_DIR` 可另选本地目录，相对路径以仓库根目录为基准。运行中的实例绑定数据目录，变更会拒绝复用，避免看到错误的历史。脚本不会读取 `.env`。
 
 ## 安装与修复
 

@@ -82,6 +82,11 @@ def main():
             assert "净稿" in httpx.get(ui, trust_env=False, timeout=30).text
             checks["actual_health_and_frontend"] = True
             before = json.loads(state_path.read_text(encoding="utf-8-sig"))
+            changed_env = environment | {"JINGGAO_DATA_DIR": str(root / "runtime/launcher/unrequested-data")}
+            changed = invoke(root, "start.ps1", *options, env=changed_env)
+            assert changed.returncode != 0 and "数据目录与本次请求不一致" in changed.stdout
+            assert not (root / "runtime/launcher/unrequested-data").exists()
+            checks["live_data_directory_change_rejected"] = True
             assert invoke(root, "start.ps1", *options, env=environment).returncode == 0
             after = json.loads(state_path.read_text(encoding="utf-8-sig"))
             assert before == after
