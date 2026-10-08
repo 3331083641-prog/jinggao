@@ -1,2 +1,4 @@
+extend-exclude = ["tests/generated"]
+
 [lint.per-file-ignores]
 "benchmark/evaluate.py" = ["E402"]

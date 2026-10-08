@@ -50,6 +50,11 @@ TOP = {
     "pytest.ini",
     "ruff.toml",
     "CLEANUP_AUDIT.md",
+    "start.ps1",
+    "setup.ps1",
+    "stop.ps1",
+    "start-jinggao.cmd",
+    "启动净稿.cmd",
 }
 DOC_JSON = {"license_inventory.json", "three-dependency-license-audit.json"}
 
@@ -60,7 +65,7 @@ def git(*args):
 
 def candidates():
     result = []
-    for base in ["frontend", "backend", "tests", "scripts", "docs", "benchmark", ".github"]:
+    for base in ["frontend", "backend", "tests", "scripts", "docs", "benchmark", ".github", "demos"]:
         for path in (ROOT / base).rglob("*"):
             if not path.is_file():
                 continue

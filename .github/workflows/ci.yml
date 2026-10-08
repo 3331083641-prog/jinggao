@@ -75,6 +75,8 @@ jobs:
       - run: node frontend/node_modules/@playwright/test/cli.js install chromium
         env:
           PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.cache/playwright
+      - run: powershell.exe -NoProfile -ExecutionPolicy Bypass -File setup.ps1
+      - run: backend/.venv/Scripts/python.exe scripts/launcher/acceptance.py --root . --output tests/generated/judge-launch-ci.json
       - run: node scripts/run-e2e.mjs competition-upgrade.spec.ts continuous-review.spec.ts --project=desktop-1440
   full-benchmark:
     if: github.event_name == 'workflow_dispatch' && inputs.full_benchmark

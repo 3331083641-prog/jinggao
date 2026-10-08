@@ -1,1 +1,1 @@
-{"name":"jinggao-workspace","private":true,"type":"module","scripts":{"dev":"powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start.ps1","build":"npm.cmd --prefix frontend run build","test":"backend/.venv/Scripts/python.exe -m pytest -q"}}
+{"name":"jinggao-workspace","private":true,"type":"module","scripts":{"dev":"powershell -NoProfile -ExecutionPolicy Bypass -File start.ps1","build":"npm.cmd --prefix frontend run build","test":"backend/.venv/Scripts/python.exe -m pytest -q"}}

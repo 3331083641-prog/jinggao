@@ -1,5 +1,9 @@
 # 当前完成度
 
+## 2026-10-08 评委交付入口
+
+根目录 `start.ps1` 统一首次安装与启动，`setup.ps1` 使用原锁文件，`stop.ps1` 按目录/实例标识/PID/创建时间/可执行文件及进程树校验停止；中文和英文 CMD 只做转发。README 提供既有合成材料的真实闭环演示；LLM/VLM 默认未配置，不影响主流程。禁止接管其他服务、批量杀 Python/Node 或删除用户数据库。交付优化不改变冻结的 Detector、规则授权、业务 API 或 UI。验收及人工 GUI 边界见 [评委启动验收](JUDGE_LAUNCH_TEST_REPORT.md)；许可证与正式 Release 的 BLOCKER 保持。
+
 ## 2026-10-06 终版收口候选
 
 候选功能提交22ac6cc已通过128项pytest、76项完整Playwright和[实际远端CI](https://github.com/3331083641-prog/jinggao/actions/runs/37414817762)，已push master。主线停止增加功能；最终文档提交的HEAD/CI继续单独核验。根许可和团队标签审核未完成，所以冻结的是可审查候选，不冒称正式Release已经成立。

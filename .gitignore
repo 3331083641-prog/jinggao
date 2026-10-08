@@ -73,3 +73,6 @@ public/models/
 /reports/
 *.webm
 *.trace
+# Local judge-launch identity records, logs, installation caches and receipts.
+runtime/launcher/
+JUDGE_LAUNCH_RECEIPT.md

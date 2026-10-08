@@ -66,3 +66,7 @@ LocalRuleModelProvider / LocalVisionProvider 是自主接口适配器，不是�
 未安装新依赖、未下载或重新分发模型。已有本机 Ollama 0.35.1 提供 Qwen3.5 4B Q4_K_M 规则语义注释实验，记录在 benchmark/rule_compiler/results.json；模型许可与 digest 独立记录，源码候选 MIT 不覆盖权重。新增 reasoning_effort 可选配置用于兼容本机模型非推理 JSON 响应，默认请求不变，loopback 安全边界不变。
 
 新增评测器、数据生成器、合成标签及真实脱敏截图由 Codex 辅助编写/生成，未复制外部材料。人类标签复核与自主版权确认尚待团队完成。第三方 notices、原始审计、模型/字体/二进制义务见 LICENSE_SCOPE 和 OPEN_SOURCE_LICENSE_AUDIT。
+
+## 2026-10-08 Windows 交付入口
+
+新增根启动/初始化/停止脚本、CMD 薄入口、Windows 验收器及示例元数据规则，未新增 Python/npm 依赖，不分发 PowerShell、Python、Node、系统软件、字体或外部模型。调用用户安装的 Windows PowerShell/.NET 和现有锁定项目依赖。OCR 权重仅由既有 RapidOCR 依赖安装取得，上游许可继续适用；所有依赖、PID、缓存和用户数据均不进入 Git。版权确认 BLOCKER 保持，未建立根 LICENSE 或正式 Release。检测算法、业务 API 与 UI 源码未修改。

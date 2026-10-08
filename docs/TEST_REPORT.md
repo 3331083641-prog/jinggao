@@ -1,5 +1,11 @@
 # 测试报告
 
+## 2026-10-08 交付入口回归
+
+Backend 135 passed（2 项已有上游非失败警告），Ruff / frontend lint / typecheck / build 均通过。完整 Playwright 76 passed（10.6 分钟），使用独立 GitHub clone 的全新依赖和数据，服务器由新增正式入口启动。保留三个桌面尺寸、89页/95项阅读、STRICT_CUSTOM、OCR、Evidence/Coverage、整改副本、复检 Diff/PDF 和 Three.js 全流程。
+
+Windows 启动另验证首次安装、重复实例身份、安全停止/历史保留、其他服务端口冲突、缺少环境、无依赖源以及模拟浏览器权限拒绝。鼠标双击和系统安全弹窗仍需人工验收；没有把自动化/模拟测试冒充 GUI 测试。细节见 [评委快速体验验收](JUDGE_LAUNCH_TEST_REPORT.md)。检测算法、核心业务和 UI 源码未变化，最终 commit/远端 CI 以实际 Actions 及本地交付收据为准。
+
 ## 2026-10-06 终版收口验证
 
 | 项目 | 实际结果 |
