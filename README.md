@@ -89,7 +89,7 @@ FAIL 需要明确证据；REVIEW 是具体候选。**Unknown ≠ Clean；Coverag
 
 [测试报告](docs/TEST_REPORT.md) · [启动验收](docs/JUDGE_LAUNCH_TEST_REPORT.md)。CI 执行核心测试、构建和确定性评测；完整浏览器测试命令在启动指南，评委启动不下载浏览器测试环境。
 
-v1/v2、60 条原始 Rule Compiler 数据与历史结果、120 句＋84 文档冻结 Hold-out 均保留。新增独立开发回归集（34 规则、42 句、24 文档），比较修改前后算法；它参与开发，不能冒称盲测。候选和确定 FAIL 分开统计，公开 FP/FN，PARTIAL 不算 PASS。标签由 Codex 编写，待团队人工复核。
+v1/v2、60 条原始 Rule Compiler 数据与历史结果、120 句＋84 文档冻结 Hold-out 均保留。新增独立开发回归集（34 规则、42 句、24 文档），比较修改前后算法；它参与开发，不能冒称盲测。候选和确定 FAIL 分开统计，公开 FP/FN，PARTIAL 不算 PASS。标签由 Codex 编写，仍待开发者人工复核，不冒称独立人类盲标。
 
 本轮真实 Qwen3.5 4B 实验改善了 JSON 注释接受率；模型仍不改变执行授权，语义指标的提升来自确定性解析改进。另用同一当前模型重跑旧编译器，作为控制对照；与历史实验的运行器/digest 差异另行披露。完整数字与限制见 [质量优化评测](docs/QUALITY_EVALUATION.md)。
 
@@ -104,8 +104,14 @@ v1/v2、60 条原始 Rule Compiler 数据与历史结果、120 句＋84 文档�
 - 单文件 50 MB、PDF 150 页、OCR 最多 80 区域；缺失覆盖明确诊断。
 - 本机应用，不提供公网多用户服务或全自动匿名保证；Windows GUI 双击/安全弹窗需人工验收。
 
+## 开源参考与致谢
+
+概念与设计参考：[Presidio](https://github.com/data-privacy-stack/presidio)（Recognizer）、[MarkItDown](https://github.com/microsoft/markitdown)（多格式结构化）、[PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR)（OCR 路线）、[Qwen3-VL](https://github.com/QwenLM/Qwen3-VL)（未集成的视觉语义路线）、[Mr. Rao](https://github.com/AntonioRao/mr-rao)（离线产品体验，AGPL）。未发现这些项目的直接源码复用；它们不是净稿的集成模型或官方合作方。
+
+实际 OCR 使用 [RapidOCR](https://github.com/RapidAI/RapidOCR)，PDF 处理使用 [pypdf](https://github.com/py-pdf/pypdf) 等依赖；既有本地 Qwen3.5 实验与 Qwen3-VL 分开披露。源码、依赖、模型与讨论项目的准确边界见 [来源核查](docs/SOURCE_PROVENANCE.md)。
+
 ## 开源许可证与第三方资源
 
-自主源码拟采用 MIT，但仍等待团队版权及共同权利人授权，**根 LICENSE 和正式 Release 尚未创建**。第三方依赖、模型权重、字体、参考图和用户文件不受候选 MIT 覆盖；二进制安装包需另审计。本仓库不分发外部 LLM/VLM 权重、用户材料或系统字体。
+文鹏毅独立开发并对其有权授权的自主成果采用 **[MIT License](LICENSE)**（Copyright (c) 2026 文鹏毅）。开发使用 Codex 等 AI 工具，参与情况如实披露。第三方依赖、法律文本、模型权重、字体、参考图和用户文件各遵循自身许可，不改为本人原创 MIT；二进制安装包需另审计。源码发布不包含私人授权原件、签名字迹、外部模型、用户材料、系统字体或依赖环境。
 
 [LICENSE_SCOPE](docs/LICENSE_SCOPE.md) · [许可审计](docs/OPEN_SOURCE_LICENSE_AUDIT.md) · [开源清单](docs/OPEN_SOURCE_MANIFEST.md) · [AI 使用说明](docs/AI_TOOL_USE.md) · [发布清单](docs/RELEASE_CHECKLIST.md)

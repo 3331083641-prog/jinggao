@@ -22,6 +22,9 @@ PRIVATE = re.compile(
     rb"\b[DE][0-9]{11}\.pdf\b|[A-Z]:[/\\]Users[/\\](?!Public\b)[^/\\\r\n]+"
 )
 BLOCK_PARTS = {
+    "private",
+    "private_authorization",
+    "personal_authorization",
     "node_modules",
     ".venv",
     "venv",
@@ -63,13 +66,37 @@ def git(*args):
     return subprocess.check_output(["git", *args], cwd=ROOT)
 
 
+def private_authorization_path(path):
+    value = path.replace("\\", "/")
+    return bool(
+        {part.lower() for part in value.split("/")}
+        & {"private", "private_authorization", "personal_authorization"}
+        or re.search(
+            r"签名字迹|手写签名|授权确认|身份证件|(?:^|/)(?:signature|autograph)\.[^/]+$|signature[-_ ]?scan|signed[-_ ]?(?:authorization|consent)",
+            value,
+            re.I,
+        )
+    )
+
+
 def candidates():
     result = []
-    for base in ["frontend", "backend", "tests", "scripts", "docs", "benchmark", ".github", "demos"]:
+    for base in [
+        "frontend",
+        "backend",
+        "tests",
+        "scripts",
+        "docs",
+        "benchmark",
+        ".github",
+        "demos",
+    ]:
         for path in (ROOT / base).rglob("*"):
             if not path.is_file():
                 continue
             relative = path.relative_to(ROOT)
+            if private_authorization_path(relative.as_posix()):
+                continue
             if (
                 any(part in BLOCK_PARTS for part in relative.parts)
                 or path.name.startswith(".env")
@@ -102,6 +129,14 @@ def candidates():
 
 def scan(data, path, history=False):
     issues = []
+    if private_authorization_path(path):
+        issues.append(
+            {
+                "path": path,
+                "reason": "private authorization/signature path",
+                "history": history,
+            }
+        )
     if SECRET.search(data):
         issues.append(
             {"path": path, "reason": "credential pattern", "history": history}
@@ -149,6 +184,15 @@ def main():
         seen.add(object_id)
         if git("cat-file", "-t", object_id).strip() != b"blob":
             continue
+        if private_authorization_path(name):
+            issues.append(
+                {
+                    "path": name,
+                    "reason": "private authorization/signature path",
+                    "history": True,
+                }
+            )
+            continue  # Report the path; do not read a private signed original.
         if (
             any(part in BLOCK_PARTS for part in Path(name).parts)
             or Path(name).name.startswith(".env")

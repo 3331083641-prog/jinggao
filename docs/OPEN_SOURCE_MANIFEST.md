@@ -1,5 +1,13 @@
 # 开源及第三方资源使用清单
 
+## 2026-10-13 正式源码发布范围
+
+自主成果：文鹏毅独立主导开发，使用 Codex 辅助，对其有权授权部分采用根 MIT。第三方依赖与法律文本不纳入本人 MIT，模型/字体/参考原图/私人资料不随源码分发。[SOURCE_PROVENANCE](SOURCE_PROVENANCE.md) 逐项区分 Concept / Design Reference、Third-party Dependency 与 Code Reuse / Derivative；当前未发现参考项目的直接源码复用。
+
+实际依赖及其许可证继续保留下面的精确版本与 notices。新增分发文件仅为标准根 LICENSE、来源审计说明、ONNX Runtime 原样 LICENSE/ThirdPartyNotices 和固定上游 RapidOCR LICENSE；没有安装新依赖或重新分发权重。Qwen3-VL 未集成，实际本地实验是另行披露的 qwen3.5:4b / Ollama；PaperQA2、Kotaemon、Repomix、DeepTutor 仅讨论，不列为实际代码来源。
+
+以下为历史增量和现有依赖表；其中旧“候选/尚未实测/待团队授权”须按当前许可范围及 QUALITY_EVALUATION 更新理解。
+
 ## 2026-10-13 质量优化增量
 
 无新增依赖或上游修改。自研修改限于结构化模型契约、规则授权验证、条件/范围草案、局部实体判定、保守 Diff 和回归评测。真实本机既有 Ollama 0.40.3 / qwen3.5:4b Q4_K_M 实验见 QUALITY_EVALUATION，取代“尚未实测”的当前状态；下文未实测描述为 10-05 历史。权重、运行器、字体和用户材料不随仓库分发。模型 Apache-2.0 说明及 notices 保留，不被团队候选 MIT 覆盖。

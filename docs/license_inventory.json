@@ -317,7 +317,10 @@
       "license": "MIT License",
       "source": "https://onnxruntime.ai",
       "modified": false,
-      "notices": []
+      "notices": [
+        "docs/third_party_notices/onnxruntime-LICENSE",
+        "docs/third_party_notices/onnxruntime-ThirdPartyNotices.txt"
+      ]
     },
     {
       "name": "opencv-python",
@@ -611,7 +614,10 @@
         "Changelog, https://github.com/RapidAI/RapidOCR/releases"
       ],
       "modified": false,
-      "notices": []
+      "notices": [
+        "docs/third_party_notices/RapidOCR-upstream-LICENSE"
+      ],
+      "notice_provenance": "Pinned upstream 7cfd3d9ef786a2e538ca30df700325e72e85b5f5; installed 1.4.4 metadata Apache-2.0, wheel contains no separate LICENSE file"
     },
     {
       "name": "reportlab",

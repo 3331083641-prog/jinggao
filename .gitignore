@@ -77,3 +77,15 @@ public/models/
 runtime/launcher/
 JUDGE_LAUNCH_RECEIPT.md
 FINAL_QUALITY_AUDIT.md
+# Private signed authorization/identity records never belong in source releases.
+/private/
+/private_authorization/
+/personal_authorization/
+**/*授权确认*
+**/*签名字迹*
+**/*手写签名*
+**/*身份证件*
+**/*signature-scan*
+**/signature.*
+**/autograph.*
+MIT_RELEASE_RECEIPT.md

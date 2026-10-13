@@ -1,5 +1,7 @@
 # 评委快速体验验收（2026-10-08）
 
+当前许可更新（2026-10-13 正式发布阶段）：独立开发者授权已明确，根 MIT 已建立；以下 BLOCKER 为此前验收历史。启动/UI/算法本轮未变，正式发布的新回归见 TEST_REPORT。
+
 ## 2026-10-13 当前复验
 
 在 GitHub master 的干净 clone 上明确叠加本轮候选，目录包含中文与空格。首次真实 pip 锁安装与 npm ci 成功，独立 .venv/node_modules/SQLite，不复制 D 盘原有环境。入口启动 /health 与前端实际可访问。未配置 LLM/VLM 状态明确，RapidOCR 默认可用。

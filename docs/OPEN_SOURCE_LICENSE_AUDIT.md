@@ -1,10 +1,22 @@
-# 开源许可证审计（第一轮）
+# 开源许可证与来源审计
 
-## 2026-10-13 复核：BLOCKER 保持
+## 2026-10-13 正式源码授权与最终来源复核：已完成
+
+独立开发者文鹏毅已明确授权其可合法授权的自主成果使用 MIT，根 LICENSE 为标准 MIT，版权行为 Copyright (c) 2026 文鹏毅。此前“等待团队/共同权利确认”的自主源码 BLOCKER 已解除；不再推断存在其他开发成员。私人签名字迹与授权原件不进入公开树或 Release。
+
+本轮核对锁文件、源码 import/来源标记、Git 历史、第三方 notices、原始模型哈希以及上游许可。Mr. Rao 固定提交197个源码文件与本项目历史193个源码blob，整文件与连续代码块未发现匹配；没有安装/调用该 AGPL 项目，也没有发现受保护源码继承证据。审查方法及其非穷尽性边界、参考项目逐项分类和固定许可链接见 [SOURCE_PROVENANCE](SOURCE_PROVENANCE.md)。未将“没有自动匹配”当作绝对版权证明。
+
+当前发布范围是自主源码、原创合成材料、文档和原样保留的第三方法律文本，不包含权重、字体、运行环境、用户文件或二进制安装包。RapidOCR 1.4.4 元数据 Apache-2.0，三个 ONNX 哈希均与既有盘点一致；本轮补充固定上游 RapidOCR LICENSE 与实际 ONNX Runtime LICENSE/ThirdPartyNotices。未修改依赖或权重。历史模型发行来源链和完整离线包义务仍是未来再分发审计事项，不据此把权重改为 MIT。
+
+根 MIT 仅覆盖文鹏毅可合法授权部分，范围见 [LICENSE_SCOPE](LICENSE_SCOPE.md)。第三方依赖、模型、参考原图及 notices 保留各自权利。源码审计未发现当前发布阻碍；正式 Release 仍必须以本轮完整测试和最新远端 CI 成功为门槛。
+
+## 历史审计记录（以下 BLOCKER/候选/未授权描述为当时状态，已由上述当前结论更新）
+
+### 2026-10-13 复核：BLOCKER 保持
 
 本轮未增加依赖、第三方代码、权重、字体或参考原图。新增源码、合成开发集与测试仍属待团队权利确认范围；真实本地模型仅使用既有 Ollama Qwen3.5:4b，不重新分发。需要人工确认：团队对源码/程序化资产/测试/文档是否有相应权利；全体共同权利人是否同意 MIT；是否存在未披露第三方复制内容。尚未得到这些确认，因此不建立根 LICENSE、不创建正式 Release。模型及第三方许可边界不变，完整范围见 LICENSE_SCOPE。
 
-## 2026-10-06 最终源码范围审计
+### 2026-10-06 最终源码范围审计
 
 发布对象限定为自主源码、原创合成材料、项目文档与依赖安装说明。依据已有 notices 与源码继承检查，未发现必须把团队源码一并改为 AGPL/GPL 的事实；第三方依赖不纳入项目 MIT。OCR 历史权重来源链和 GEOS/FFmpeg 等动态库义务继续保留，属于未来重新分发模型或二进制安装包的单独审计，不应混淆为自主源码许可本身。
 
@@ -14,7 +26,7 @@
 
 UI 参考图、用户材料、系统字体原文件、模型、数据库和依赖目录不进入 Git。新增截图由真实应用处理原创合成材料产生，仍属于待团队确认的自主资产范围。原审核记录和 notices 保留。
 
-## 2026-10-05 发布门槛：BLOCKER
+### 2026-10-05 发布门槛：BLOCKER
 
 自主源码 MIT 候选可兼容现有源码与依赖隔离结构，但团队共同权利/AI辅助资产授权确认，以及历史 OCR 权重精确发行来源链尚未闭合。本轮不建立根 LICENSE，不宣称整个作品已获得可再分发授权；参考图不发布、外部模型不打包。后续团队完成自主代码权利确认后，可单独授权自研源码，权重及含二进制安装包仍单独审计。公开GitHub供审查不替代许可证。
 
@@ -22,7 +34,7 @@ UI 参考图、用户材料、系统字体原文件、模型、数据库和依�
 
 日期：2026-10-02。审计对象为安装锁文件、发行包内许可证、模型文件哈希与实际使用方式。完整盘点见 `license_inventory.json`，许可证原文保存在 `third_party_notices/`。源码未复制 Mr. Rao，也未引入 AGPL 文档引擎。
 
-## 源码发布与二进制发布的边界
+### 源码发布与二进制发布的边界
 
 本轮交付是自主源码、依赖安装说明、测试语料与项目文档；不打包 `.venv`、`node_modules`、OCR 权重、SQLite 用户材料、缓存和 UI 参考图。依赖由使用者从原上游发行包安装。团队自主源码拟采用 MIT；先完成以下审计再建立 LICENSE。第三方资源始终适用原许可证。
 
@@ -54,7 +66,7 @@ UI 参考图、用户材料、系统字体原文件、模型、数据库和依�
 | Playwright | 1.63.0 | Apache-2.0 | 开发测试工具，未修改 |
 | Prettier / Ruff | 3.5.3 / 0.11.13 | MIT | 源码格式化工具，未修改 |
 
-## 需要单独披露的底层资源
+### 需要单独披露的底层资源
 
 - **Shapely 2.1.2**：Python 层 BSD-3-Clause，发行包包含 **GEOS LGPL-2.1** 动态库。未修改，也不在本项目源码交付中再打包 DLL。若日后制作包含 DLL 的安装包，需保留许可、提供相应源码获取方式，允许替换/重新链接库，并履行 LGPL 条件。不能声称“没有 LGPL”。
 - **OpenCV Python 5.0.0.93**：上层 Apache-2.0，其 `LICENSE-3RD-PARTY.txt` 包含 FFmpeg LGPL 及其他组件条款。OCR 只使用图像计算功能；未修改、不打包其二进制库。若发行独立安装包，需按实际构建配置另行确认组件和对应源码义务。
@@ -64,11 +76,11 @@ UI 参考图、用户材料、系统字体原文件、模型、数据库和依�
 - **PDF 标准字体**：pdfjs 包中的 Foxit/Liberation 等字体保留原许可；源代码仓库不复制字体目录，启动时由脚本从依赖安装目录拷贝用于本地预览。
 - **Windows 系统中文字体**：仅在测试材料渲染时读取已安装字体；不复制或分发字体文件。报告使用 ReportLab 的 STSong-Light CID 引用，不捆绑系统字体。
 
-## OCR 权重
+### OCR 权重
 
 实际使用上游 `rapidocr-onnxruntime 1.4.4` 包内的 `ch_PP-OCRv4_det_infer.onnx`、`ch_PP-OCRv4_rec_infer.onnx`、`ch_ppocr_mobile_v2.0_cls_infer.onnx`，大小与 SHA-256 已盘点。上游 [RapidOCR LICENSE](https://github.com/RapidAI/RapidOCR/blob/main/LICENSE) 和 [PaddleOCR LICENSE](https://github.com/PaddlePaddle/PaddleOCR/blob/main/LICENSE) 均为 Apache-2.0；这不代替精确到每个历史权重发行版本的来源链确认。本轮不单独再分发权重；未来含模型的离线安装包仍需补齐权重来源及许可声明。
 
-## 2026-10-03 Three.js 首页增量审计
+### 2026-10-03 Three.js 首页增量审计
 
 Three.js 0.186.1、React Three Fiber 9.8.1、Drei 10.7.9、@types/three 0.186.0 均为 MIT。发行包内许可证已保存，未修改依赖源码。新增安装包逐项清单见 `three-dependency-license-audit.json`；安装环境重新盘点为 222 个 npm 包，运行时只按实际 import 打包。
 
@@ -76,6 +88,6 @@ Three.js 0.186.1、React Three Fiber 9.8.1、Drei 10.7.9、@types/three 0.186.0 
 
 参考文档：[R3F 安装与 React 版本对应](https://r3f.docs.pmnd.rs/getting-started/installation)、[R3F 性能与按需渲染](https://r3f.docs.pmnd.rs/advanced/scaling-performance)。直接许可来源：[Three.js](https://github.com/mrdoob/three.js/blob/master/LICENSE)、[R3F](https://github.com/pmndrs/react-three-fiber/blob/master/LICENSE)、[Drei](https://github.com/pmndrs/drei/blob/master/LICENSE)。本地保留的精确发行包许可优先于上游可变分支。
 
-## 原有发布判断
+### 原有发布判断
 
 当前源码与依赖分离的结构未发现强制自主源码采用 AGPL/GPL 的直接源码继承。依据已保存的库许可及动态依赖边界，MIT 可作为自主源码的候选许可。由于历史 OCR 权重与完整二进制安装包的再分发审计尚未闭合，**本轮暂不写根目录 LICENSE，不宣称整个作品已完成开源发布授权**。这遵循用户“确认所有第三方依赖许可兼容之后再选择”的要求，不影响本地运行。下一步应完成具体模型版本来源链、团队共同权利确认后，给自主代码添加 MIT LICENSE。

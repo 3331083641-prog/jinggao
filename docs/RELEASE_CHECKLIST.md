@@ -1,22 +1,29 @@
 # v0.1.0 Competition Release 检查表
 
-目标标题：Jinggao v0.1.0 — Competition Release。
+目标：**Jinggao v0.1.0 — Competition Release**。2026-10-13 的独立开发者授权已落实；此前团队授权 BLOCKER 为历史状态，见 OPEN_SOURCE_LICENSE_AUDIT。
 
-2026-10-13 当前：后端 165 / Playwright 79 实测通过，Ruff、lint、typecheck、build 通过；模型和实体评测见 QUALITY_EVALUATION。最终 HEAD/CI 以本机审计及实际 Actions 为准。下列 128/76 与 22ac6cc 明确为历史记录；没有将它们替换成未经运行的新成绩。LICENSE 授权仍未确认，正式 Release 不创建。
+## 源码发布门槛
 
-- [ ] 团队确认自主成果权利和全体共同权利人 MIT 授权
-- [ ] 根 LICENSE 与 LICENSE_SCOPE 一致
-- [ ] 团队复核合成规则与 Hold-out 标签（当前为 Codex 编写，不冒称人类盲标）
-- [x] 历史 2026-10-06：pytest 128、Ruff、前端检查与 Playwright 76 通过（不是当前数量）
-- [x] 历史 22ac6cc CI 绿色（37414817762）；当前 HEAD 必须重新核验，见 TEST_REPORT
-- [x] 发布树无用户材料、数据库、密钥、模型权重、缓存和参考原图
-- [x] README 三张截图均来自真实合成数据运行
-- [ ] 发布 tag 指向已验证的 master SHA
+- [x] 文鹏毅明确授权其可合法授权的自主成果使用 MIT。
+- [x] 根 LICENSE 是标准 MIT，版权行正确；LICENSE_SCOPE 排除第三方/模型/用户文件。
+- [x] 参考项目与实际依赖逐项区分；Mr. Rao 直接复用筛查未发现匹配，方法局限公开。
+- [x] 第三方 LICENSE/NOTICE 原文保留，不把法律文本、模型或素材统一归为本人 MIT。
+- [x] 私人签字/授权原件不公开，Git 路径与历史扫描，新增发布隐私回归。
+- [x] 核心产品与冻结评测数据保留；本轮完整测试结果见 TEST_REPORT 正式发布节。
+- [x] 三张截图及两个真实合成演示保留，不附用户材料或完整运行环境。
 
-当前版权确认未完成，**不创建正式 Release**。工程验证完成后可冻结候选源码，等待团队确认；公开 GitHub 不替代许可证授权。
+## 必须按顺序执行的远端步骤
 
-## 准备好的 Release Notes
+1. 提交审核后的源码/许可证/说明并安全同步 master，禁止 force push。
+2. 等待该 HEAD 的 backend、frontend、browser-smoke 等必需 CI 全部成功；历史绿色不替代它。
+3. 确认 v0.1.0 尚不存在，为已通过 CI 的准确 SHA 建立 annotated tag；不覆盖任何 tag。
+4. 推送该 tag，再创建公开 Release。只使用 GitHub 自动源码包，无模型/虚拟环境/Node依赖/私人授权附件。
+5. 核验 GitHub 识别 MIT、tag 指向正确 commit、Release 公共可见、工作区干净。
 
-Rule-aware compliance、Evidence-first review、STRICT_CUSTOM isolation、本地 OCR、Coverage Matrix、安全整改副本、同规则快照独立复检、Evidence Diff、PDF 报告，以及可复现的规则编译评测和合成 Hold-out。CI 验证关键链路。
+实际远端状态以 [Release](https://github.com/3331083641-prog/jinggao/releases/tag/v0.1.0) 和 [Actions](https://github.com/3331083641-prog/jinggao/actions/workflows/ci.yml) 为准；确切 SHA、CI、tag 与发布回执留在本机 MIT_RELEASE_RECEIPT.md，不在源码中预填尚未完成的结果。
 
-限制：复杂条件及例外仍需人工核对；有限实体与 Logo 候选不是完备身份识别；本地 LLM 实验不改善执行授权，未通过校验会 fallback；Hold-out 为独立冻结的合成数据，不是外部人类盲测，真实误报漏报见公开结果。模型、字体、依赖和用户文件不随源码发布。
+## 已知限制与后续分发义务
+
+复杂条件/例外与实体识别仍有误差，用户确认不可省略；Logo 仅候选、覆盖 PARTIAL；模型不能制定规则。合成标签由 Codex 编写，未独立人类盲标，版权授权不等于质量认证。Windows 鼠标双击/安全弹窗仍需人工验收，自动化范围如实记录。
+
+源码 MIT 已落实，模型及第三方仍适用原许可。未来完整离线包需要重新审查 OCR 历史权重来源、字体、GEOS/FFmpeg/PDFium/GCC 等二进制与对应源码义务。本次不制作安装包。

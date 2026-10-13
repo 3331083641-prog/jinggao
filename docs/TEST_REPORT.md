@@ -1,5 +1,24 @@
 # 测试报告
 
+## 2026-10-13 正式 MIT 发布：本轮重新执行
+
+| 验证 | 本轮结果 |
+|---|---|
+| Backend 完整 pytest | **184 passed**，2项既有上游非失败警告，40.59秒 |
+| Ruff backend/app tests + 发布扫描器 | PASS |
+| Frontend lint / typecheck / build | PASS；既有944KB Three.js分块提醒保留 |
+| 完整 npm run test / Playwright | **79 passed**，12.1分钟，0 failed / skipped / flaky |
+| 三个桌面尺寸 | 1920×1080、1440×900、1366×768 |
+| 运行源码一致性 | 隔离验收目录的 backend/app 和 frontend/src 与当前 Git 源码逐文件等价换行核对一致 |
+| 实际服务顺序 | /health → /generate 上传合成PDF完成 → 前端真实访问 → 全部浏览器流程 |
+| 私人授权资料 | 增加19项发布隐私路径回归；没有读取/公开私人原件或签名字迹 |
+
+本轮不改检测算法/业务/UI，不重新标注或覆盖冻结 Benchmark。184为原165项＋19项发布隐私回归；此前165/181等是较早运行记录，不替代这次结果。完整浏览器仍验证STRICT_CUSTOM、多规则、OCR、Evidence/Coverage、89页/95项连续滚动、整改副本、同快照复检/Diff/PDF、删除与Three.js/WebGL/reduced-motion。Windows启动边界与缺环境/伪PID防护由后端既有测试覆盖；实际鼠标双击/系统安全弹窗仍需人工验收。
+
+自主源码MIT授权现已明确，原BLOCKER为历史状态。最新HEAD的远端CI与正式tag/Release必须提交后实核，不能使用本地或历史绿色代替。准确SHA、Actions和Release回执见本机MIT_RELEASE_RECEIPT.md；公共状态以GitHub对应Release/Actions为准。
+
+## 以下为历史验收记录
+
 ## 2026-10-13 质量优化：当前版本实测
 
 | 验证 | 实际结果 |
@@ -18,7 +37,7 @@
 
 浏览器服务器由正式入口在 GitHub 干净 clone＋明确候选覆盖的中文/空格目录启动，冷装独立依赖和数据库；没有复用私人材料。最后局部实体关系补丁另以完整后端测试、开发文档评测与最终关键浏览器 smoke 验证。扫描用例初轮导航尚未挂载上传控件，按钮未启用而超时；修正测试等待真实上传区域后完整 79 项通过，不把该失败计作成功。
 
-当前 GitHub HEAD/远端 Actions 必须在 push 后核验，收据写入本机 FINAL_QUALITY_AUDIT.md；历史 CI 绿色不替代当前验证。许可证 BLOCKER 保留。以下按日期保留历史 135/128 等记录。
+当前 GitHub HEAD/远端 Actions 必须在 push 后核验，收据写入本机 FINAL_QUALITY_AUDIT.md；历史 CI 绿色不替代当前验证。该质量阶段当时许可证 BLOCKER 保留，现已按顶部正式发布结论解除。以下为历史 135/128 等记录。
 
 
 ## 2026-10-08 交付入口回归

@@ -92,4 +92,4 @@ node frontend/node_modules/@playwright/test/cli.js install chromium
 npm.cmd --prefix frontend run test
 ~~~
 
-历史 `scripts/start.ps1` 与根 `npm run dev` 均转发正式入口。开发/截图/研究脚本位置保持，避免破坏可复现引用。验收结果见 [JUDGE_LAUNCH_TEST_REPORT](JUDGE_LAUNCH_TEST_REPORT.md)。自主源码授权仍 BLOCKER；未新增根 MIT LICENSE 或正式 Release。
+历史 `scripts/start.ps1` 与根 `npm run dev` 均转发正式入口。开发/截图/研究脚本位置保持，避免破坏可复现引用。验收结果见 [JUDGE_LAUNCH_TEST_REPORT](JUDGE_LAUNCH_TEST_REPORT.md)。自主源码现由独立开发者文鹏毅授权 MIT，范围见 LICENSE_SCOPE；v0.1.0 按 RELEASE_CHECKLIST 在最新 CI 通过后发布。旧待授权描述为历史状态。
