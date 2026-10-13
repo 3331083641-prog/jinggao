@@ -155,3 +155,30 @@ D 安全删除：下表中经用途和绝对路径核对的可再生成内容。
 缓存计划长度合计：597990 字节。
 自动审批审查拒绝本轮递归删除命令，返回 blocked by policy；未执行删除，实际释放0字节，不绕过拒绝。缓存全部被Git忽略。未按文件名猜测删除旧源码/备份；不确定是否包含唯一内容的本地文件仍保留。
 本轮补充 .gitignore 排除 GGUF、bin、data、reports、video/trace 与最终本机报告。已审查的自主源码、原合成fixture、基准、三张脱敏截图、锁文件、CI和许可notices进入发布候选。
+
+
+## 2026-10-13 质量优化清理审计
+
+正式源码、合成 fixture、基线、历史 benchmark、notices 与证据保留。扫描未发现已跟踪缓存、真实比赛文件、密钥或大于 10MB 的候选文件；本轮已移除经引用核验的 Diff 未使用辅助函数与规则解析重复分支。
+
+|路径|文件长度（字节）|用途及拟清理依据|
+|---|---:|---|
+|.pytest_cache|37172|可重建测试/字节码缓存，排除依赖与用户数据|
+|.ruff_cache|6194|可重建测试/字节码缓存，排除依赖与用户数据|
+|backend/app/__pycache__|23587|可重建测试/字节码缓存，排除依赖与用户数据|
+|backend/app/core/__pycache__|3784|可重建测试/字节码缓存，排除依赖与用户数据|
+|backend/app/detectors/__pycache__|40175|可重建测试/字节码缓存，排除依赖与用户数据|
+|backend/app/parsers/__pycache__|16431|可重建测试/字节码缓存，排除依赖与用户数据|
+|backend/app/reports/__pycache__|16214|可重建测试/字节码缓存，排除依赖与用户数据|
+|backend/app/rules/__pycache__|3187|可重建测试/字节码缓存，排除依赖与用户数据|
+|backend/app/schemas/__pycache__|5625|可重建测试/字节码缓存，排除依赖与用户数据|
+|backend/app/services/__pycache__|101839|可重建测试/字节码缓存，排除依赖与用户数据|
+|backend/app/services/rule_compiler/__pycache__|15591|可重建测试/字节码缓存，排除依赖与用户数据|
+|backend/app/tasks/__pycache__|12000|可重建测试/字节码缓存，排除依赖与用户数据|
+|benchmark/__pycache__|11661|可重建测试/字节码缓存，排除依赖与用户数据|
+|benchmark/holdout/__pycache__|36160|可重建测试/字节码缓存，排除依赖与用户数据|
+|benchmark/rule_compiler/__pycache__|28993|可重建测试/字节码缓存，排除依赖与用户数据|
+|scripts/__pycache__|11578|可重建测试/字节码缓存，排除依赖与用户数据|
+|tests/__pycache__|296011|可重建测试/字节码缓存，排除依赖与用户数据|
+
+候选缓存合计 666202 字节。自动审批审查拒绝批量递归删除命令，返回 blocked by policy；整条命令未执行，实际释放 0 字节，不绕过拒绝。所有这些产物均被 Git 忽略。冷安装副本、运行环境和验收收据保留在 tests/generated，供本机复现；不上传依赖或数据。无法确认用途的旧文件不删除。

@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import subprocess
 from pathlib import Path
 
 import httpx
@@ -119,10 +120,28 @@ def test_holdout_metrics_do_not_call_review_or_partial_pass():
     assert candidate["positive_rule_pass_count"] == 1
 
 
+def frozen_detector_tree(module, data, tmp_path):
+    for filename in data["detector_file_hashes"]:
+        path = tmp_path / filename
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(
+            subprocess.check_output(
+                ["git", "show", "01b57d52299b2b2f1bdc9d361aaca1285a58002b:" + filename],
+                cwd=ROOT,
+            )
+        )
+    module.ROOT = tmp_path
+
+
 def test_holdout_hash_lock_detects_data_and_detector_changes(tmp_path):
     module = evaluator("benchmark/holdout/evaluate.py")
     path = ROOT / "benchmark/holdout/dataset.json"
     data = json.loads(path.read_text(encoding="utf-8"))
+    # Current algorithms intentionally differ; frozen evaluation must refuse
+    # to pass itself off as an unchanged blind evaluation.
+    with pytest.raises(ValueError, match="Frozen detector changed"):
+        module.validate_freeze(path, data)
+    frozen_detector_tree(module, data, tmp_path)
     assert module.validate_freeze(path, data)
     tampered = tmp_path / "dataset.json"
     tampered.write_bytes(path.read_bytes() + b" ")
@@ -138,6 +157,7 @@ def test_holdout_git_lf_checkout_keeps_original_freeze_valid(tmp_path):
     module = evaluator("benchmark/holdout/evaluate.py")
     path = ROOT / "benchmark/holdout/dataset.json"
     data = json.loads(path.read_text(encoding="utf-8"))
+    frozen_detector_tree(module, data, tmp_path)
     lf = tmp_path / "dataset.json"
     lf.write_bytes(path.read_bytes().replace(b"\r\n", b"\n"))
     lf.with_suffix(".sha256").write_text(path.with_suffix(".sha256").read_text())

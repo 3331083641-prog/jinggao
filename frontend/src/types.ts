@@ -126,7 +126,13 @@ export type RunComparison = {
   comparable: boolean;
   same_rule_snapshot: boolean;
   counts: Record<"FAIL" | "REVIEW" | "PASS", { before: number; after: number }>;
-  pairs: { category: string; before: Finding | null; after: Finding | null }[];
+  pairs: {
+    category: string;
+    before: Finding | null;
+    after: Finding | null;
+    match_method?: string;
+    matching_note?: string;
+  }[];
   note: string;
 };
 export type Task = {

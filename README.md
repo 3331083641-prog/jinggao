@@ -30,7 +30,9 @@ Windows 10/11、[Python 3.12（64位）](https://www.python.org/downloads/window
 
 初始化、停止、端口冲突、日志与开发说明见 [Windows 启动指南](docs/WINDOWS_START.md)。依赖完整后主要流程可以离线使用。
 
-## 三分钟演示流程
+## 两个真实演示案例
+
+**案例 A：安全整改闭环**
 
 1. 规则库导入 `demos/metadata-rule.txt`，查看原文、确认保存，点击“使用该规则”。
 2. 上传已有合成素材 `benchmark/fixtures/synthetic-cleanup.pdf`，运行真实检测。
@@ -38,6 +40,14 @@ Windows 10/11、[Python 3.12（64位）](https://www.python.org/downloads/window
 4. 查看 Run N / N+1 的旧新 Evidence Diff，下载副本和 PDF 报告。
 
 不会预置假结果或自动处理评委私人文件。原稿保持不变，复检沿用相同规则快照。详细步骤和本地模型“未配置 / 可用 / 失败”解释见启动指南。
+
+**案例 B：本地 AI OCR 检测**
+
+1. 规则库导入 `demos/ocr-rule.txt`，查看“图片中不得出现学校名称”，确认保存并使用。
+2. 上传 `benchmark/fixtures/synthetic-scan.pdf`，开始检测；RapidOCR 在本机识别扫描图片。
+3. 查看图片 OCR Evidence、规则依据与 Coverage，点击问题定位原图。FAIL 是明确规则证据，REVIEW 是需核对候选；PARTIAL 表示有限识别覆盖，不等于 PASS。
+
+两个案例都调用真实后端；无需 Ollama 或 API Key。首次依赖下载时间不计入演示操作时间。
 
 ## 核心功能
 
@@ -79,7 +89,9 @@ FAIL 需要明确证据；REVIEW 是具体候选。**Unknown ≠ Clean；Coverag
 
 [测试报告](docs/TEST_REPORT.md) · [启动验收](docs/JUDGE_LAUNCH_TEST_REPORT.md)。CI 执行核心测试、构建和确定性评测；完整浏览器测试命令在启动指南，评委启动不下载浏览器测试环境。
 
-v1/v2 保留；另有 60 条 Rule Compiler 评测与 120 句＋84 文档冻结合成 Hold-out。候选与确定 FAIL 分开统计，公开 FP/FN，PARTIAL 不算 PASS。合成标签由 Codex 编写，尚待团队人工复核，不是外部人工盲测。真实本机 Ollama/Qwen3.5 4B 实验没有提高执行指标，模型建议大量未通过格式校验，不宣称完整理解规则。
+v1/v2、60 条原始 Rule Compiler 数据与历史结果、120 句＋84 文档冻结 Hold-out 均保留。新增独立开发回归集（34 规则、42 句、24 文档），比较修改前后算法；它参与开发，不能冒称盲测。候选和确定 FAIL 分开统计，公开 FP/FN，PARTIAL 不算 PASS。标签由 Codex 编写，待团队人工复核。
+
+本轮真实 Qwen3.5 4B 实验改善了 JSON 注释接受率；模型仍不改变执行授权，语义指标的提升来自确定性解析改进。另用同一当前模型重跑旧编译器，作为控制对照；与历史实验的运行器/digest 差异另行披露。完整数字与限制见 [质量优化评测](docs/QUALITY_EVALUATION.md)。
 
 [Rule Compiler Evaluation](docs/RULE_COMPILER_EVALUATION.md) · [Hold-out](docs/HOLDOUT_BENCHMARK.md) · [Benchmark v2](docs/BENCHMARK_V2.md)
 

@@ -30,6 +30,8 @@ def loopback_url(value):
 
 
 class LocalModelProvider:
+    response_schema = None
+
     def __init__(self, kind="LLM"):
         self.base = os.environ.get(f"JINGGAO_LOCAL_{kind}_BASE_URL", "")
         self.model = os.environ.get(f"JINGGAO_LOCAL_{kind}_MODEL", "")
@@ -52,6 +54,15 @@ class LocalModelProvider:
             "max_tokens": 2000,
             "response_format": {"type": "json_object"},
         }
+        if self.response_schema and messages:
+            payload["response_format"] = {
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "grounded_rules",
+                    "strict": True,
+                    "schema": self.response_schema,
+                },
+            }
         if self.reasoning_effort:
             if self.reasoning_effort not in ("none", "low", "medium", "high"):
                 raise ValueError("无效本地模型 reasoning_effort")
@@ -70,12 +81,51 @@ class LocalModelProvider:
                     data.extend(chunk)
                     if len(data) > 256 * 1024:
                         raise ValueError("模型响应超过限额")
-        text = json.loads(data)["choices"][0]["message"]["content"]
-        return json.loads(text)
+        message = json.loads(data)["choices"][0]["message"]
+        text = message.get("content")
+        if not isinstance(text, str) or not text.strip():
+            raise ValueError("模型未返回 JSON 正文")
+        # Only a complete enclosing code fence is equivalent JSON, never extract
+        # an arbitrary object from prose or repair truncated / malformed JSON.
+        if text.strip().startswith("```json") and text.strip().endswith("```"):
+            text = text.strip()[7:-3].strip()
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError as error:
+            raise ValueError("模型正文不是完整合法 JSON") from error
 
 
 class LocalRuleModelProvider(LocalModelProvider):
-    pass
+    response_schema = {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            "rules": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": False,
+                    "properties": {
+                        "id": {"type": "string"},
+                        "original_text": {"type": "string"},
+                        "normalized_requirement": {"type": "string"},
+                        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+                        "condition": {"type": "string"},
+                        "exception": {"type": "string"},
+                    },
+                    "required": [
+                        "id",
+                        "original_text",
+                        "normalized_requirement",
+                        "confidence",
+                        "condition",
+                        "exception",
+                    ],
+                },
+            }
+        },
+        "required": ["rules"],
+    }
 
 
 class LocalVisionProvider(LocalModelProvider):

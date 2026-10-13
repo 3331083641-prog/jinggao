@@ -64,7 +64,13 @@ Windows 10/11，64 位 Python 3.12，Node.js 22.12+（含 npm），可写的仓�
 6. 展开 Run 对比，查看旧/新 Evidence；确认原稿保留、Run N+1 使用相同规则快照。
 7. 下载净化副本与 PDF 报告。
 
-没有预插入任务、伪造结果或自动扫描评委私人文件。OCR 演示可另用已有 `benchmark/fixtures/synthetic-scan.pdf` 与相应示例规则；结果仍由实际后端生成，不保证所有材料风险均可检测。
+没有预插入任务、伪造结果或自动扫描评委私人文件。
+
+### 案例 B：本地神经网络 OCR
+
+规则库导入 `demos/ocr-rule.txt` → 查看原文并确认保存 → 使用规则并上传 `benchmark/fixtures/synthetic-scan.pdf` → 检测。它是仅有图片的原创扫描样例，学校文字由本地 RapidOCR / ONNX 实际提取。
+
+在工作台点问题定位第 1 页，查看图片 OCR Evidence 和规则来源，再展开“检测覆盖”。实体识别有限，Coverage 为 PARTIAL；确切身份文字与低可靠候选分别显示 FAIL / REVIEW，不能把 PARTIAL 当成 PASS。无需 Qwen/Ollama/API Key，不保证所有扫描文本都能识别。正文身份文字不可安全自动删除；用案例 A 体验元数据副本与复检。
 
 ## 可选模型状态
 

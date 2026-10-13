@@ -1,0 +1,2772 @@
+{
+  "version": 1,
+  "annotation_status": "Original synthetic labels authored by Codex; human review pending. Development regression, not blind hold-out.",
+  "case_count": 34,
+  "deterministic": {
+    "metrics": {
+      "rule_count_accuracy": {
+        "correct": 34,
+        "total": 34,
+        "rate": 1.0
+      },
+      "target_accuracy": {
+        "correct": 34,
+        "total": 34,
+        "rate": 1.0
+      },
+      "scope_preservation": {
+        "correct": 34,
+        "total": 34,
+        "rate": 1.0
+      },
+      "condition_preservation": {
+        "correct": 34,
+        "total": 34,
+        "rate": 1.0
+      },
+      "exception_preservation": {
+        "correct": 34,
+        "total": 34,
+        "rate": 1.0
+      },
+      "requirement_type_accuracy": {
+        "correct": 34,
+        "total": 34,
+        "rate": 1.0
+      },
+      "source_grounding_accuracy": {
+        "correct": 34,
+        "total": 34,
+        "rate": 1.0
+      }
+    },
+    "cases": [
+      {
+        "id": "school-body",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现学校名称。",
+            "normalized_requirement": "正文不得出现学校名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.005
+      },
+      {
+        "id": "school-appendix",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得出现学校名称。",
+            "normalized_requirement": "附录不得出现学校名称。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "school-cover",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面不得出现学校名称。",
+            "normalized_requirement": "封面不得出现学校名称。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "school-exception",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但参考文献除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文及附录不得出现学校名称，但参考文献除外。",
+            "normalized_requirement": "正文及附录不得出现学校名称，但参考文献除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "school-condition",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "school_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "仅当提交匿名版时",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "仅当提交匿名版时，正文不得出现学校名称。",
+            "normalized_requirement": "仅当提交匿名版时，正文不得出现学校名称。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "author-body",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现作者姓名。",
+            "normalized_requirement": "正文不得出现作者姓名。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "author-appendix",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得出现作者姓名。",
+            "normalized_requirement": "附录不得出现作者姓名。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "author-cover",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面不得出现作者姓名。",
+            "normalized_requirement": "封面不得出现作者姓名。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "author-exception",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但参考文献除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文及附录不得出现作者姓名，但参考文献除外。",
+            "normalized_requirement": "正文及附录不得出现作者姓名，但参考文献除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "author-condition",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "author_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "仅当提交匿名版时",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "仅当提交匿名版时，正文不得出现作者姓名。",
+            "normalized_requirement": "仅当提交匿名版时，正文不得出现作者姓名。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "project-body",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现项目编号。",
+            "normalized_requirement": "正文不得出现项目编号。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "project-appendix",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得出现项目编号。",
+            "normalized_requirement": "附录不得出现项目编号。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "project-cover",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面不得出现项目编号。",
+            "normalized_requirement": "封面不得出现项目编号。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "project-exception",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但参考文献除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文及附录不得出现项目编号，但参考文献除外。",
+            "normalized_requirement": "正文及附录不得出现项目编号，但参考文献除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "project-condition",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "project_number",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "仅当提交匿名版时",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "仅当提交匿名版时，正文不得出现项目编号。",
+            "normalized_requirement": "仅当提交匿名版时，正文不得出现项目编号。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "email-body",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "email",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现邮箱。",
+            "normalized_requirement": "正文不得出现邮箱。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "email-appendix",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "email",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得出现邮箱。",
+            "normalized_requirement": "附录不得出现邮箱。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "email-cover",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "email",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面不得出现邮箱。",
+            "normalized_requirement": "封面不得出现邮箱。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "email-exception",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "email",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但参考文献除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文及附录不得出现邮箱，但参考文献除外。",
+            "normalized_requirement": "正文及附录不得出现邮箱，但参考文献除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "email-condition",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "email",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "仅当提交匿名版时",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "仅当提交匿名版时，正文不得出现邮箱。",
+            "normalized_requirement": "仅当提交匿名版时，正文不得出现邮箱。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "phone-body",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "telephone",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现电话号码。",
+            "normalized_requirement": "正文不得出现电话号码。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "phone-appendix",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "telephone",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得出现电话号码。",
+            "normalized_requirement": "附录不得出现电话号码。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "phone-cover",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "telephone",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面不得出现电话号码。",
+            "normalized_requirement": "封面不得出现电话号码。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "phone-exception",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "telephone",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但参考文献除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文及附录不得出现电话号码，但参考文献除外。",
+            "normalized_requirement": "正文及附录不得出现电话号码，但参考文献除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "phone-condition",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "telephone",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "仅当提交匿名版时",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "仅当提交匿名版时，正文不得出现电话号码。",
+            "normalized_requirement": "仅当提交匿名版时，正文不得出现电话号码。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "institute-body",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "organization_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文不得出现科研机构名称。",
+            "normalized_requirement": "正文不得出现科研机构名称。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "institute-appendix",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "organization_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "附录不得出现科研机构名称。",
+            "normalized_requirement": "附录不得出现科研机构名称。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "institute-cover",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "organization_name",
+            "scope": [
+              "BODY_TEXT",
+              "HEADER",
+              "FOOTER"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "封面不得出现科研机构名称。",
+            "normalized_requirement": "封面不得出现科研机构名称。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "cover"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "institute-exception",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "organization_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "但参考文献除外。",
+            "requirement_type": "prohibition",
+            "original_text": "正文及附录不得出现科研机构名称，但参考文献除外。",
+            "normalized_requirement": "正文及附录不得出现科研机构名称，但参考文献除外。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body",
+              "appendix"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "institute-condition",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "organization_name",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "仅当提交匿名版时",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "仅当提交匿名版时，正文不得出现科研机构名称。",
+            "normalized_requirement": "仅当提交匿名版时，正文不得出现科研机构名称。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "multi",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 2,
+        "rules": [
+          {
+            "target": "email",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文禁止出现邮箱和电话号码。",
+            "normalized_requirement": "正文禁止出现邮箱和电话号码。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          },
+          {
+            "target": "telephone",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "正文禁止出现邮箱和电话号码。",
+            "normalized_requirement": "正文禁止出现邮箱和电话号码。",
+            "detection_method": "recognizer",
+            "semantic_scope": [
+              "body"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "keyword",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "abstract_keywords",
+            "scope": [
+              "BODY_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "requirement",
+            "original_text": "摘要必须包含关键词。",
+            "normalized_requirement": "摘要必须包含关键词。",
+            "detection_method": "manual",
+            "semantic_scope": [
+              "abstract"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "hidden",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "hidden",
+            "scope": [
+              "HIDDEN_TEXT"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "隐藏文字中不得保留作者姓名。",
+            "normalized_requirement": "隐藏文字中不得保留作者姓名。",
+            "detection_method": "presence",
+            "semantic_scope": [
+              "hidden"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      },
+      {
+        "id": "metadata",
+        "quality": {
+          "rule_count_accuracy": true,
+          "target_accuracy": true,
+          "scope_preservation": true,
+          "condition_preservation": true,
+          "exception_preservation": true,
+          "requirement_type_accuracy": true,
+          "source_grounding_accuracy": true
+        },
+        "actual_rule_count": 1,
+        "rules": [
+          {
+            "target": "metadata",
+            "scope": [
+              "METADATA"
+            ],
+            "condition": "",
+            "exception": "",
+            "requirement_type": "prohibition",
+            "original_text": "文档属性中禁止保留作者姓名。",
+            "normalized_requirement": "文档属性中禁止保留作者姓名。",
+            "detection_method": "presence",
+            "semantic_scope": [
+              "metadata"
+            ],
+            "semantic_suggestion": null
+          }
+        ],
+        "compiler_mode": "DETERMINISTIC_FALLBACK",
+        "warnings": [],
+        "error": null,
+        "seconds": 0.0
+      }
+    ]
+  },
+  "local_llm": {
+    "status": "NOT CONFIGURED",
+    "metrics": null
+  },
+  "boundary": "Original synthetic labels authored by Codex; human review pending. Development regression, not blind hold-out.",
+  "entity_metrics": {
+    "count": 42,
+    "evidence_candidate": {
+      "tp": 21,
+      "fp": 0,
+      "fn": 0,
+      "tn": 21,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "false_pass": 0,
+      "false_pass_rate": 0.0,
+      "positive_rule_pass_count": 0
+    },
+    "confirmed_fail": {
+      "tp": 21,
+      "fp": 0,
+      "fn": 0,
+      "tn": 21,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "false_pass": 0,
+      "false_pass_rate": 0.0,
+      "positive_rule_pass_count": 0
+    },
+    "coverage": {
+      "PARTIAL": 42
+    }
+  },
+  "entity_cases": [
+    {
+      "id": "school-0-0",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "岚溪大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-0-1",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-0-2",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-0-3",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "岚溪大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-0-4",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "岚溪大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-0-5",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-6",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "澄湾学院",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-7",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-8",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-9",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "澄湾学院",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-10",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "澄湾学院",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-11",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-12",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Northmere University",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-13",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-14",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-15",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Northmere University",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-16",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Northmere University",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-17",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-18",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Willowmere College",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-19",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-20",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-21",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Willowmere College",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-22",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Willowmere College",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-23",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-24",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "北大",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/alias"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-25",
+      "format": "sentence",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-26",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Northmere\nInstitute",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-27",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-28",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "澄湾智能系统研究中心",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/organization_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-29",
+      "format": "sentence",
+      "kind": "text",
+      "target": "organization_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-30",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "010 - 76543210",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/telephone/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-31",
+      "format": "sentence",
+      "kind": "text",
+      "target": "telephone",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-32",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "项目编号：TEST-20481",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-33",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-34",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "NSFC\n20481234",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/project_number/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-35",
+      "format": "sentence",
+      "kind": "text",
+      "target": "project_number",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-36",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "作者：王合成",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/author_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-37",
+      "format": "sentence",
+      "kind": "text",
+      "target": "author_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-38",
+      "format": "sentence",
+      "kind": "text",
+      "target": "advisor_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "导师：李示例",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/advisor_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-39",
+      "format": "sentence",
+      "kind": "text",
+      "target": "advisor_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-40",
+      "format": "sentence",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "demo@example.invalid",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/email/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "entity-41",
+      "format": "sentence",
+      "kind": "text",
+      "target": "email",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    }
+  ],
+  "document_metrics": {
+    "count": 24,
+    "evidence_candidate": {
+      "tp": 11,
+      "fp": 0,
+      "fn": 1,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 0.9166666666666666,
+      "f1": 0.9565217391304348,
+      "false_positive": 0,
+      "false_negative": 1,
+      "false_pass": 0,
+      "false_pass_rate": 0.0,
+      "positive_rule_pass_count": 0
+    },
+    "confirmed_fail": {
+      "tp": 11,
+      "fp": 0,
+      "fn": 1,
+      "tn": 12,
+      "precision": 1.0,
+      "recall": 0.9166666666666666,
+      "f1": 0.9565217391304348,
+      "false_positive": 0,
+      "false_negative": 1,
+      "false_pass": 0,
+      "false_pass_rate": 0.0,
+      "positive_rule_pass_count": 0
+    },
+    "coverage": {
+      "PARTIAL": 24
+    }
+  },
+  "document_cases": [
+    {
+      "id": "school-0-0",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "岚溪大学",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-0-1",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-0-2",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-0-3",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "岚溪大学",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-0-4",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "岚溪大学",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-0-5",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-6",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "澄湾学院",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-7",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-8",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-9",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "澄湾学院",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-10",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "澄湾学院",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/regex"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-1-11",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-12",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Northmere University",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-13",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-14",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-15",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Northmere University",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-16",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-2-17",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-18",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Willowmere College",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-19",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-20",
+      "format": "pdf",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [
+        "PDF 隐藏图层、透明文字、矢量图形、附件及字体轮廓文字不能完整验证，需人工复核。"
+      ],
+      "evidence": [],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-21",
+      "format": "docx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Willowmere College",
+          "source_type": "BODY_TEXT",
+          "page": null,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-22",
+      "format": "pptx",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": true,
+      "candidate": true,
+      "confirmed_fail": true,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [
+        "FAIL"
+      ],
+      "diagnostics": [
+        "OOXML 样式继承、离页/透明图形及嵌入对象内部内容未完整覆盖，需人工复核。"
+      ],
+      "evidence": [
+        {
+          "status": "FAIL",
+          "evidence": "Willowmere College",
+          "source_type": "BODY_TEXT",
+          "page": 1,
+          "detector": "EntityRecognizer/school_name/affiliation"
+        }
+      ],
+      "ocr_regions": 0
+    },
+    {
+      "id": "school-3-23",
+      "format": "txt",
+      "kind": "text",
+      "target": "school_name",
+      "expected_risk": false,
+      "candidate": false,
+      "confirmed_fail": false,
+      "actual_pass": false,
+      "rule_pass": false,
+      "coverage": "PARTIAL",
+      "statuses": [],
+      "diagnostics": [],
+      "evidence": [],
+      "ocr_regions": 0
+    }
+  ],
+  "dataset_sha256": "66f951160a1c3dd8e865718a473c65d928499f0a3ef9836add0dc04e21274f38"
+}

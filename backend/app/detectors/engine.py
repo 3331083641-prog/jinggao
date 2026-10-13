@@ -127,15 +127,15 @@ def inspect_rule(rule, parsed, scopes):
                 )
             ]
         for s in selected:
-            search_text = re.sub(
-                r"(?<=[\u4e00-\u9fff])\s+(?=[\u4e00-\u9fff])", "", s.text
-            )
+            search_text = s.text
             from app.services.entities import recognize, evidence_decision
 
             for match in recognize(search_text, rule.target, patterns):
                 status, reason = evidence_decision(
                     match, search_text, rule.target, s.confidence
                 )
+                if status is None:
+                    continue
                 registration_exception = (
                     rule.parameters.get("registration_cover_review") and s.page == 1
                 )

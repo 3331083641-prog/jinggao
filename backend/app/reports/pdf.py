@@ -180,6 +180,8 @@ def generate(run, document):
                 )
             for pair in diff["pairs"]:
                 story.append(p("变化：" + pair["category"]))
+                if pair.get("matching_note"):
+                    story.append(p(pair["matching_note"]))
                 if pair["before"]:
                     story.append(p("旧 Evidence：" + pair["before"]["evidence"]))
                 if pair["after"]:

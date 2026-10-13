@@ -1,5 +1,11 @@
 # Frozen Synthetic Hold-out Benchmark
 
+## 历史算法与当前算法
+
+下文是锁定算法的历史结果；原数据、标签、哈希、results.json 均不更新。2026-10-13 修改检测器后直接运行原评测器会拒绝哈希变化，这是正常保护。复现历史请使用 `python scripts/run_frozen_holdout.py --output tests/generated/holdout-historical.json`（需要 Git 中存在 01b57d5 历史；CI 获取完整历史）。该脚本从 Git 导出原代码运行，不把新版代码冒称盲测。
+
+新版独立开发回归见 benchmark/quality 和 QUALITY_EVALUATION；它不是新的外部盲测，本轮未对原 Hold-out 逐题调参。
+
 2026-10-06。新建 120 条句子＋84 份实际 PDF / DOCX / PPTX / TXT / MD，不删除 v1/v2。数据、标签及检测代码哈希在首次运行前锁定；之后未根据结果调整 Detector。
 
 **这是与开发 fixture 分离的冻结合成 Hold-out，不是外部人类盲测。** 标签由 Codex 编写，尚待团队人工审核。没有真实参赛材料或私人记录；公共简称只出现在合成语境，联系方式为测试占位。

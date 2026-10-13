@@ -1,5 +1,26 @@
 # 测试报告
 
+## 2026-10-13 质量优化：当前版本实测
+
+| 验证 | 实际结果 |
+|---|---|
+| 后端完整 pytest | **165 passed**，2 项已有上游非失败警告，27.34 秒 |
+| Ruff backend/app tests | PASS |
+| 前端 lint / typecheck / build | PASS；既有 Three.js 944 KB 分块提醒保留 |
+| 完整 npm run test / Playwright | **79 passed**，12.5 分钟，0 failed / skipped / flaky |
+| 桌面尺寸 | 1920×1080、1440×900、1366×768 |
+| 两个真实演示 | 元数据整改完整闭环；扫描 PDF 经 RapidOCR 生成可定位 Evidence，3 个尺寸 |
+| 原 60 条规则 | 原输入/标签/hash/metric 不变，确定性及本地模型重新运行，见 QUALITY_EVALUATION |
+| 独立开发集 | 34 规则、42 句、24 实际文档；开发集不是盲测，保留 FP/FN |
+| 旧冻结 Hold-out | 从 Git 01b57d5 导出历史算法，实际复现完整 120 句＋84 文档，不冒充当前算法盲测 |
+
+测试新增结构输出/非法 JSON、单条格式归一化、来源/范围/目标/确认授权、条件例外、局部引用/作者关系、OCR 原文坐标、跨页 Diff、重复证据及不同快照不可配对。原 STRICT_CUSTOM、OCR 质量门控、PPTX/Office 安全副本、同快照 Run N+1、89 页/95 条滚动、删除、PDF 与 Three.js 全套保留。
+
+浏览器服务器由正式入口在 GitHub 干净 clone＋明确候选覆盖的中文/空格目录启动，冷装独立依赖和数据库；没有复用私人材料。最后局部实体关系补丁另以完整后端测试、开发文档评测与最终关键浏览器 smoke 验证。扫描用例初轮导航尚未挂载上传控件，按钮未启用而超时；修正测试等待真实上传区域后完整 79 项通过，不把该失败计作成功。
+
+当前 GitHub HEAD/远端 Actions 必须在 push 后核验，收据写入本机 FINAL_QUALITY_AUDIT.md；历史 CI 绿色不替代当前验证。许可证 BLOCKER 保留。以下按日期保留历史 135/128 等记录。
+
+
 ## 2026-10-08 交付入口回归
 
 Backend 135 passed（2 项已有上游非失败警告），Ruff / frontend lint / typecheck / build 均通过。完整 Playwright 76 passed（10.6 分钟），使用独立 GitHub clone 的全新依赖和数据，服务器由新增正式入口启动。保留三个桌面尺寸、89页/95项阅读、STRICT_CUSTOM、OCR、Evidence/Coverage、整改副本、复检 Diff/PDF 和 Three.js 全流程。

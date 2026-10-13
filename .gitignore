@@ -76,3 +76,4 @@ public/models/
 # Local judge-launch identity records, logs, installation caches and receipts.
 runtime/launcher/
 JUDGE_LAUNCH_RECEIPT.md
+FINAL_QUALITY_AUDIT.md

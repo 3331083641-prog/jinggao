@@ -7,9 +7,18 @@ from app.rules.builtin import rule
 # template is copied into an imported rule.
 def explicit_candidates(clause):
     from app.rules.builtin import rule
+    from app.services.rule_compiler.semantic_parser import semantics
+
+    info = semantics(clause)
+    target_clause = (
+        clause.replace(info["exception"], "") if info["exception"] else clause
+    )
 
     prohibited = bool(
-        re.search(r"不得|禁止|不允许|不能|不应|不要|删除|隐去|清除|移除|去除", clause)
+        re.search(
+            r"不得|禁止|不可|不允许|不能|不应|不要|删除|隐去|清除|移除|去除",
+            target_clause,
+        )
     )
     scope = ["BODY_TEXT"] if "正文" in clause else ["BODY_TEXT", "HEADER", "FOOTER"]
     if re.search(r"图片|图中|图像", clause):
@@ -18,12 +27,64 @@ def explicit_candidates(clause):
             if not re.search(r"正文|全文|材料", clause)
             else scope + ["IMAGE_OCR"]
         )
+    structural = []
+    if re.search(r"文档属性|元数据|创建人|最后修改人", target_clause) and prohibited:
+        structural += [
+            rule(uuid4().hex, "元数据", "metadata", clause, "presence", ["METADATA"])
+        ]
+    hidden = [
+        t
+        for pattern, t in [
+            (r"批注", "COMMENT"),
+            (r"修订", "REVISION"),
+            (r"隐藏文字", "HIDDEN_TEXT"),
+        ]
+        if re.search(pattern, target_clause)
+    ]
+    if hidden and prohibited:
+        structural.append(
+            rule(uuid4().hex, "隐藏信息", "hidden", clause, "presence", hidden)
+        )
+    if structural and not re.search(r"正文|页眉|页脚", target_clause):
+        return structural
     if not prohibited:
+        if re.search(r"摘要.*(?:必须|应当|应|须).*关键词", target_clause):
+            return [
+                rule(
+                    uuid4().hex,
+                    "摘要要求",
+                    "abstract_keywords",
+                    clause,
+                    "manual",
+                    ["BODY_TEXT"],
+                )
+            ]
+        if (
+            re.search(
+                r"(?:若|如果|仅当).*(?:人工智能|生成式\s*AI|AI).*", target_clause, re.I
+            )
+            and re.search(r"披露|说明|声明|注明", target_clause)
+            and not re.search(r"程序|代码|数据分析结果", target_clause)
+        ):
+            return [
+                rule(
+                    uuid4().hex,
+                    "AI披露",
+                    "ai_disclosure",
+                    clause,
+                    "manual",
+                    ["BODY_TEXT"],
+                )
+            ]
         return []
     targets = [
         (r"学校名称|校名|所属高校|院校名称", "school_name", "recognizer"),
-        (r"单位名称|机构名称|实验室名称|院系名称", "organization_name", "recognizer"),
-        (r"项目编号|基金编号|课题编号|项目号", "project_number", "recognizer"),
+        (
+            r"单位名称|机构名称|实验室名称|院系名称|研究机构",
+            "organization_name",
+            "recognizer",
+        ),
+        (r"项目编号|基金(?:项目)?编号|课题编号|项目号", "project_number", "recognizer"),
         (
             r"作者姓名|队员姓名|通讯作者姓名",
             "author_name",
@@ -42,9 +103,9 @@ def explicit_candidates(clause):
             "ai_marker",
         ),
     ]
-    found = []
+    found = list(structural)
     for pattern, target, method in targets:
-        if not re.search(pattern, clause, re.I):
+        if not re.search(pattern, target_clause, re.I):
             continue
         actual_scope = ["IMAGE_OCR", "LOGO"] if target == "logo" else scope
         if target in ("text_quality", "ai_marker") and "IMAGE_OCR" not in actual_scope:
@@ -52,25 +113,12 @@ def explicit_candidates(clause):
         found.append(
             rule(uuid4().hex, "自定义检查", target, clause, method, actual_scope)
         )
-    if re.search(r"如果|除非|除外|例外|仅当|(?:^|，)若", clause):
-        return [rule(uuid4().hex, "条件要求", "manual", clause, "manual", scope)]
-    if re.search(r"文档属性|元数据|创建人|最后修改人", clause):
-        found.append(
-            rule(uuid4().hex, "元数据", "metadata", clause, "presence", ["METADATA"])
-        )
-    hidden = [
-        t
-        for pattern, t in [
-            (r"批注", "COMMENT"),
-            (r"修订", "REVISION"),
-            (r"隐藏文字", "HIDDEN_TEXT"),
+    if info["condition"] or info["exception"]:
+        for candidate in found:
+            candidate["detection_method"] = "manual"
+        return found or [
+            rule(uuid4().hex, "条件要求", "manual", clause, "manual", scope)
         ]
-        if re.search(pattern, clause)
-    ]
-    if hidden:
-        found.append(
-            rule(uuid4().hex, "隐藏信息", "hidden", clause, "presence", hidden)
-        )
     return found
 
 

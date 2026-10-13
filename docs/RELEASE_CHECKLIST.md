@@ -2,11 +2,13 @@
 
 目标标题：Jinggao v0.1.0 — Competition Release。
 
+2026-10-13 当前：后端 165 / Playwright 79 实测通过，Ruff、lint、typecheck、build 通过；模型和实体评测见 QUALITY_EVALUATION。最终 HEAD/CI 以本机审计及实际 Actions 为准。下列 128/76 与 22ac6cc 明确为历史记录；没有将它们替换成未经运行的新成绩。LICENSE 授权仍未确认，正式 Release 不创建。
+
 - [ ] 团队确认自主成果权利和全体共同权利人 MIT 授权
 - [ ] 根 LICENSE 与 LICENSE_SCOPE 一致
 - [ ] 团队复核合成规则与 Hold-out 标签（当前为 Codex 编写，不冒称人类盲标）
-- [x] 本轮全量 pytest 128、Ruff、前端检查与完整 Playwright 76 实际通过
-- [x] 终版功能提交22ac6cc的GitHub Actions实际绿色（37414817762；最终HEAD另核验）
+- [x] 历史 2026-10-06：pytest 128、Ruff、前端检查与 Playwright 76 通过（不是当前数量）
+- [x] 历史 22ac6cc CI 绿色（37414817762）；当前 HEAD 必须重新核验，见 TEST_REPORT
 - [x] 发布树无用户材料、数据库、密钥、模型权重、缓存和参考原图
 - [x] README 三张截图均来自真实合成数据运行
 - [ ] 发布 tag 指向已验证的 master SHA

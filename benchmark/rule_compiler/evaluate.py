@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "backend"))
 from app.services.local_models import LocalRuleModelProvider, loopback_url
 from app.services.rule_compiler import compile_rules
+from app.services.rule_compiler.schema_validator import normalize_response
 
 
 class NoModel:
@@ -188,9 +189,10 @@ def evaluate(dataset, model=None, limit=None):
             # by exact original and target in accepted outputs, not fixture names.
             for call in model.calls:
                 response = call["response"]
-                proposed = (
-                    response.get("rules", []) if isinstance(response, dict) else []
-                )
+                try:
+                    proposed = normalize_response(response, call["baseline"])
+                except ValueError:
+                    proposed = response.get("rules", []) if isinstance(response, dict) else []
                 if not isinstance(proposed, list):
                     proposed = []
                 raw.update(safety(proposed, call["baseline"], case["source_text"]))
@@ -255,6 +257,9 @@ def evaluate(dataset, model=None, limit=None):
             ),
             "network_attempts": len(attempts),
             "transport_errors": sum(bool(a["error"]) for a in attempts),
+            "json_valid_count": sum(a["response"] is not None for a in attempts),
+            "json_valid_rate": sum(a["response"] is not None for a in attempts)/max(len(attempts),1),
+            "total_inference_seconds": round(sum(a["seconds"] for a in attempts),3),
             "raw_proposal_safety": {k: raw[k] for k in SAFETY_KEYS},
             "accepted_authority_safety": {k: accepted[k] for k in SAFETY_KEYS},
             "attempts": attempts,

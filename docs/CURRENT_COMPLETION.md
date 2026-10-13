@@ -1,5 +1,9 @@
 # 当前完成度
 
+## 2026-10-13 质量候选（当前）
+
+已优化 Rule Compiler JSON Schema/单规则归一化与精确授权校验、条件/范围草案、局部实体关系及保守 Evidence Diff。原六页、连续阅读、OCR、整改副本、快照、报告和 Three.js 保持。新增独立开发集、真实同模型控制实验、OCR 演示和历史算法复现入口；原冻结数据/结果不覆盖。模型注释接受 3/60→58/60 案例，但执行语义指标提升来自确定性解析；Target 仍 66.7%、Exception 仍 81.7%，不能宣称完整理解。数字与边界见 [质量评测](QUALITY_EVALUATION.md)。当前验证以 TEST_REPORT 顶部为准，下文 128/135 等为历史。LICENSE 及正式 Release 仍 BLOCKER，未获得团队共同权利授权。
+
 ## 2026-10-08 评委交付入口
 
 根目录 `start.ps1` 统一首次安装与启动，`setup.ps1` 使用原锁文件，`stop.ps1` 按目录/实例标识/PID/创建时间/可执行文件及进程树校验停止；中文和英文 CMD 只做转发。README 提供既有合成材料的真实闭环演示；LLM/VLM 默认未配置，不影响主流程。禁止接管其他服务、批量杀 Python/Node 或删除用户数据库。交付优化不改变冻结的 Detector、规则授权、业务 API 或 UI。验收及人工 GUI 边界见 [评委启动验收](JUDGE_LAUNCH_TEST_REPORT.md)；许可证与正式 Release 的 BLOCKER 保持。

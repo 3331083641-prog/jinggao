@@ -1,0 +1,953 @@
+{
+  "version": "quality-dev-1",
+  "annotation_status": "Original synthetic labels authored by Codex; human review pending. Development regression, not blind hold-out.",
+  "cases": [
+    {
+      "id": "school-body",
+      "source_text": "正文不得出现学校名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "school-appendix",
+      "source_text": "附录不得出现学校名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "school-cover",
+      "source_text": "封面不得出现学校名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "cover"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "school-exception",
+      "source_text": "正文及附录不得出现学校名称，但参考文献除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "body",
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但参考文献除外。",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "school-condition",
+      "source_text": "仅当提交匿名版时，正文不得出现学校名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "school_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "仅当提交匿名版时",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "author-body",
+      "source_text": "正文不得出现作者姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "author_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "author-appendix",
+      "source_text": "附录不得出现作者姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "author_name"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "author-cover",
+      "source_text": "封面不得出现作者姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "author_name"
+      ],
+      "expected_scope": [
+        "cover"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "author-exception",
+      "source_text": "正文及附录不得出现作者姓名，但参考文献除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "author_name"
+      ],
+      "expected_scope": [
+        "body",
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但参考文献除外。",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "author-condition",
+      "source_text": "仅当提交匿名版时，正文不得出现作者姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "author_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "仅当提交匿名版时",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "project-body",
+      "source_text": "正文不得出现项目编号。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "project_number"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "project-appendix",
+      "source_text": "附录不得出现项目编号。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "project_number"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "project-cover",
+      "source_text": "封面不得出现项目编号。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "project_number"
+      ],
+      "expected_scope": [
+        "cover"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "project-exception",
+      "source_text": "正文及附录不得出现项目编号，但参考文献除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "project_number"
+      ],
+      "expected_scope": [
+        "body",
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但参考文献除外。",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "project-condition",
+      "source_text": "仅当提交匿名版时，正文不得出现项目编号。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "project_number"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "仅当提交匿名版时",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "email-body",
+      "source_text": "正文不得出现邮箱。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "email"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "email-appendix",
+      "source_text": "附录不得出现邮箱。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "email"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "email-cover",
+      "source_text": "封面不得出现邮箱。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "email"
+      ],
+      "expected_scope": [
+        "cover"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "email-exception",
+      "source_text": "正文及附录不得出现邮箱，但参考文献除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "email"
+      ],
+      "expected_scope": [
+        "body",
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但参考文献除外。",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "email-condition",
+      "source_text": "仅当提交匿名版时，正文不得出现邮箱。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "email"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "仅当提交匿名版时",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "phone-body",
+      "source_text": "正文不得出现电话号码。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "telephone"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "phone-appendix",
+      "source_text": "附录不得出现电话号码。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "telephone"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "phone-cover",
+      "source_text": "封面不得出现电话号码。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "telephone"
+      ],
+      "expected_scope": [
+        "cover"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "phone-exception",
+      "source_text": "正文及附录不得出现电话号码，但参考文献除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "telephone"
+      ],
+      "expected_scope": [
+        "body",
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但参考文献除外。",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "phone-condition",
+      "source_text": "仅当提交匿名版时，正文不得出现电话号码。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "telephone"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "仅当提交匿名版时",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "institute-body",
+      "source_text": "正文不得出现科研机构名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "organization_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "institute-appendix",
+      "source_text": "附录不得出现科研机构名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "organization_name"
+      ],
+      "expected_scope": [
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "institute-cover",
+      "source_text": "封面不得出现科研机构名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "organization_name"
+      ],
+      "expected_scope": [
+        "cover"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "institute-exception",
+      "source_text": "正文及附录不得出现科研机构名称，但参考文献除外。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "organization_name"
+      ],
+      "expected_scope": [
+        "body",
+        "appendix"
+      ],
+      "expected_condition": "",
+      "expected_exception": "但参考文献除外。",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "institute-condition",
+      "source_text": "仅当提交匿名版时，正文不得出现科研机构名称。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "organization_name"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "仅当提交匿名版时",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "multi",
+      "source_text": "正文禁止出现邮箱和电话号码。",
+      "expected_rule_count": 2,
+      "expected_target": [
+        "email",
+        "telephone"
+      ],
+      "expected_scope": [
+        "body"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "keyword",
+      "source_text": "摘要必须包含关键词。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "abstract_keywords"
+      ],
+      "expected_scope": [
+        "abstract"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "requirement"
+    },
+    {
+      "id": "hidden",
+      "source_text": "隐藏文字中不得保留作者姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "hidden"
+      ],
+      "expected_scope": [
+        "hidden"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    },
+    {
+      "id": "metadata",
+      "source_text": "文档属性中禁止保留作者姓名。",
+      "expected_rule_count": 1,
+      "expected_target": [
+        "metadata"
+      ],
+      "expected_scope": [
+        "metadata"
+      ],
+      "expected_condition": "",
+      "expected_exception": "",
+      "expected_requirement_type": "prohibition"
+    }
+  ],
+  "entity_cases": [
+    {
+      "id": "school-0-0",
+      "target": "school_name",
+      "text": "本文作者来自岚溪大学。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-0-1",
+      "target": "school_name",
+      "text": "参考文献引用了岚溪大学公开发表的成果。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-0-2",
+      "target": "school_name",
+      "text": "背景案例采用岚溪大学公开数据，与作者无关。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-0-3",
+      "target": "school_name",
+      "text": "参考文献引用了其他成果。本文作者来自岚溪大学。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-0-4",
+      "target": "school_name",
+      "text": "Author affiliation:\n岚溪大学",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-0-5",
+      "target": "school_name",
+      "text": "该算法用于大学生课程实验；引用岚溪大学的公开资料。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-1-6",
+      "target": "school_name",
+      "text": "本文作者来自澄湾学院。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-1-7",
+      "target": "school_name",
+      "text": "参考文献引用了澄湾学院公开发表的成果。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-1-8",
+      "target": "school_name",
+      "text": "背景案例采用澄湾学院公开数据，与作者无关。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-1-9",
+      "target": "school_name",
+      "text": "参考文献引用了其他成果。本文作者来自澄湾学院。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-1-10",
+      "target": "school_name",
+      "text": "Author affiliation:\n澄湾学院",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-1-11",
+      "target": "school_name",
+      "text": "该算法用于大学生课程实验；引用澄湾学院的公开资料。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-2-12",
+      "target": "school_name",
+      "text": "本文作者来自Northmere University。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-2-13",
+      "target": "school_name",
+      "text": "参考文献引用了Northmere University公开发表的成果。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-2-14",
+      "target": "school_name",
+      "text": "背景案例采用Northmere University公开数据，与作者无关。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-2-15",
+      "target": "school_name",
+      "text": "参考文献引用了其他成果。本文作者来自Northmere University。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-2-16",
+      "target": "school_name",
+      "text": "Author affiliation:\nNorthmere University",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-2-17",
+      "target": "school_name",
+      "text": "该算法用于大学生课程实验；引用Northmere University的公开资料。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-3-18",
+      "target": "school_name",
+      "text": "本文作者来自Willowmere College。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-3-19",
+      "target": "school_name",
+      "text": "参考文献引用了Willowmere College公开发表的成果。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-3-20",
+      "target": "school_name",
+      "text": "背景案例采用Willowmere College公开数据，与作者无关。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-3-21",
+      "target": "school_name",
+      "text": "参考文献引用了其他成果。本文作者来自Willowmere College。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-3-22",
+      "target": "school_name",
+      "text": "Author affiliation:\nWillowmere College",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "school-3-23",
+      "target": "school_name",
+      "text": "该算法用于大学生课程实验；引用Willowmere College的公开资料。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-24",
+      "target": "school_name",
+      "text": "作者来自北大。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-25",
+      "target": "school_name",
+      "text": "背景案例介绍北大公开课程，与作者无关。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-26",
+      "target": "organization_name",
+      "text": "Author affiliation: Northmere\nInstitute of Robotics",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-27",
+      "target": "organization_name",
+      "text": "引用 Northmere Institute of Robotics 的公开研究。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-28",
+      "target": "organization_name",
+      "text": "作者单位：澄湾智能系统研究中心。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-29",
+      "target": "organization_name",
+      "text": "背景介绍澄湾智能系统研究中心公开研究，与作者无关。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-30",
+      "target": "telephone",
+      "text": "联系：010 - 76543210",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-31",
+      "target": "telephone",
+      "text": "参考文献记载历史电话 010-76543210，与作者无关。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-32",
+      "target": "project_number",
+      "text": "本项目编号：TEST-20481",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-33",
+      "target": "project_number",
+      "text": "背景案例引用项目编号 TEST-20481，与本项目无关。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-34",
+      "target": "project_number",
+      "text": "本研究得到 NSFC\n20481234 支持。",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-35",
+      "target": "project_number",
+      "text": "文献引用 NSFC 20481234 的研究。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-36",
+      "target": "author_name",
+      "text": "本文作者：王合成",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-37",
+      "target": "author_name",
+      "text": "引用作者：王合成的公开研究。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-38",
+      "target": "advisor_name",
+      "text": "本文导师：李示例",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-39",
+      "target": "advisor_name",
+      "text": "引用导师：李示例的公开讲义。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-40",
+      "target": "email",
+      "text": "作者邮箱：demo@example.invalid",
+      "expected_risk": true,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    },
+    {
+      "id": "entity-41",
+      "target": "email",
+      "text": "引用示例邮箱 demo@example.invalid，与作者无关。",
+      "expected_risk": false,
+      "kind": "text",
+      "scope": [
+        "BODY_TEXT"
+      ],
+      "method": "recognizer"
+    }
+  ]
+}

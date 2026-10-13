@@ -1,5 +1,9 @@
 # 开源及第三方资源使用清单
 
+## 2026-10-13 质量优化增量
+
+无新增依赖或上游修改。自研修改限于结构化模型契约、规则授权验证、条件/范围草案、局部实体判定、保守 Diff 和回归评测。真实本机既有 Ollama 0.40.3 / qwen3.5:4b Q4_K_M 实验见 QUALITY_EVALUATION，取代“尚未实测”的当前状态；下文未实测描述为 10-05 历史。权重、运行器、字体和用户材料不随仓库分发。模型 Apache-2.0 说明及 notices 保留，不被团队候选 MIT 覆盖。
+
 ## 2026-10-05 增量
 
 未安装新依赖；自研有边界规则编译、loopback Provider、结构清理副本、Coverage、证据Diff、视觉候选策略与报告增强。新增直接用途：lxml 6.1.3 / https://github.com/lxml/lxml（BSD-3-Clause，安全XML结构处理）；OpenCV Python 5.0.0.93 / https://github.com/opencv/opencv-python（Apache-2.0及原包第三方条款，紧凑徽章候选）；Pillow 12.3.0（MIT-CMU，局部图片）；pypdf 5.5.0（BSD-3-Clause，PDF属性副本）；pypdfium2 5.13.0（见完整许可审计，真实证据裁图）；HTTPX 0.28.1（BSD-3-Clause，显式配置本机模型）。上游源码均未修改，精确版本仍由锁文件与inventory确认。

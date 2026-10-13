@@ -52,6 +52,9 @@ export function RunDiffPanel({ run }: { run: Run }) {
                 </summary>
                 {pairs.map((pair, index) => (
                   <div className="diff-evidence-pair" key={index}>
+                    {pair.match_method === "RELOCATED_EXACT_TEXT" && (
+                      <small className="muted">{pair.matching_note}</small>
+                    )}
                     {pair.before && (
                       <Link
                         to={`/workbench/${run.task_id}?run=${data.before_run_id}&finding=${pair.before.id}`}

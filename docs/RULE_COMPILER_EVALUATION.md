@@ -1,5 +1,9 @@
 # Rule Compiler Evaluation
 
+## 版本说明
+
+下文和 benchmark/rule_compiler/results.json 是 **2026-10-06 历史实验**，原 60 条数据、标签、哈希、结果全部保留。2026-10-13 在独立开发集指导修改后，仅一次评价原 60 条，新结果另存 benchmark/quality/original-60-after.json；未按原案例逐题调参。当前比较见 [QUALITY_EVALUATION](QUALITY_EVALUATION.md)，不要把历史 3/60 当作当前状态。
+
 2026-10-06，60 条原创合成规则。逐条显式语义标签由 Codex 编写并在首次运行前冻结，尚待团队人类复核；不声称独立人类标注或通用理解精度。
 
 ## 真实本机模型

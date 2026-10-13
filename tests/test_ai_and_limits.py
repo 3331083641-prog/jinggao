@@ -24,10 +24,14 @@ def test_advisory_review_preserves_review():
             )
         ],
     )
-    f = next(x for x in inspect_rule(r, d, ["body"]) if x["surface_id"])
-    assert f["status"] == "REVIEW"
-    assert f["ai_review"]["label"] == "引用或背景线索"
-    assert f["ai_review"]["context_chars"] <= 600
+    # Explicit public citation now produces no identity risk. The independent
+    # advisory classifier still cannot turn an uncertain result into FAIL/PASS.
+    assert not any(x["surface_id"] for x in inspect_rule(r, d, ["body"]))
+    from app.services.evidence_review import review
+
+    advisory = review(d.surfaces[0].text)
+    assert advisory["label"] == "引用或背景线索"
+    assert advisory["context_chars"] <= 600
 
 
 def test_unknown_format_not_pass():
