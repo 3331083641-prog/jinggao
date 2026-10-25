@@ -70,7 +70,7 @@ try {
     $url='http://127.0.0.1:'+$FrontendPort+'/'
     Write-Host ('净稿已启动：'+$url) -ForegroundColor Green
     Write-Host ('停止：.\stop.ps1；日志：'+$paths.Logs)
-    Write-Host '评委演示：导入 demos\metadata-rule.txt，上传 benchmark\fixtures\synthetic-cleanup.pdf；完整步骤见 docs\WINDOWS_START.md。'
+    Write-Host '本地演示：导入 demos\metadata-rule.txt，上传 benchmark\fixtures\synthetic-cleanup.pdf；完整步骤见 docs\WINDOWS_START.md。'
     if (-not $NoBrowser) {
         try { Start-Process $url -ErrorAction Stop | Out-Null }
         catch { Write-Host ('浏览器打开被权限或系统策略阻止，请手动点击：'+$url) -ForegroundColor Yellow }

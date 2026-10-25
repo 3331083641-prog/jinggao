@@ -12,7 +12,7 @@
 ![工作台与证据](docs/assets/workspace.png)
 ![安全副本复检与旧新证据](docs/assets/evidence-remediation.png)
 
-## 评委快速体验：Windows 一键启动
+## 本地快速体验：Windows 一键启动
 
 下载并解压仓库，在根目录 PowerShell 执行：
 
@@ -39,7 +39,7 @@ Windows 10/11、[Python 3.12（64位）](https://www.python.org/downloads/window
 3. 查看 Evidence 和 Coverage；在“整改”Tab 预览元数据清理，生成副本并复检。
 4. 查看 Run N / N+1 的旧新 Evidence Diff，下载副本和 PDF 报告。
 
-不会预置假结果或自动处理评委私人文件。原稿保持不变，复检沿用相同规则快照。详细步骤和本地模型“未配置 / 可用 / 失败”解释见启动指南。
+不会预置假结果或自动处理使用者私人文件。原稿保持不变，复检沿用相同规则快照。详细步骤和本地模型“未配置 / 可用 / 失败”解释见启动指南。
 
 **案例 B：本地 AI OCR 检测**
 
@@ -75,7 +75,7 @@ flowchart LR
   E --> F[同快照独立复检 / Diff / PDF]
 ```
 
-[架构](docs/ARCHITECTURE.md) · [五个创新点](docs/INNOVATION.md) · [比赛对应](docs/COMPETITION_ALIGNMENT.md)
+[架构](docs/ARCHITECTURE.md) · [五个创新点](docs/INNOVATION.md)
 
 ## 自定义规则与安全边界
 
@@ -87,7 +87,7 @@ FAIL 需要明确证据；REVIEW 是具体候选。**Unknown ≠ Clean；Coverag
 
 ## 测试与 Benchmark
 
-[测试报告](docs/TEST_REPORT.md) · [启动验收](docs/JUDGE_LAUNCH_TEST_REPORT.md)。CI 执行核心测试、构建和确定性评测；完整浏览器测试命令在启动指南，评委启动不下载浏览器测试环境。
+[测试报告](docs/TEST_REPORT.md) · [启动验收](docs/WINDOWS_LAUNCH_TEST_REPORT.md)。CI 执行核心测试、构建和确定性评测；完整浏览器测试命令在启动指南，本地启动不下载浏览器测试环境。
 
 v1/v2、60 条原始 Rule Compiler 数据与历史结果、120 句＋84 文档冻结 Hold-out 均保留。新增独立开发回归集（34 规则、42 句、24 文档），比较修改前后算法；它参与开发，不能冒称盲测。候选和确定 FAIL 分开统计，公开 FP/FN，PARTIAL 不算 PASS。标签由 Codex 编写，仍待开发者人工复核，不冒称独立人类盲标。
 

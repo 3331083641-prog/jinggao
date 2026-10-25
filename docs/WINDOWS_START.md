@@ -1,4 +1,4 @@
-# Windows 评委启动与演示
+# Windows 本地启动与演示
 
 ## 前置条件
 
@@ -64,7 +64,7 @@ Windows 10/11，64 位 Python 3.12，Node.js 22.12+（含 npm），可写的仓�
 6. 展开 Run 对比，查看旧/新 Evidence；确认原稿保留、Run N+1 使用相同规则快照。
 7. 下载净化副本与 PDF 报告。
 
-没有预插入任务、伪造结果或自动扫描评委私人文件。
+没有预插入任务、伪造结果或自动扫描使用者私人文件。
 
 ### 案例 B：本地神经网络 OCR
 
@@ -86,10 +86,10 @@ backend/.venv/Scripts/python.exe -m ruff check backend/app tests
 npm.cmd --prefix frontend run lint
 npm.cmd --prefix frontend run typecheck
 npm.cmd --prefix frontend run build
-# 仅开发测试需要浏览器下载，评委启动不会执行：
+# 仅开发测试需要浏览器下载，本地启动不会执行：
 $env:PLAYWRIGHT_BROWSERS_PATH = "$PWD/.cache/playwright"
 node frontend/node_modules/@playwright/test/cli.js install chromium
 npm.cmd --prefix frontend run test
 ~~~
 
-历史 `scripts/start.ps1` 与根 `npm run dev` 均转发正式入口。开发/截图/研究脚本位置保持，避免破坏可复现引用。验收结果见 [JUDGE_LAUNCH_TEST_REPORT](JUDGE_LAUNCH_TEST_REPORT.md)。自主源码现由独立开发者文鹏毅授权 MIT，范围见 LICENSE_SCOPE；v0.1.0 按 RELEASE_CHECKLIST 在最新 CI 通过后发布。旧待授权描述为历史状态。
+历史 `scripts/start.ps1` 与根 `npm run dev` 均转发正式入口。开发/截图/研究脚本位置保持，避免破坏可复现引用。验收结果见 [WINDOWS_LAUNCH_TEST_REPORT](WINDOWS_LAUNCH_TEST_REPORT.md)。自主源码现由独立开发者文鹏毅授权 MIT，范围见 LICENSE_SCOPE；v0.1.0 按 RELEASE_CHECKLIST 在最新 CI 通过后发布。旧待授权描述为历史状态。

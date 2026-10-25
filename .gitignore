@@ -89,3 +89,7 @@ FINAL_QUALITY_AUDIT.md
 **/signature.*
 **/autograph.*
 MIT_RELEASE_RECEIPT.md
+
+# Private report, figure sources, registration and competition-only media.
+/docs/competition/
+/docs/technical_report/

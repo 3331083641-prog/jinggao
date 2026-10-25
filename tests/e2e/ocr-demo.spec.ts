@@ -4,7 +4,7 @@ import {
 } from "../../frontend/node_modules/@playwright/test/index.mjs";
 import path from "node:path";
 
-test("评委扫描 PDF 案例通过真实 RapidOCR 产生可定位 Evidence", async ({
+test("扫描 PDF 案例通过真实 RapidOCR 产生可定位 Evidence", async ({
   page,
   request,
 }, info) => {
